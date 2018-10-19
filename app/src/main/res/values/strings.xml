@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">PizzaNow</string>
+    <string name="welcome_fr">Bienvenue chez PizzaNow!</string>
+    <string name="welcome_en">Pizza</string>
+    <string name="city_a">Sion</string>
+    <string name="city_b">Sierre</string>
+    <string name="city_c">Martigny</string>
+    <string name="city_d">Viège</string>
 </resources>
