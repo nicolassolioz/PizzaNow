@@ -7,8 +7,7 @@ public class MainActivity extends AppCompatActivity {
 
     //SALUT PIZZA NOW CE GIT VA MARCHER
     //retour
-    //nouveau test
-    // mieux
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
