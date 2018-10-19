@@ -15,8 +15,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void helloValentin(String hello) {
+    public String helloValentin(String hello) {
         //dire coucou à Valentin hihi
         System.out.println(hello);
+        //répondre à nico
+        return "Hello nico";
     }
 }
