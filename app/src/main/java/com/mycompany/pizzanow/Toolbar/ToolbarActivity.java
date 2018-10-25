@@ -1,5 +1,6 @@
 package com.mycompany.pizzanow.Toolbar;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.widget.Toast;
 import com.mycompany.pizzanow.Helper.LanguageHelper;
 import com.mycompany.pizzanow.Helper.LocaleHelper;
 import com.mycompany.pizzanow.R;
+import com.mycompany.pizzanow.Support.AboutActivity;
 
 import java.util.Locale;
 
@@ -30,8 +32,8 @@ public class ToolbarActivity extends AppCompatActivity {
                 break;
 
             case R.id.idAbout:
-                /* affiche le a propos de l'app */
-                Toast.makeText(getApplicationContext(), "Affiche le à propos", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, AboutActivity.class);
+                startActivity(intent);
                 break;
 
             case R.id.en:

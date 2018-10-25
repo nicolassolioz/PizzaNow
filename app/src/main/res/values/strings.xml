@@ -1,4 +1,5 @@
 <resources>
+    <!-- menu text -->
     <string name="app_name">PizzaNow</string>
     <string name="menu_about">About</string>
     <string name="menu_language">Language</string>
@@ -7,6 +8,7 @@
     <string name="menu_login">Login</string>
     <string name="menu_help">Help</string>
 
+    <!-- MainActivity text -->
     <string name="welcome_fr">Bienvenue chez PizzaNow!</string>
     <string name="welcome_en">Pizza</string>
     <string name="city_a">Sion</string>
@@ -14,6 +16,7 @@
     <string name="city_c">Martigny</string>
     <string name="city_d">Viège</string>
 
+    <!-- Fragment info text -->
     <string name="succ_welcome">Welcome to </string>
     <string name="succ_message">Choose your pizza!</string>
 
@@ -29,17 +32,25 @@
     <string name="succ_art2_desc">Ham</string>
     <string name="succ_art2_price">15 frs</string>
 
+    <!-- FragmentDetail text -->
     <string name="succ_order">Order !</string>
-    <string name="succ_orderMessage">... or come direct here</string>
+    <string name="succ_orderMessage"> or come direct here</string>
 
-    <string name="succ_orderNames">... </string>
+    <string name="succ_orderNames">Employees names </string>
     <string name="succ_orderNamesMessage">are ready to serve you!</string>
 
     <string name="succ_orderAdress">succAdress</string>
 
-
-
-
+    <!-- AboutActivity text-->
+    <string name="about_title">About the app</string>
+    <string name="about_version_title">App Version : </string>
+    <string name="about_version" translatable="false">0.2</string>
+    <string name="about_authors_title">About the authors : </string>
+    <string name="about_authors" translatable="false">Nicolas Solioz, Valentin Bornatici</string>
+    <string name="about_description_title" translatable="false">Description</string>
+    <string name="about_description">Projet du cours de dveloppement mobile sur Android Studio</string>
+    <string name="about_TODO_title">To do</string>
+    <string name="about_TODO" translatable="false">Affecter le changement de langue, cleaner le code, ajoter la DB,...</string>
 
     <!-- implémentation automatique lors de la création de l'Activity Settings -->
     <string name="title_activity_settings" translatable="false">Settings</string>
@@ -115,7 +126,5 @@
     <string name="pref_ringtone_silent" translatable="false">Silent</string>
 
     <string name="pref_title_vibrate" translatable="false">Vibrate</string>
-
-
 
 </resources>

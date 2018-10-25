@@ -23,7 +23,8 @@
         <activity android:name=".Toolbar.ToolbarActivity" />
         <activity
             android:name=".Support.SettingsActivity"
-            android:label="@string/title_activity_settings"></activity>
+            android:label="@string/title_activity_settings" />
+        <activity android:name=".Support.AboutActivity"></activity>
     </application>
 
 </manifest>

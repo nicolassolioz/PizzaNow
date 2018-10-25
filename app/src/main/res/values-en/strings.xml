@@ -37,4 +37,13 @@
     <string name="succ_orderNamesMessage">are ready to serve you!</string>
 
     <string name="succ_orderAdress">succAdress</string>
+
+    <!-- AboutActivity text-->
+    <string name="about_title">About the app</string>
+    <string name="about_version_title">"App Version : "</string>
+    <string name="about_authors_title">"About the authors : "</string>
+    <string name="about_description">DescriptionText</string>
+    <string name="about_TODO_title">TO_DO</string>
+
+
 </resources>

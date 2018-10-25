@@ -31,10 +31,18 @@
     <string name="succ_art2_price">15 frs</string>
 
     <string name="succ_order">Commandez !</string>
-    <string name="succ_orderMessage"> ou venez deîrectement sur place !</string>
+    <string name="succ_orderMessage"> ou venez directement sur place !</string>
 
     <string name="succ_orderNames">succNames</string>
     <string name="succ_orderNamesMessage">sont pêts à vous servir!</string>
 
     <string name="succ_orderAdress">succAdress</string>
+
+    <!-- AboutActivity text-->
+    <string name="about_title">À propos de l\'app</string>
+    <string name="about_version_title">Version de l\'application : </string>
+    <string name="about_authors_title">À propos des auteurs : </string>
+    <string name="about_description">Projet du cours de dveloppement mobile sur Android Studio</string>
+    <string name="about_TODO_title">À faire :</string>
+
 </resources>
