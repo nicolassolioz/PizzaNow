@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">PizzaNow</string>
+    <string name="menu_about">About</string>
+    <string name="menu_language">Language</string>
+    <string name="menu_languageEN">English</string>
+    <string name="menu_languageFR">Français</string>
+    <string name="menu_login">Login</string>
+    <string name="menu_help">Help</string>
+
     <string name="welcome_fr">Welcome</string>
     <string name="welcome_en">Pizza</string>
     <string name="city_a">Sitten</string>
@@ -22,4 +29,12 @@
     <string name="succ_art2_pizza">Tambola</string>
     <string name="succ_art2_desc">Ham</string>
     <string name="succ_art2_price">15 frs</string>
+
+    <string name="succ_order">Order !</string>
+    <string name="succ_orderMessage">or come direct here !</string>
+
+    <string name="succ_orderNames">succNames</string>
+    <string name="succ_orderNamesMessage">are ready to serve you!</string>
+
+    <string name="succ_orderAdress">succAdress</string>
 </resources>
