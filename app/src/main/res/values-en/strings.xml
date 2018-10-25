@@ -1,11 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">PizzaNow</string>
-    <string name="welcome_fr">Bienvenue chez PizzaNow!</string>
+    <string name="welcome_fr">Welcome</string>
     <string name="welcome_en">Pizza</string>
-    <string name="city_a">Sion</string>
-    <string name="city_b">Sierre</string>
+    <string name="city_a">Sitten</string>
+    <string name="city_b">Sidders</string>
     <string name="city_c">Martigny</string>
-    <string name="city_d">Viège</string>
+    <string name="city_d">Visp</string>
 
     <string name="succ_welcome">Welcome to </string>
     <string name="succ_message">Choose your pizza!</string>
@@ -21,5 +22,4 @@
     <string name="succ_art2_pizza">Tambola</string>
     <string name="succ_art2_desc">Ham</string>
     <string name="succ_art2_price">15 frs</string>
-
 </resources>
