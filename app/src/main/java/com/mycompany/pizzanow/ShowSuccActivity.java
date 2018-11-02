@@ -10,8 +10,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.Menu;
 
+import com.mycompany.pizzanow.Toolbar.ToolbarActivity;
+
 //diplay the slide move
-public class ShowSuccActivity extends FragmentActivity {
+public class ShowSuccActivity extends ToolbarActivity {
 
     private static final int NUM_PAGES = 2;
     private ViewPager mPager;
