@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.mycompany.pizzanow.Helper.LanguageHelper;
 import com.mycompany.pizzanow.Helper.LocaleHelper;
+import com.mycompany.pizzanow.KeyActivities.MainActivity;
 import com.mycompany.pizzanow.R;
 import com.mycompany.pizzanow.Support.AboutActivity;
 
@@ -47,17 +48,20 @@ public class ToolbarActivity extends AppCompatActivity {
                 break;
 
             case R.id.en:
-                LocaleHelper.setLocale(this, "en");
+                //LocaleHelper.setLocale(this, "en");
                 //It is required to recreate the activity to reflect the change in UI.
                 // recreate();
+                setLanguage("en");
+                reload();
                 break;
 
             case R.id.fr:
-                LocaleHelper.setLocale(this, "fr");
+                //LocaleHelper.setLocale(this, "fr");
 
                 //It is required to recreate the activity to reflect the change in UI.
-                recreate();
-
+                //recreate();
+                setLanguage("fr");
+                reload();
                 break;
                 default:
         }
@@ -66,6 +70,23 @@ public class ToolbarActivity extends AppCompatActivity {
 
     }
 
+   //rechargement après modification de Configuration
+
+    private void reload() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    //changement de la langue selon le choix de l'utilisateur
+    private void setLanguage(String language) {
+        Locale myLocale = new Locale(language);
+        Locale.setDefault(myLocale);
+        Configuration config = new Configuration();
+        config.locale = myLocale;
+        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+    }
+
+    // test de la fonction dialog
     private void openDialog() {
 
         AlertDialog alertDialog = new AlertDialog.Builder(this).create();
@@ -73,7 +94,7 @@ public class ToolbarActivity extends AppCompatActivity {
         // Set Custom Title
         TextView title = new TextView(this);
         // Title Properties
-        title.setText("Help");
+        title.setText(R.string.menu_help);
         title.setPadding(10, 10, 10, 10);   // Set Position
         title.setGravity(Gravity.CENTER);
         title.setTextColor(Color.BLACK);
