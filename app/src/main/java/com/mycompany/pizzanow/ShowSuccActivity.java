@@ -64,7 +64,6 @@ public class ShowSuccActivity extends ToolbarActivity {
         }
 
         public void goToSecondFragment(){
-
         }
 
 
