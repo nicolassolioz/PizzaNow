@@ -50,7 +50,7 @@
     <string name="about_description_title" translatable="false">Description</string>
     <string name="about_description">Projet du cours de dveloppement mobile sur Android Studio</string>
     <string name="about_TODO_title">To do</string>
-    <string name="about_TODO" translatable="false">Affecter le changement de langue, cleaner le code, ajoter la DB,...</string>
+    <string name="about_TODO" translatable="false">Cleaner le code, ajouter la DB,...</string>
 
     <!-- implémentation automatique lors de la création de l'Activity Settings -->
     <string name="title_activity_settings" translatable="false">Settings</string>
