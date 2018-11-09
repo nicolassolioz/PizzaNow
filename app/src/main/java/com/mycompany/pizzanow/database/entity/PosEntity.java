@@ -3,6 +3,7 @@ package com.mycompany.pizzanow.database.entity;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
 import com.mycompany.pizzanow.model.Pos;
@@ -10,7 +11,7 @@ import com.mycompany.pizzanow.model.Pos;
 @Entity(tableName = "filiale", primaryKeys = {"idFiliale"})
 public class PosEntity implements Pos, Comparable{
 
-    @NonNull
+    @PrimaryKey(autoGenerate = true)
     private int IdFiliale;
 
     @ColumnInfo(name = "Nom")
@@ -36,8 +37,6 @@ public class PosEntity implements Pos, Comparable{
 
     @ColumnInfo(name = "Menu")
     private int IdMenu;
-
-    public PosEntity(){}
 
     public PosEntity(Pos pos){
         IdFiliale=getidFiliale();

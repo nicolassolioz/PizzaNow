@@ -2,6 +2,7 @@ package com.mycompany.pizzanow.database.entity;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
 import com.mycompany.pizzanow.model.Pizza;
@@ -9,7 +10,7 @@ import com.mycompany.pizzanow.model.Pizza;
 @Entity(tableName = "Pizza", primaryKeys = {"idPizza"})
 public class PizzaEntity implements Pizza, Comparable{
 
-    @NonNull
+    @PrimaryKey(autoGenerate = true)
     private int idPizza;
 
     @ColumnInfo(name = "Nom")
@@ -49,7 +50,25 @@ public class PizzaEntity implements Pizza, Comparable{
     @Override
     public int getIdPizza() {        return idPizza;    }
 
-        public void setIdPizza(@NonNull int id) {this.idPizza = id;}
+    public void setIdPizza(@NonNull int id) {
+        this.idPizza = id;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setPrix(double prix) {
+        this.prix = prix;
+    }
+
+    public void setVegi(boolean vegi) {
+        this.vegi = vegi;
+    }
 
     @Override
     public String getNom() {
