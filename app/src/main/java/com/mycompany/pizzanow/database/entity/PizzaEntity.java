@@ -49,16 +49,22 @@ public class PizzaEntity implements Pizza, Comparable{
     @Override
     public int getIdPizza() {        return idPizza;    }
 
-        public void setIdPizza(@NonNull int id) {this.idPizza = id;}
+    public void setIdPizza(@NonNull int id) {this.idPizza = id;}
 
     @Override
     public String getNom() {
         return nom;
     }
 
+    public void setNom(String nom){ this.nom=nom;}
+
     @Override
     public String getDescription() {
         return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override
@@ -66,12 +72,18 @@ public class PizzaEntity implements Pizza, Comparable{
         return prix;
     }
 
+    public void setPrix(double prix) {
+        this.prix = prix;
+    }
+
     @Override
     public boolean getVegi() {
         return vegi;
     }
 
-
+    public void setVegi(Boolean vegi) {
+        this.vegi = vegi;
+    }
 
     @Override
     public boolean equals(Object obj){

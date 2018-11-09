@@ -83,7 +83,7 @@ public class PosEntity implements Pos, Comparable{
     @Override
     public String getAdresse() { return Adress; }
 
-    public void setName(String nom){this.Nom=nom;}
+    public void setAdress(String adress){this.Adress=adress;}
 
     @Override
     public int getNPA() { return Npa; }
