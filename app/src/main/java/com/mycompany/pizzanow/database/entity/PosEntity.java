@@ -1,14 +1,11 @@
-package com.mycompany.pizzanow.entity;
+package com.mycompany.pizzanow.database.entity;
 
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.support.annotation.NonNull;
-import android.view.Menu;
 
 import com.mycompany.pizzanow.model.Pos;
-
-import java.util.Locale;
 
 @Entity(tableName = "filiale", primaryKeys = {"idFiliale"})
 public class PosEntity implements Pos, Comparable{

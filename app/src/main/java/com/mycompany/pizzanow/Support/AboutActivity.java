@@ -1,10 +1,9 @@
 package com.mycompany.pizzanow.Support;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.mycompany.pizzanow.R;
-import com.mycompany.pizzanow.Toolbar.ToolbarActivity;
+import com.mycompany.pizzanow.ui.ToolbarActivity;
 
 public class AboutActivity extends ToolbarActivity {
 

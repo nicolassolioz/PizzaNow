@@ -11,16 +11,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
-        <activity android:name=".KeyActivities.MainActivity">
+        <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SuccDisplayActivity" />
-        <activity android:name=".ShowSuccActivity" />
-        <activity android:name=".Toolbar.ToolbarActivity" />
+        <activity android:name=".ui.SuccDisplayActivity" />
+        <activity android:name=".ui.ShowSuccActivity" />
+        <activity android:name=".ui.ToolbarActivity" />
         <activity
             android:name=".Support.SettingsActivity"
             android:label="@string/title_activity_settings" />
