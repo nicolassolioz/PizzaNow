@@ -13,6 +13,7 @@ import android.arch.persistence.room.*;
 import android.widget.TextView;
 
 import java.util.List;
+import java.util.Observer;
 
 public class MainActivity extends ToolbarActivity {
 
@@ -34,7 +35,10 @@ public class MainActivity extends ToolbarActivity {
         final TextView textViewToChange = (TextView) findViewById(R.id.textTest);
 
 
-        String pizzaName = pizzas.getValue().get(0).getNom();
+        Observer o;
+
+
+        String pizzaName = "yolo";//pizzas.getValue().get(0).getNom();
         textViewToChange.setText(pizzaName);
     }
 
