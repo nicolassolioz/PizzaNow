@@ -5,5 +5,5 @@ public interface Pizza {
     String getNom();
     String getDescription();
     double getPrix();
-    boolean getVegi();
+    //boolean getVegi();
 }

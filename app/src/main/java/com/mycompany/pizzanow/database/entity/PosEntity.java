@@ -38,6 +38,8 @@ public class PosEntity implements Pos, Comparable{
     @ColumnInfo(name = "Menu")
     private int IdMenu;
 
+    public PosEntity(){}
+
     public PosEntity(Pos pos){
         IdFiliale=getidFiliale();
         Nom=getNom();

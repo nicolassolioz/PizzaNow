@@ -7,7 +7,7 @@ import android.support.annotation.NonNull;
 
 import com.mycompany.pizzanow.model.Pizza;
 
-@Entity(tableName = "Pizza", primaryKeys = {"idPizza"})
+@Entity(tableName = "Pizza")
 public class PizzaEntity implements Pizza, Comparable{
 
     @PrimaryKey(autoGenerate = true)
@@ -22,8 +22,8 @@ public class PizzaEntity implements Pizza, Comparable{
     @ColumnInfo(name = "Prix")
     private double prix;
 
-    @ColumnInfo(name = "Vegi")
-    private Boolean vegi;
+    //@ColumnInfo(name = "Vegi")
+    //private Boolean vegi;
 
     public PizzaEntity(){}
 
@@ -32,7 +32,7 @@ public class PizzaEntity implements Pizza, Comparable{
         nom=pizza.getNom();
         description=pizza.getDescription();
         prix=pizza.getPrix();
-        vegi=pizza.getVegi();
+        //vegi=pizza.getVegi();
 
     }
 
@@ -42,7 +42,7 @@ public class PizzaEntity implements Pizza, Comparable{
         this.nom = nom;
         this.description = description;
         this.prix = prix;
-        this.vegi = vegi;
+        //this.vegi = vegi;
     }
 
 
@@ -66,9 +66,9 @@ public class PizzaEntity implements Pizza, Comparable{
         this.prix = prix;
     }
 
-    public void setVegi(boolean vegi) {
+    /*public void setVegi(boolean vegi) {
         this.vegi = vegi;
-    }
+    }*/
 
     @Override
     public String getNom() {
@@ -85,10 +85,10 @@ public class PizzaEntity implements Pizza, Comparable{
         return prix;
     }
 
-    @Override
+    /*@Override
     public boolean getVegi() {
         return vegi;
-    }
+    }*/
 
 
 

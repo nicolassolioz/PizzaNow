@@ -15,7 +15,7 @@ import java.util.List;
 @Dao
 public interface PizzaDao {
     @Query("SELECT * FROM Pizza")
-    List<PizzaEntity> getAll();
+    LiveData<List<PizzaEntity>> getAll();
 
     @Insert
     void insert(PizzaEntity pizzaEntity);
