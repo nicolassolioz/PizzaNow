@@ -13,6 +13,7 @@ import java.util.Locale;
 /**
  * Created by devdeeds.com on 18/4/17.
  * by Jayakrishnan P.M
+ * no more used
  */
 
 public class LocaleHelper {
@@ -33,7 +34,7 @@ public class LocaleHelper {
         return getPersistedData(context, Locale.getDefault().getLanguage());
     }
 
-    public static Context setLocale(Context context, String language) {
+    private static Context setLocale(Context context, String language) {
         persist(context, language);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {

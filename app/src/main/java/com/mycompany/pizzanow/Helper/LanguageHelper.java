@@ -5,6 +5,8 @@ import android.content.res.Resources;
 
 import java.util.Locale;
 
+//old class
+
 public class LanguageHelper {
     public static void changeLocale(Resources res, String locale){
 
