@@ -1,7 +1,9 @@
 package com.mycompany.pizzanow.ui;
 
+import android.app.Application;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MediatorLiveData;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,7 +13,10 @@ import com.mycompany.pizzanow.database.DataGenerator;
 import com.mycompany.pizzanow.database.Database;
 import com.mycompany.pizzanow.database.entity.PizzaEntity;
 import com.mycompany.pizzanow.model.Pizza;
+import com.mycompany.pizzanow.viewmodel.pizza.PizzaViewModel;
+
 import android.arch.persistence.room.*;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.List;
@@ -21,6 +26,14 @@ public class MainActivity extends ToolbarActivity {
 
     private Database db;
 
+    private PizzaViewModel mViewModel;
+
+    private PizzaEntity mPizza;
+
+    private TextView mEtPizzaName;
+    //private TextView mEtPizzaDescription;
+    //private TextView mEtPizzaPrice;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -29,32 +42,38 @@ public class MainActivity extends ToolbarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mEtPizzaName  = (TextView) findViewById(R.id.textTest);
+
         db = Database.getInstance(getApplicationContext());
 
-        //List<PizzaEntity> pizzas = db.pizzaDao().getAll();
+        int idPizza = 1;
 
-        List<PizzaEntity> pizzas = DataGenerator.generatePizzas();
+        Application app = getApplication();
 
-        final TextView textViewToChange = (TextView) findViewById(R.id.textTest);
+        //PizzaViewModel.Factory factory = new PizzaViewModel.Factory(getApplication(), idPizza);
+        //mViewModel = ViewModelProviders.of(this, factory).get(PizzaViewModel.class);
 
-        String pizzaName = "";
+        /*mViewModel.getPizza().observe(this, pizzaEntity -> {
+            if (pizzaEntity != null) {
+                mPizza = pizzaEntity;
+                updateContent();
+            }
+        });*/
 
-        if(pizzas.get(0).getNom().equals(null))
-            pizzaName = "empty";
-        else
-            pizzaName = pizzas.get(0).getNom();
-
-        textViewToChange.setText(pizzaName);
     }
 
     public void onClick(View view){
-
-
-
         Intent intent = new Intent(MainActivity.this, ShowSuccActivity.class);
         startActivity(intent);
     }
 
+    private void updateContent() {
+        if (mPizza != null) {
+            mEtPizzaName.setText(mPizza.getNom());
+            //mEtPizzaDescription.setText(mPizza.getDescription());
+            //mEtPizzaPrice.setText(Double.toString(mPizza.getPrix()));
+        }
+    }
    /* public String helloValentin(String hello) {
         //dire coucou à Valentin hihi
         System.out.println(hello);
