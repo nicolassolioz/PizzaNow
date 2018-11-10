@@ -25,4 +25,14 @@ public interface PizzaDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertAll(List<PizzaEntity> pizzas);
+
+    @Update
+    void update(PizzaEntity pizza);
+
+    @Delete
+    void delete(PizzaEntity pizza);
+
+
+    @Query("SELECT * FROM Pizza WHERE idPizza = :id")
+    LiveData<PizzaEntity> getById(int id);
 }
