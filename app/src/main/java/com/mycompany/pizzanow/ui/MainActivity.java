@@ -1,11 +1,13 @@
 package com.mycompany.pizzanow.ui;
 
 import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.MediatorLiveData;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import com.mycompany.pizzanow.R;
+import com.mycompany.pizzanow.database.DataGenerator;
 import com.mycompany.pizzanow.database.Database;
 import com.mycompany.pizzanow.database.entity.PizzaEntity;
 import com.mycompany.pizzanow.model.Pizza;
@@ -28,17 +30,20 @@ public class MainActivity extends ToolbarActivity {
         setContentView(R.layout.activity_main);
 
         db = Database.getInstance(getApplicationContext());
-        db.initializeData(db);
 
-        LiveData<List<PizzaEntity>> pizzas = db.pizzaDao().getAll();
+        //List<PizzaEntity> pizzas = db.pizzaDao().getAll();
+
+        List<PizzaEntity> pizzas = DataGenerator.generatePizzas();
 
         final TextView textViewToChange = (TextView) findViewById(R.id.textTest);
 
+        String pizzaName = "";
 
-        Observer o;
+        if(pizzas.get(0).getNom().equals(null))
+            pizzaName = "empty";
+        else
+            pizzaName = pizzas.get(0).getNom();
 
-
-        String pizzaName = "yolo";//pizzas.getValue().get(0).getNom();
         textViewToChange.setText(pizzaName);
     }
 
