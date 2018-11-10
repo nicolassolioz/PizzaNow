@@ -35,10 +35,10 @@ public class PizzaViewModel extends AndroidViewModel {
         // set by default null, until we get data from the database.
         mObservablePizza.setValue(null);
 
-        LiveData<PizzaEntity> client = mRepository.getPizza(pizzaId);
+        LiveData<PizzaEntity> pizza = mRepository.getPizza(pizzaId);
 
-        // observe the changes of the client entity from the database and forward them
-        mObservablePizza.addSource(client, mObservablePizza::setValue);
+        // observe the changes of the pizza entity from the database and forward them
+        mObservablePizza.addSource(pizza, mObservablePizza::setValue);
     }
 
     /**
@@ -53,9 +53,10 @@ public class PizzaViewModel extends AndroidViewModel {
 
         private final PizzaRepository mRepository;
 
-        public Factory(@NonNull Application application, int clientId) {
+        public Factory(@NonNull Application application, int pizzaId) {
             mApplication = application;
-            mPizzaId = clientId;
+            mPizzaId = pizzaId;
+
             mRepository = ((BaseApp) application).getPizzaRepository();
         }
 
@@ -67,7 +68,7 @@ public class PizzaViewModel extends AndroidViewModel {
     }
 
     /**
-     * Expose the LiveData ClientEntity query so the UI can observe it.
+     * Expose the LiveData PizzaEntity query so the UI can observe it.
      */
     public LiveData<PizzaEntity> getPizza() {
         return mObservablePizza;
@@ -78,31 +79,31 @@ public class PizzaViewModel extends AndroidViewModel {
             @Override
             public void onSuccess() {
                 callback.onSuccess();
-                Log.d(TAG, "updateClient: success");
+                Log.d(TAG, "updatePizza: success");
             }
 
             @Override
             public void onFailure(Exception e) {
                 callback.onFailure(e);
-                Log.d(TAG, "updateClient: failure", e);
+                Log.d(TAG, "updatePizza: failure", e);
             }
         });
     }
 
-    public void deletePizza(PizzaEntity client, OnAsyncEventListener callback) {
+    public void deletePizza(PizzaEntity pizza, OnAsyncEventListener callback) {
         new DeletePizza(getApplication(), new OnAsyncEventListener() {
             @Override
             public void onSuccess() {
                 callback.onSuccess();
-                Log.d(TAG, "deleteClient: success");
+                Log.d(TAG, "deletePizza: success");
             }
 
             @Override
             public void onFailure(Exception e) {
                 callback.onFailure(e);
-                Log.d(TAG, "deleteClient: failure", e);
+                Log.d(TAG, "deletePizza: failure", e);
             }
-        }).execute(client);
+        }).execute(pizza);
 
     }
 }

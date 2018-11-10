@@ -44,21 +44,18 @@ public class MainActivity extends ToolbarActivity {
 
         mEtPizzaName  = (TextView) findViewById(R.id.textTest);
 
-        db = Database.getInstance(getApplicationContext());
-
         int idPizza = 1;
 
-        Application app = getApplication();
 
-        //PizzaViewModel.Factory factory = new PizzaViewModel.Factory(getApplication(), idPizza);
-        //mViewModel = ViewModelProviders.of(this, factory).get(PizzaViewModel.class);
+        PizzaViewModel.Factory factory = new PizzaViewModel.Factory(getApplication(), idPizza);
+        mViewModel = ViewModelProviders.of(this, factory).get(PizzaViewModel.class);
 
-        /*mViewModel.getPizza().observe(this, pizzaEntity -> {
+        mViewModel.getPizza().observe(this, pizzaEntity -> {
             if (pizzaEntity != null) {
                 mPizza = pizzaEntity;
                 updateContent();
             }
-        });*/
+        });
 
     }
 

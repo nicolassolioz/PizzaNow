@@ -77,4 +77,8 @@ public abstract class Database extends RoomDatabase{
 
     }
 
+    public LiveData<Boolean> getDatabaseCreated() {
+        return mIsDatabaseCreated;
+    }
+
 }
