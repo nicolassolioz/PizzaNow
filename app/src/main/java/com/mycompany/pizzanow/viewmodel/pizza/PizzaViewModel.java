@@ -18,7 +18,7 @@ import com.mycompany.pizzanow.util.OnAsyncEventListener;
 
 public class PizzaViewModel extends AndroidViewModel {
 
-    private static final String TAG = "AccountViewModel";
+    private static final String TAG = "PizzaViewModel";
 
     private PizzaRepository mRepository;
 
@@ -54,10 +54,16 @@ public class PizzaViewModel extends AndroidViewModel {
         private final PizzaRepository mRepository;
 
         public Factory(@NonNull Application application, int pizzaId) {
+            Log.d(TAG,"PizzaViewModel enter factory");
             mApplication = application;
+            Log.d(TAG,"PizzaViewModel enter factory, app set");
             mPizzaId = pizzaId;
+            Log.d(TAG,"PizzaViewModel enter factory, pizza id set");
+
 
             mRepository = ((BaseApp) application).getPizzaRepository();
+            Log.d(TAG,"PizzaViewModel enter factory, Repository set");
+
         }
 
         @Override

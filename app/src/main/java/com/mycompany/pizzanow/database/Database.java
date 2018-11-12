@@ -19,7 +19,7 @@ import java.util.concurrent.Executors;
 
 public abstract class Database extends RoomDatabase{
     public abstract PizzaDao pizzaDao();
-
+    private static final String TAG = "Database";
     private static Database sInstance;
 
     private final MutableLiveData<Boolean> mIsDatabaseCreated = new MutableLiveData<>();
@@ -45,13 +45,15 @@ public abstract class Database extends RoomDatabase{
         mIsDatabaseCreated.postValue(true);
     }
 
-    public static Database getInstance(Context context) {
+    public static Database getInstance(final Context context) {
 
         if (sInstance == null) {
             synchronized (Database.class) {
                 if (sInstance == null) {
                     sInstance = buildDatabase(context.getApplicationContext());
+                    Log.d(TAG, "build db" );
                     sInstance.updateDatabaseCreated(context.getApplicationContext());
+
                 }
             }
         }
