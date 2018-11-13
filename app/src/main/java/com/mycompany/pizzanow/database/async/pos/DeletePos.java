@@ -7,15 +7,15 @@ import com.mycompany.pizzanow.BaseApp;
 import com.mycompany.pizzanow.database.entity.PosEntity;
 import com.mycompany.pizzanow.util.OnAsyncEventListener;
 
-public class CreatePos extends AsyncTask<PosEntity, Void, Void> {
+public class DeletePos extends AsyncTask<PosEntity, Void, Void> {
 
-    private static final String TAG = "CreatePizza";
+    private static final String TAG = "DeleteClient";
 
     private Application mApplication;
     private OnAsyncEventListener mCallBack;
     private Exception mException;
 
-    public CreatePos(Application application, OnAsyncEventListener callback) {
+    public DeletePos(Application application, OnAsyncEventListener callback) {
         mApplication = application;
         mCallBack = callback;
     }
@@ -25,7 +25,7 @@ public class CreatePos extends AsyncTask<PosEntity, Void, Void> {
         try {
             for (PosEntity pos : params)
                 ((BaseApp) mApplication).getPosRepository()
-                        .insert(pos);
+                        .delete(pos);
         } catch (Exception e) {
             mException = e;
         }

@@ -3,12 +3,26 @@ package com.mycompany.pizzanow.database.entity;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
 import com.mycompany.pizzanow.model.Pos;
 
-@Entity(tableName = "filiale")
+@Entity(tableName = "pos",
+        foreignKeys =
+        @ForeignKey(
+                entity = PosEntity.class,
+                parentColumns = "idCollab",
+                childColumns = "Responsable",
+                onDelete = ForeignKey.CASCADE
+        ),
+        indices = {
+                @Index(
+                        value = {"Responsable"}
+                )}
+)
 public class PosEntity implements Pos, Comparable{
 
     @PrimaryKey(autoGenerate = true)
