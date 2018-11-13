@@ -11,13 +11,7 @@ import android.support.annotation.NonNull;
 import com.mycompany.pizzanow.model.Pos;
 
 @Entity(tableName = "pos",
-        foreignKeys =
-        @ForeignKey(
-                entity = PosEntity.class,
-                parentColumns = "idCollab",
-                childColumns = "Responsable",
-                onDelete = ForeignKey.CASCADE
-        ),
+
         indices = {
                 @Index(
                         value = {"Responsable"}

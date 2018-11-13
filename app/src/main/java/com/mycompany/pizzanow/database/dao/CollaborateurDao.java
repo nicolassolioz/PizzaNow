@@ -32,7 +32,10 @@ public interface CollaborateurDao {
     LiveData<CollaborateurEntity> getById(int id);
 
     @Query("SELECT * FROM Collaborateur WHERE idPosCollab = :idFiliale")
-    LiveData<List<CollaborateurEntity>> getCollabPos(int idFiliale);
+    LiveData<List<CollaborateurEntity>> getCollabPos(Integer idFiliale);
+
+    @Query("SELECT * FROM Collaborateur WHERE nomCollab = :nomCollaborateur")
+    LiveData<CollaborateurEntity> getByName(String nomCollaborateur);
 
 
 }

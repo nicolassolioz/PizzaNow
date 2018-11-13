@@ -10,12 +10,7 @@ import android.support.annotation.Nullable;
 import com.mycompany.pizzanow.model.Collaborateur;
 
 @Entity(tableName = "Collaborateur",
-    foreignKeys =
-    @ForeignKey(
 
-            entity = PosEntity.class,
-            parentColumns = "idFiliale",
-            childColumns = "idPosCollab"),
     indices ={
         @Index(
                 value = {"idCollab"}
@@ -29,7 +24,7 @@ public class CollaborateurEntity implements Collaborateur, Comparable {
     private String nomCollab;
     private String prenomCollab;
     @Nullable
-    private int idPosCollab;
+    private Integer idPosCollab;
 
     public CollaborateurEntity(){}
 
@@ -62,7 +57,7 @@ public class CollaborateurEntity implements Collaborateur, Comparable {
     public void setPrenomCollab(String prenom){this.prenomCollab=prenom;}
 
     @Override
-    public int getIdPosCollab() {
+    public Integer getIdPosCollab() {
         return idPosCollab;
     }
 
