@@ -1,7 +1,7 @@
 package com.mycompany.pizzanow.model;
 
 public interface Pos {
-    int getidFiliale();
+    int getIdFiliale();
     String getNom();
     String getAdresse();
     int getNPA();
@@ -9,6 +9,6 @@ public interface Pos {
     int getResponsable();
     String getEmail();
     String getPhone();
-    int getMenu();
+    int getIdMenu();
 
 }

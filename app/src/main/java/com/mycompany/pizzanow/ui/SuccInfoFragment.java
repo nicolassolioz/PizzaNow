@@ -19,7 +19,7 @@ import android.widget.TextView;
 
 import com.mycompany.pizzanow.R;
 import com.mycompany.pizzanow.adapter.RecyclerAdapter;
-import com.mycompany.pizzanow.database.Database;
+import com.mycompany.pizzanow.database.AppDatabase;
 import com.mycompany.pizzanow.database.entity.PizzaEntity;
 import com.mycompany.pizzanow.util.RecyclerViewItemClickListener;
 import com.mycompany.pizzanow.viewmodel.pizza.PizzaListViewModel;

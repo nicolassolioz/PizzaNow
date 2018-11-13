@@ -99,7 +99,7 @@ public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.Vie
                                 ((CollaborateurEntity) data.get(newItemPosition)).getIdCollab());
                     }
                     if (mData instanceof PosEntity) {
-                        return ((PosEntity) mData.get(oldItemPosition)).getidFiliale() == (((PosEntity) data.get(newItemPosition)).getidFiliale());
+                        return ((PosEntity) mData.get(oldItemPosition)).getIdFiliale() == (((PosEntity) data.get(newItemPosition)).getIdFiliale());
                     }
                     return false;
                 }
@@ -125,7 +125,7 @@ public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.Vie
                     if (mData instanceof PosEntity) {
                         PosEntity newAccount = (PosEntity) data.get(newItemPosition);
                         PosEntity oldAccount = (PosEntity) mData.get(newItemPosition);
-                        return newAccount.getidFiliale()==(oldAccount.getidFiliale())
+                        return newAccount.getIdFiliale()==(oldAccount.getIdFiliale())
                                 && Objects.equals(newAccount.getNom(), oldAccount.getNom())
                                 && Objects.equals(newAccount.getLocalite(), oldAccount.getLocalite())
                                 && Objects.equals(newAccount.getEmail(), oldAccount.getEmail())

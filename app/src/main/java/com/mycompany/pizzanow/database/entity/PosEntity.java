@@ -8,7 +8,7 @@ import android.support.annotation.NonNull;
 
 import com.mycompany.pizzanow.model.Pos;
 
-@Entity(tableName = "filiale", primaryKeys = {"idFiliale"})
+@Entity(tableName = "filiale")
 public class PosEntity implements Pos, Comparable{
 
     @PrimaryKey(autoGenerate = true)
@@ -18,10 +18,10 @@ public class PosEntity implements Pos, Comparable{
     private String Nom;
 
     @ColumnInfo(name = "Adresse")
-    private String Adress;
+    private String Adresse;
 
     @ColumnInfo(name = "NPA")
-    private int Npa;
+    private int NPA;
 
     @ColumnInfo(name = "Localite")
     private String Localite;
@@ -41,15 +41,15 @@ public class PosEntity implements Pos, Comparable{
     public PosEntity(){}
 
     public PosEntity(Pos pos){
-        IdFiliale=getidFiliale();
+        IdFiliale=getIdFiliale();
         Nom=getNom();
-        Adress=getAdresse();
-        Npa=getNPA();
+        Adresse=getAdresse();
+        NPA=getNPA();
         Localite=getLocalite();
         Responsable=getResponsable();
         Email=getEmail();
         Phone=getPhone();
-        IdMenu=getMenu();
+        IdMenu=getIdMenu();
     }
 
     public PosEntity(@NonNull int idFiliale, String nom, String adress, int npa,
@@ -57,8 +57,8 @@ public class PosEntity implements Pos, Comparable{
                      int idMenu){
         this.IdFiliale=idFiliale;
         this.Nom=nom;
-        this.Adress=adress;
-        this.Npa=npa;
+        this.Adresse=adress;
+        this.NPA=npa;
         this.Localite=localite;
         this.Responsable=responsable;
         this.Email=email;
@@ -68,7 +68,7 @@ public class PosEntity implements Pos, Comparable{
 
     @NonNull
     @Override
-    public int getidFiliale() {
+    public int getIdFiliale() {
         return IdFiliale;
     }
 
@@ -82,14 +82,14 @@ public class PosEntity implements Pos, Comparable{
     public void setNom(String nom){this.Nom = nom;}
 
     @Override
-    public String getAdresse() { return Adress; }
+    public String getAdresse() { return Adresse; }
 
-    public void setAdress(String adress){this.Adress=adress;}
+    public void setAdresse(String adress){this.Adresse=adress;}
 
     @Override
-    public int getNPA() { return Npa; }
+    public int getNPA() { return NPA; }
 
-    public void setNpa(int npa) {this.Npa=npa;}
+    public void setNPA(int npa) {this.NPA=npa;}
 
     @Override
     public String getLocalite() {
@@ -120,7 +120,7 @@ public class PosEntity implements Pos, Comparable{
     public void setPhone(String phone){this.Phone=phone;}
 
     @Override
-    public int getMenu() { return IdMenu; }
+    public int getIdMenu() { return IdMenu; }
 
     public void setIdMenu(int idMenu){ this.IdMenu=idMenu;}
 
@@ -130,7 +130,7 @@ public class PosEntity implements Pos, Comparable{
         if(obj == this) return true;
         if(!(obj instanceof PosEntity)) return false;
         PosEntity o = (PosEntity) obj;
-        return o.getidFiliale() == this.getidFiliale();
+        return o.getIdFiliale() == this.getIdFiliale();
     }
 
     @Override

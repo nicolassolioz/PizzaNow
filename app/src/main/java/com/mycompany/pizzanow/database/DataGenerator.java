@@ -27,7 +27,7 @@ public class DataGenerator {
         //diavola.setVegi(false);
 
         PizzaEntity tambola = new PizzaEntity();
-        //tambola.setIdPizza(2);
+        //tambola.setIdPizza(3);
         tambola.setNom("tambola");
         tambola.setDescription("tomate mozzarella jambon");
         tambola.setPrix(12.5);
@@ -121,8 +121,8 @@ public class DataGenerator {
         PosEntity posSion = new PosEntity();
         posSion.setIdFiliale(1);
         posSion.setNom("Chez Mario");
-        posSion.setAdress("Rue du Rhône 8");
-        posSion.setNpa(1950);
+        posSion.setAdresse("Rue du Rhône 8");
+        posSion.setNPA(1950);
         posSion.setLocalite("Sion");
         posSion.setResponsable(5);
         posSion.setEmail("sion@pizzanow.ch");
@@ -132,8 +132,8 @@ public class DataGenerator {
         PosEntity posSierre = new PosEntity();
         posSierre.setIdFiliale(2);
         posSierre.setNom("Chez Diego");
-        posSierre.setAdress("Avenue Général Guisan 13");
-        posSierre.setNpa(3950);
+        posSierre.setAdresse("Avenue Général Guisan 13");
+        posSierre.setNPA(3950);
         posSierre.setLocalite("Sierre");
         posSierre.setResponsable(1);
         posSierre.setEmail("sierr@pizzanow.ch");

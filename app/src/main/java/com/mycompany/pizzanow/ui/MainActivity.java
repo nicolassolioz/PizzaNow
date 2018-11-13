@@ -9,8 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.mycompany.pizzanow.R;
+import com.mycompany.pizzanow.database.AppDatabase;
 import com.mycompany.pizzanow.database.DataGenerator;
-import com.mycompany.pizzanow.database.Database;
 import com.mycompany.pizzanow.database.entity.PizzaEntity;
 import com.mycompany.pizzanow.model.Pizza;
 import com.mycompany.pizzanow.viewmodel.pizza.PizzaViewModel;
@@ -24,7 +24,7 @@ import java.util.Observer;
 
 public class MainActivity extends ToolbarActivity {
 
-    private Database db;
+    private AppDatabase db;
 
     private PizzaViewModel mViewModel;
 
@@ -44,7 +44,7 @@ public class MainActivity extends ToolbarActivity {
 
         mEtPizzaName  = (TextView) findViewById(R.id.textTest);
 
-        int idPizza = 2;
+        int idPizza = 3;
 
 
         PizzaViewModel.Factory factory = new PizzaViewModel.Factory(getApplication(), idPizza);

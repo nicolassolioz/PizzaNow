@@ -2,7 +2,8 @@ package com.mycompany.pizzanow.database.repository;
 
 import android.arch.lifecycle.LiveData;
 
-import com.mycompany.pizzanow.database.Database;
+import com.mycompany.pizzanow.database.AppDatabase;
+
 import com.mycompany.pizzanow.database.entity.PizzaEntity;
 
 import java.util.List;
@@ -11,13 +12,13 @@ public class PizzaRepository {
 
     private static PizzaRepository sInstance;
 
-    private final Database mDatabase;
+    private final AppDatabase mDatabase;
 
-    private PizzaRepository(final Database database) {
+    private PizzaRepository(final AppDatabase database) {
         mDatabase = database;
     }
 
-    public static PizzaRepository getInstance(final Database database) {
+    public static PizzaRepository getInstance(final AppDatabase database) {
         if (sInstance == null) {
                 if (sInstance == null) {
                     sInstance = new PizzaRepository(database);

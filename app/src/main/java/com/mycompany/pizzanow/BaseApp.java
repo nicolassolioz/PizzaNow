@@ -2,8 +2,9 @@ package com.mycompany.pizzanow;
 
 import android.app.Application;
 
-import com.mycompany.pizzanow.database.Database;
+import com.mycompany.pizzanow.database.AppDatabase;
 import com.mycompany.pizzanow.database.repository.PizzaRepository;
+import com.mycompany.pizzanow.database.repository.PosRepository;
 
 public class BaseApp extends Application {
 
@@ -13,12 +14,16 @@ public class BaseApp extends Application {
         super.onCreate();
     }
 
-    public Database getDatabase() {
-        return Database.getInstance(this);
+    public AppDatabase getDatabase() {
+        return AppDatabase.getInstance(this);
     }
 
     public PizzaRepository getPizzaRepository() {
         return PizzaRepository.getInstance(getDatabase());
+    }
+
+    public PosRepository getPosRepository(){
+        return PosRepository.getInstance(getDatabase());
     }
 
 }
