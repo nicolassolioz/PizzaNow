@@ -32,6 +32,7 @@ public class MainActivity extends ToolbarActivity {
     private AppDatabase db;
 
     private CollaborateurViewModel mViewModel;
+    private PizzaViewModel mViewModelPizza;
     private CollaborateurEntity mCollaborateur;
     private TextView mEtPizzaName;
 
@@ -52,9 +53,18 @@ public class MainActivity extends ToolbarActivity {
         String nomCollaborateur = "Bocelli";
 
 
+        PizzaViewModel.Factory factory = new PizzaViewModel.Factory(getApplication(), 2);
+        mViewModelPizza = ViewModelProviders.of(this, factory).get(PizzaViewModel.class);
 
-        CollaborateurViewModel.Factory factory = new CollaborateurViewModel.Factory(getApplication(), 2);
-        mViewModel = ViewModelProviders.of(this, factory).get(CollaborateurViewModel.class);
+        mViewModelPizza.getPizza().observe(this,pizzaEntity -> {
+            if (pizzaEntity != null) {
+
+                mEtPizzaName.setText(pizzaEntity.getNom());
+            }
+        });
+
+        CollaborateurViewModel.Factory factoryC = new CollaborateurViewModel.Factory(getApplication(), 2);
+        mViewModel = ViewModelProviders.of(this, factoryC).get(CollaborateurViewModel.class);
 
         mViewModel.getCollaborateur().observe(this, collaborateurEntity -> {
             if (collaborateurEntity != null) {
@@ -64,8 +74,7 @@ public class MainActivity extends ToolbarActivity {
             else
             {
                 mEtPizzaName.setText("hey hey guess u suk");
-            }
-        });
+            }});
 
     }
 
