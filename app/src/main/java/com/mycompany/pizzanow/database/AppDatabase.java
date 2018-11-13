@@ -20,7 +20,7 @@ import com.mycompany.pizzanow.database.entity.PosEntity;
 import java.util.List;
 import java.util.concurrent.Executors;
 
-@Database(entities = {PizzaEntity.class, PosEntity.class}, version = 2)
+@Database(entities = {PizzaEntity.class, PosEntity.class}, version = 1)
 
 public abstract class AppDatabase extends RoomDatabase{
 

@@ -57,7 +57,7 @@ public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.Vie
     public void onBindViewHolder(RecyclerAdapter.ViewHolder holder, int position) {
         T item = mData.get(position);
         if (item.getClass().equals(PizzaEntity.class))
-            holder.mTextView.setText(((PizzaEntity) item).getNom());
+            holder.mTextView.setText(((PizzaEntity) item).getNom()+"\t "+((PizzaEntity) item).getPrix()+"\n"+((PizzaEntity) item).getDescription());
         if (item.getClass().equals(CollaborateurEntity.class))
             holder.mTextView.setText(((CollaborateurEntity) item).getPrenomCollab() + " " + ((CollaborateurEntity) item).getNomCollab());
         if (item.getClass().equals(PosEntity.class))
