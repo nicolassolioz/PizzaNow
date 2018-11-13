@@ -45,6 +45,10 @@ public class MainActivity extends ToolbarActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
+        /*
         mEtPizzaName  = (TextView) findViewById(R.id.textTest);
 
         int idPizza = 3;
@@ -59,6 +63,7 @@ public class MainActivity extends ToolbarActivity {
                 updateContent();
             }
         });
+        */
 
     }
 
