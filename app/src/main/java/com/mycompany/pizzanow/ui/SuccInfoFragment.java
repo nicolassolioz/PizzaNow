@@ -1,5 +1,6 @@
 package com.mycompany.pizzanow.ui;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -17,11 +18,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.mycompany.pizzanow.BaseApp;
 import com.mycompany.pizzanow.R;
 import com.mycompany.pizzanow.adapter.RecyclerAdapter;
 import com.mycompany.pizzanow.database.AppDatabase;
 import com.mycompany.pizzanow.database.entity.PizzaEntity;
+import com.mycompany.pizzanow.database.entity.PosEntity;
+import com.mycompany.pizzanow.database.repository.PosRepository;
 import com.mycompany.pizzanow.util.RecyclerViewItemClickListener;
+import com.mycompany.pizzanow.viewmodel.POS.PosListViewModel;
+import com.mycompany.pizzanow.viewmodel.POS.PosViewModel;
 import com.mycompany.pizzanow.viewmodel.pizza.PizzaListViewModel;
 import com.mycompany.pizzanow.viewmodel.pizza.PizzaViewModel;
 
@@ -33,6 +39,11 @@ public class SuccInfoFragment extends Fragment {
 
     private static final String TAG = "PizzasFragment";
 
+    //data pos
+    private PosViewModel posViewModel;
+    private PosEntity posEntity ;
+
+    //Data pizza
     private List<PizzaEntity> mPizzas;
     private RecyclerAdapter<PizzaEntity> mAdapter;
     private PizzaListViewModel mViewModel;
@@ -44,6 +55,13 @@ public class SuccInfoFragment extends Fragment {
     {
         View rootView = inflater.inflate(R.layout.fragment_succ_info, container,false);
 
+        posEntity = ((ShowSuccActivity)this.getActivity()).getPosEntity();
+
+        TextView textView = (TextView) rootView.findViewById(R.id.tvWelcomeSuccInfo);
+        textView.append(posEntity.getNom());
+
+
+        //gestion de la liste des pizzas
         // 1. get a reference to recyclerView
         RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.PizzasRecyclerView);
 

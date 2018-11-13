@@ -15,7 +15,7 @@
     <string name="city_c">Martigny</string>
     <string name="city_d">Visp</string>
 
-    <string name="succ_welcome">Welcome to </string>
+    <string name="succ_welcome">"Welcome "</string>
     <string name="succ_message">Choose your pizza!</string>
 
     <string name="succ_title_pizza">Pizza</string>

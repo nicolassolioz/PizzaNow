@@ -61,7 +61,7 @@ public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.Vie
         if (item.getClass().equals(CollaborateurEntity.class))
             holder.mTextView.setText(((CollaborateurEntity) item).getPrenomCollab() + " " + ((CollaborateurEntity) item).getNomCollab());
         if (item.getClass().equals(PosEntity.class))
-            holder.mTextView.setText(((PosEntity) item).getNom());
+            holder.mTextView.setText(((PosEntity) item).getNom()+" à "+((PosEntity)item).getLocalite());
     }
 
     @Override

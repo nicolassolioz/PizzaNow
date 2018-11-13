@@ -31,6 +31,7 @@ public class PosRepository {
         return mDatabase.posDao().getById(idPos);
     }
 
+
     public LiveData<List<PosEntity>> getAllPos(){
         return mDatabase.posDao().getAll();
     }
@@ -44,4 +45,7 @@ public class PosRepository {
     public void delete(final PosEntity posEntity){
         mDatabase.posDao().delete(posEntity);
     }
+
+    // sans liveData
+    public PosEntity getPosDirect(int idPos) {return mDatabase.posDao().getOnePos(idPos);}
 }

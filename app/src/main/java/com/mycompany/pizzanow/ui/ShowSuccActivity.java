@@ -1,5 +1,6 @@
 package com.mycompany.pizzanow.ui;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -8,6 +9,8 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 
 import com.mycompany.pizzanow.R;
+import com.mycompany.pizzanow.database.entity.PosEntity;
+import com.mycompany.pizzanow.viewmodel.POS.PosViewModel;
 
 
 //diplay the slide move
@@ -17,12 +20,26 @@ public class ShowSuccActivity extends ToolbarActivity {
     private ViewPager mPager;
     private PagerAdapter mPagerAdapter;
 
+    //data pos
+    private PosViewModel posViewModel;
+    private PosEntity posEntity ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_succ);
 
+        //
+        //gestion de l'affichage du nom du POS
+
+        int posID = getIntent().getIntExtra("posID", 1);
+        PosViewModel.Factory factoryPos = new PosViewModel.Factory(getApplication(),posID);
+        posViewModel = ViewModelProviders.of(this, factoryPos).get(PosViewModel.class);
+        posViewModel.getPos().observe(this, posEntity1 -> {
+            if(posEntity1 != null){
+                posEntity = posEntity1;
+            }
+        });
 
         // Instantiate a ViewPager and a PagerAdapter.
         mPager = findViewById(R.id.pager);
@@ -40,6 +57,10 @@ public class ShowSuccActivity extends ToolbarActivity {
             // Otherwise, select the previous step.
             mPager.setCurrentItem(mPager.getCurrentItem() - 1);
         }
+    }
+
+    public PosEntity getPosEntity(){
+        return posEntity;
     }
 
 
