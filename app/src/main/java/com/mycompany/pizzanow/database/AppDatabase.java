@@ -12,8 +12,14 @@ import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
+import com.mycompany.pizzanow.database.dao.CollaborateurDao;
+import com.mycompany.pizzanow.database.dao.MenuDao;
+import com.mycompany.pizzanow.database.dao.MenuPizzaDao;
 import com.mycompany.pizzanow.database.dao.PizzaDao;
 import com.mycompany.pizzanow.database.dao.PosDao;
+import com.mycompany.pizzanow.database.entity.CollaborateurEntity;
+import com.mycompany.pizzanow.database.entity.MenuEntity;
+import com.mycompany.pizzanow.database.entity.MenuPizzaEntity;
 import com.mycompany.pizzanow.database.entity.PizzaEntity;
 import com.mycompany.pizzanow.database.entity.PosEntity;
 
@@ -30,6 +36,9 @@ public abstract class AppDatabase extends RoomDatabase{
 
     public abstract PizzaDao pizzaDao();
     public abstract PosDao posDao();
+    public abstract CollaborateurDao collaborateurDao();
+    public abstract MenuDao menuDao();
+    public abstract MenuPizzaDao menuPizzaDao();
 
     private final MutableLiveData<Boolean> mIsDatabaseCreated = new MutableLiveData<>();
 
@@ -83,10 +92,21 @@ public abstract class AppDatabase extends RoomDatabase{
             database.runInTransaction(() -> {
                 // Generate the data for pre-population
                 List<PizzaEntity> pizzas = DataGenerator.generatePizzas();
-                List<PosEntity> posEntities = DataGenerator.generatePos();
+                List<PosEntity> pos = DataGenerator.generatePos();
+                List<MenuEntity> menus = DataGenerator.generateMenus();
+                List<CollaborateurEntity> collabs = DataGenerator.generateCollaborateurs();
+                List<MenuPizzaEntity> menuPizzas = DataGenerator.generateMenuPizzas();
 
+                database.collaborateurDao().insertAll(collabs);
+                database.posDao().insertAll(pos);
+
+                collabs = DataGenerator.addPosToCollab(collabs);
+
+                database.collaborateurDao().insertAll(collabs);
                 database.pizzaDao().insertAll(pizzas);
-                database.posDao().insertAll(posEntities);
+                database.menuDao().insertAll(menus);
+                database.menuPizzaDao().insertAll(menuPizzas);
+
             });
         });
 

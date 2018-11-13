@@ -17,13 +17,13 @@ import java.util.List;
 
 @Dao
 public interface PosDao {
-    @Query("SELECT * FROM filiale")
+    @Query("SELECT * FROM pos")
     LiveData<List<PosEntity>> getAll();
 
     @Insert
     void insert(PosEntity posEntity);
 
-    @Query("SELECT * FROM filiale WHERE IdFiliale=1")
+    @Query("SELECT * FROM pos WHERE IdFiliale=1")
     List<PosEntity> getOnePizza();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -36,7 +36,8 @@ public interface PosDao {
     void delete(PosEntity posEntity);
 
 
-    @Query("SELECT * FROM filiale WHERE IdFiliale = :id")
+
+    @Query("SELECT * FROM pos WHERE IdFiliale = :id")
     LiveData<PosEntity> getById(int id);
 
 }

@@ -1,13 +1,13 @@
-package com.mycompany.pizzanow.database.async.pos;
+package com.mycompany.pizzanow.database.async.collaborateur;
 
 import android.app.Application;
 import android.os.AsyncTask;
 
 import com.mycompany.pizzanow.BaseApp;
-import com.mycompany.pizzanow.database.entity.PosEntity;
+import com.mycompany.pizzanow.database.entity.CollaborateurEntity;
 import com.mycompany.pizzanow.util.OnAsyncEventListener;
 
-public class CreatePos extends AsyncTask<PosEntity, Void, Void> {
+public class CreateCollaborateur extends AsyncTask<CollaborateurEntity, Void, Void> {
 
     private static final String TAG = "CreatePizza";
 
@@ -15,17 +15,17 @@ public class CreatePos extends AsyncTask<PosEntity, Void, Void> {
     private OnAsyncEventListener mCallBack;
     private Exception mException;
 
-    public CreatePos(Application application, OnAsyncEventListener callback) {
+    public CreateCollaborateur(Application application, OnAsyncEventListener callback) {
         mApplication = application;
         mCallBack = callback;
     }
 
     @Override
-    protected Void doInBackground(PosEntity... params) {
+    protected Void doInBackground(CollaborateurEntity... params) {
         try {
-            for (PosEntity pos : params)
-                ((BaseApp) mApplication).getPosRepository()
-                        .insert(pos);
+            for (CollaborateurEntity collab : params)
+                ((BaseApp) mApplication).getCollaborateurRepository()
+                        .insert(collab);
         } catch (Exception e) {
             mException = e;
         }

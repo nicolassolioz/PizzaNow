@@ -5,6 +5,7 @@ import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import com.mycompany.pizzanow.model.Collaborateur;
 
@@ -27,6 +28,7 @@ public class CollaborateurEntity implements Collaborateur, Comparable {
     private int idCollab;
     private String nomCollab;
     private String prenomCollab;
+    @Nullable
     private int idPosCollab;
 
     public CollaborateurEntity(){}
