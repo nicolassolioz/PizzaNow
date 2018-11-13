@@ -54,7 +54,6 @@ public class PizzaListViewModel extends AndroidViewModel {
             mApplication = application;
             Log.d(TAG, "PizzaViewModel enter factory, app set");
 
-
             mRepository = ((BaseApp) application).getPizzaRepository();
             Log.d(TAG, "PizzaViewModel enter factory, Repository set");
 

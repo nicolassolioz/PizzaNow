@@ -26,8 +26,16 @@ public class DataGenerator {
         diavola.setPrix(12.5);
         //diavola.setVegi(false);
 
+        PizzaEntity tambola = new PizzaEntity();
+        //tambola.setIdPizza(2);
+        tambola.setNom("tambola");
+        tambola.setDescription("tomate mozzarella jambon");
+        tambola.setPrix(12.5);
+        //diavola.setVegi(false);
+
         pizzas.add(margarita);
         pizzas.add(diavola);
+        pizzas.add(tambola);
 
         return pizzas;
     }

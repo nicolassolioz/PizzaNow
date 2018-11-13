@@ -6,10 +6,12 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,21 +42,25 @@ public class SuccInfoFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
     {
-        return inflater.inflate(R.layout.fragment_succ_info, container,false);
-        /*RecyclerView recyclerView = getView().findViewById(R.id.PizzasRecyclerView);
+        View rootView = inflater.inflate(R.layout.fragment_succ_info, container,false);
+
+        // 1. get a reference to recyclerView
+        RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.PizzasRecyclerView);
 
         // use a linear layout manager
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
-        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
                 LinearLayoutManager.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
 
         mPizzas = new ArrayList<>();
+
         mAdapter = new RecyclerAdapter<>(new RecyclerViewItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
+                Log.d(TAG, "clicked position:" + position);
+                Log.d(TAG, "clicked on: " + mPizzas.get(position).getNom());
 
             }
 
@@ -65,7 +71,6 @@ public class SuccInfoFragment extends Fragment {
         });
 
         PizzaListViewModel.Factory factory = new PizzaListViewModel.Factory(getActivity().getApplication());
-
         mViewModel = ViewModelProviders.of(this, factory).get(PizzaListViewModel.class);
         mViewModel.getAllPizzas().observe(this, pizzaEntities -> {
             if(pizzaEntities != null){
@@ -73,6 +78,10 @@ public class SuccInfoFragment extends Fragment {
                 mAdapter.setData(mPizzas);
             }
         });
-        */
+
+        recyclerView.setAdapter(mAdapter);
+
+        return rootView;
+
     }
 }
