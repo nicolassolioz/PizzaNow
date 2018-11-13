@@ -10,7 +10,7 @@ import android.support.annotation.NonNull;
 import com.mycompany.pizzanow.model.MenuPizza;
 
 @Entity(tableName = "MenuPizza",
-        foreignKeys = {
+        /*foreignKeys = {
         @ForeignKey(
                 entity = PizzaEntity.class,
                 parentColumns = "idPizza",
@@ -22,7 +22,7 @@ import com.mycompany.pizzanow.model.MenuPizza;
                 parentColumns = "idMenu",
                 childColumns = "idMenu",
                 onDelete =  ForeignKey.CASCADE
-        )},
+        )},*/
         indices = {
                 @Index(
                         value = {"idMenuPizza"}

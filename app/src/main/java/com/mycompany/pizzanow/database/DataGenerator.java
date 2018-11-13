@@ -220,22 +220,22 @@ public class DataGenerator {
     //Point of Sales
 
     public static List<CollaborateurEntity> addPosToCollab(List<CollaborateurEntity> collab) {
+        collab.get(0).setIdCollab(1);
         collab.get(1).setIdCollab(1);
         collab.get(2).setIdCollab(1);
         collab.get(3).setIdCollab(1);
-        collab.get(4).setIdCollab(1);
+        collab.get(4).setIdCollab(2);
         collab.get(5).setIdCollab(2);
         collab.get(6).setIdCollab(2);
         collab.get(7).setIdCollab(2);
         collab.get(8).setIdCollab(2);
-        collab.get(9).setIdCollab(2);
+        collab.get(9).setIdCollab(3);
         collab.get(10).setIdCollab(3);
         collab.get(11).setIdCollab(3);
         collab.get(12).setIdCollab(3);
-        collab.get(13).setIdCollab(3);
+        collab.get(13).setIdCollab(4);
         collab.get(14).setIdCollab(4);
         collab.get(15).setIdCollab(4);
-        collab.get(16).setIdCollab(4);
 
         return collab;
     }

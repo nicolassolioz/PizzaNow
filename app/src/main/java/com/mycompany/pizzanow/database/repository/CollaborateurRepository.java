@@ -30,6 +30,10 @@ public class CollaborateurRepository {
         return mDatabase.collaborateurDao().getById(idCollaborateur);
     }
 
+    public LiveData<CollaborateurEntity> getCollaborateurNom(final String nomCollaborateur) {
+        return mDatabase.collaborateurDao().getByName(nomCollaborateur);
+    }
+
     public LiveData<List<CollaborateurEntity>> getCollabPos(final int pos) {
         return mDatabase.collaborateurDao().getCollabPos(pos);
     }

@@ -14,19 +14,19 @@ public class MenuEntity implements Menu, Comparable {
     private int idMenu;
 
     @ColumnInfo(name = "Nom")
-    private String nom;
+    private String nomMenu;
 
 
     public MenuEntity() {}
 
     public MenuEntity(Menu menu) {
         idMenu = menu.getIdMenu();
-        nom = menu.getNomMenu();
+        nomMenu = menu.getNomMenu();
     }
 
     public MenuEntity(@NonNull int idMenu, String nom) {
         this.idMenu = idMenu;
-        this.nom = nom;
+        this.nomMenu = nom;
     }
 
 
@@ -37,7 +37,7 @@ public class MenuEntity implements Menu, Comparable {
 
     @Override
     public String getNomMenu() {
-        return this.nom;
+        return this.nomMenu;
     }
 
     public void setIdMenu(@NonNull int idMenu) {
@@ -45,7 +45,7 @@ public class MenuEntity implements Menu, Comparable {
     }
 
     public void setNomMenu(@NonNull String nom) {
-        this.nom = nom;
+        this.nomMenu = nom;
     }
 
     @Override

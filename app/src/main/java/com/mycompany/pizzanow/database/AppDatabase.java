@@ -26,7 +26,7 @@ import com.mycompany.pizzanow.database.entity.PosEntity;
 import java.util.List;
 import java.util.concurrent.Executors;
 
-@Database(entities = {PizzaEntity.class, PosEntity.class}, version = 1)
+@Database(entities = {PizzaEntity.class, PosEntity.class, MenuEntity.class, MenuPizzaEntity.class, CollaborateurEntity.class}, version = 1)
 
 public abstract class AppDatabase extends RoomDatabase{
 
@@ -106,6 +106,8 @@ public abstract class AppDatabase extends RoomDatabase{
                 database.pizzaDao().insertAll(pizzas);
                 database.menuDao().insertAll(menus);
                 database.menuPizzaDao().insertAll(menuPizzas);
+
+                Log.i(TAG, "Data inserted.");
 
             });
         });
