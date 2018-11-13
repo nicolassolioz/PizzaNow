@@ -100,9 +100,9 @@ public abstract class AppDatabase extends RoomDatabase{
                 database.collaborateurDao().insertAll(collabs);
                 database.posDao().insertAll(pos);
 
-                collabs = DataGenerator.addPosToCollab(collabs);
+                //collabs = DataGenerator.addPosToCollab(collabs);
 
-                database.collaborateurDao().insertAll(collabs);
+                //database.collaborateurDao().insertAll(collabs);
                 database.pizzaDao().insertAll(pizzas);
                 database.menuDao().insertAll(menus);
                 database.menuPizzaDao().insertAll(menuPizzas);

@@ -13,9 +13,11 @@ import com.mycompany.pizzanow.R;
 import com.mycompany.pizzanow.adapter.RecyclerAdapter;
 import com.mycompany.pizzanow.database.AppDatabase;
 import com.mycompany.pizzanow.database.DataGenerator;
+import com.mycompany.pizzanow.database.entity.CollaborateurEntity;
 import com.mycompany.pizzanow.database.entity.PizzaEntity;
 import com.mycompany.pizzanow.database.entity.PosEntity;
 import com.mycompany.pizzanow.model.Pizza;
+import com.mycompany.pizzanow.viewmodel.pizza.CollaborateurViewModel;
 import com.mycompany.pizzanow.viewmodel.pizza.PizzaViewModel;
 
 import android.arch.persistence.room.*;
@@ -29,8 +31,8 @@ public class MainActivity extends ToolbarActivity {
 
     private AppDatabase db;
 
-    private PizzaViewModel mViewModel;
-    private PizzaEntity mPizza;
+    private CollaborateurViewModel mViewModel;
+    private CollaborateurEntity mCollaborateur;
     private TextView mEtPizzaName;
 
     private List<PosEntity> mPosEntities;
@@ -45,25 +47,25 @@ public class MainActivity extends ToolbarActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-
-        /*
         mEtPizzaName  = (TextView) findViewById(R.id.textTest);
 
-        int idPizza = 3;
+        String nomCollaborateur = "Bocelli";
 
 
-        PizzaViewModel.Factory factory = new PizzaViewModel.Factory(getApplication(), idPizza);
-        mViewModel = ViewModelProviders.of(this, factory).get(PizzaViewModel.class);
 
-       mViewModel.getPizza().observe(this, pizzaEntity -> {
-            if (pizzaEntity != null) {
-                mPizza = pizzaEntity;
+        CollaborateurViewModel.Factory factory = new CollaborateurViewModel.Factory(getApplication(), 2);
+        mViewModel = ViewModelProviders.of(this, factory).get(CollaborateurViewModel.class);
+
+        mViewModel.getCollaborateur().observe(this, collaborateurEntity -> {
+            if (collaborateurEntity != null) {
+                mCollaborateur = collaborateurEntity;
                 updateContent();
             }
+            else
+            {
+                mEtPizzaName.setText("hey hey guess u suk");
+            }
         });
-        */
 
     }
 
@@ -73,10 +75,14 @@ public class MainActivity extends ToolbarActivity {
     }
 
     private void updateContent() {
-        if (mPizza != null) {
-            mEtPizzaName.setText(mPizza.getDescription());
+        if (mCollaborateur != null) {
+            mEtPizzaName.setText(mCollaborateur.getNomCollab() + " " + mCollaborateur.getPrenomCollab());
             //mEtPizzaDescription.setText(mPizza.getDescription());
             //mEtPizzaPrice.setText(Double.toString(mPizza.getPrix()));
+        }
+        else
+        {
+            mEtPizzaName.setText("value null sorry why");
         }
     }
    /* public String helloValentin(String hello) {

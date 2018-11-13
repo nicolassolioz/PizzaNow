@@ -135,66 +135,83 @@ public class DataGenerator {
         CollaborateurEntity  Diego = new CollaborateurEntity();
         Diego.setNomCollab("Pavarotti");
         Diego.setPrenomCollab("Diego");
+        Diego.setIdPosCollab(1);
 
         CollaborateurEntity  Antonio = new CollaborateurEntity();
         Antonio.setNomCollab("Bocelli");
         Antonio.setPrenomCollab("Antonio");
+        Antonio.setIdPosCollab(1);
 
         CollaborateurEntity  Sara = new CollaborateurEntity();
         Sara.setNomCollab("Bartolli");
         Sara.setPrenomCollab("Sara");
+        Sara.setIdPosCollab(1);
 
         CollaborateurEntity Emmanuella = new CollaborateurEntity();
         Emmanuella.setNomCollab("Domingo");
         Emmanuella.setPrenomCollab("Emmanuella");
+        Emmanuella.setIdPosCollab(1);
 
         CollaborateurEntity Mario = new CollaborateurEntity();
         Mario.setNomCollab("Rossi");
         Mario.setPrenomCollab("Mario");
+        Mario.setIdPosCollab(1);
 
         CollaborateurEntity Suzanna = new CollaborateurEntity();
         Suzanna.setNomCollab("Nieto");
         Suzanna.setPrenomCollab("Suzanna");
+        Suzanna.setIdPosCollab(1);
 
         CollaborateurEntity Luciana = new CollaborateurEntity();
         Luciana.setNomCollab("Giacomo");
         Luciana.setPrenomCollab("Luciana");
+        Luciana.setIdPosCollab(1);
 
         CollaborateurEntity Franco = new CollaborateurEntity();
         Franco.setNomCollab("Ubbiali");
         Franco.setPrenomCollab("Franco");
+        Franco.setIdPosCollab(1);
 
         CollaborateurEntity Laura = new CollaborateurEntity();
         Laura.setNomCollab("Biaggi");
         Laura.setPrenomCollab("Laura");
+        Laura.setIdPosCollab(1);
 
         CollaborateurEntity Luigi = new CollaborateurEntity();
         Luigi.setNomCollab("Hendrix");
         Luigi.setPrenomCollab("Luigi");
+        Luigi.setIdPosCollab(1);
 
         CollaborateurEntity Maria = new CollaborateurEntity();
         Maria.setNomCollab("Cobain");
         Maria.setPrenomCollab("Maria");
+        Maria.setIdPosCollab(1);
 
         CollaborateurEntity Rose = new CollaborateurEntity();
         Rose.setNomCollab("Winehouse");
         Rose.setPrenomCollab("Rose");
+        Rose.setIdPosCollab(1);
 
         CollaborateurEntity Steven = new CollaborateurEntity();
         Steven.setNomCollab("Joplin");
         Steven.setPrenomCollab("Steven");
+        Steven.setIdPosCollab(1);
 
         CollaborateurEntity Giovanni = new CollaborateurEntity();
         Giovanni.setNomCollab("Zuckerberg");
         Giovanni.setPrenomCollab("Giovanni");
+        Giovanni.setIdPosCollab(1);
 
         CollaborateurEntity HansJurg = new CollaborateurEntity();
         HansJurg.setNomCollab("Gates");
         HansJurg.setPrenomCollab("Hans-Jurg");
+        HansJurg.setIdPosCollab(1);
 
         CollaborateurEntity Bertha = new CollaborateurEntity();
         Bertha.setNomCollab("Wozniak");
         Bertha.setPrenomCollab("Bertha");
+        Bertha.setIdPosCollab(1);
+
 
         collab.add(Diego);
         collab.add(Antonio);
