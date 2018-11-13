@@ -29,13 +29,12 @@ public class ShowSuccActivity extends ToolbarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_succ);
 
-        //
         //gestion de l'affichage du nom du POS
-
         int posID = getIntent().getIntExtra("posID", 1);
+
         PosViewModel.Factory factoryPos = new PosViewModel.Factory(getApplication(),posID);
         posViewModel = ViewModelProviders.of(this, factoryPos).get(PosViewModel.class);
-        posViewModel.getPos().observe(this, posEntity1 -> {
+        posViewModel.getPos().observe(this,  posEntity1-> {
             if(posEntity1 != null){
                 posEntity = posEntity1;
             }

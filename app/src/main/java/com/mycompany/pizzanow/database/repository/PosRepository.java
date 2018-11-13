@@ -46,6 +46,5 @@ public class PosRepository {
         mDatabase.posDao().delete(posEntity);
     }
 
-    // sans liveData
-    public PosEntity getPosDirect(int idPos) {return mDatabase.posDao().getOnePos(idPos);}
+
 }

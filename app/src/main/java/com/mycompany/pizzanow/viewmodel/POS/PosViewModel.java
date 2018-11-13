@@ -11,7 +11,7 @@ import android.util.Log;
 
 import com.mycompany.pizzanow.BaseApp;
 import com.mycompany.pizzanow.database.async.pizza.UpdatePizza;
-import com.mycompany.pizzanow.database.dao.PosDao_Impl;
+
 import com.mycompany.pizzanow.database.entity.PizzaEntity;
 import com.mycompany.pizzanow.database.entity.PosEntity;
 import com.mycompany.pizzanow.database.repository.PizzaRepository;
