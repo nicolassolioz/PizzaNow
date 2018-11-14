@@ -1,4 +1,4 @@
-package com.mycompany.pizzanow.viewmodel.pizza;
+package com.mycompany.pizzanow.viewmodel.Collaborateur;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
@@ -12,12 +12,8 @@ import android.util.Log;
 import com.mycompany.pizzanow.BaseApp;
 import com.mycompany.pizzanow.database.async.collaborateur.DeleteCollaborateur;
 import com.mycompany.pizzanow.database.async.collaborateur.UpdateCollaborateur;
-import com.mycompany.pizzanow.database.async.pizza.DeletePizza;
-import com.mycompany.pizzanow.database.async.pizza.UpdatePizza;
 import com.mycompany.pizzanow.database.entity.CollaborateurEntity;
-import com.mycompany.pizzanow.database.entity.PizzaEntity;
 import com.mycompany.pizzanow.database.repository.CollaborateurRepository;
-import com.mycompany.pizzanow.database.repository.PizzaRepository;
 import com.mycompany.pizzanow.util.OnAsyncEventListener;
 
 public class CollaborateurViewModel extends AndroidViewModel {

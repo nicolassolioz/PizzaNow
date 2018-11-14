@@ -37,5 +37,6 @@ public interface CollaborateurDao {
     @Query("SELECT * FROM Collaborateur WHERE nomCollab = :nomCollaborateur")
     LiveData<CollaborateurEntity> getByName(String nomCollaborateur);
 
-
+    @Query("SELECT * FROM Collaborateur")
+    LiveData<List<CollaborateurEntity>> getAll();
 }

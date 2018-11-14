@@ -1,8 +1,5 @@
 package com.mycompany.pizzanow.ui;
 
-import android.app.Application;
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MediatorLiveData;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,23 +12,16 @@ import android.view.View;
 import com.mycompany.pizzanow.R;
 import com.mycompany.pizzanow.adapter.RecyclerAdapter;
 import com.mycompany.pizzanow.database.AppDatabase;
-import com.mycompany.pizzanow.database.DataGenerator;
 import com.mycompany.pizzanow.database.entity.CollaborateurEntity;
-import com.mycompany.pizzanow.database.entity.PizzaEntity;
 import com.mycompany.pizzanow.database.entity.PosEntity;
-import com.mycompany.pizzanow.model.Pizza;
 import com.mycompany.pizzanow.util.RecyclerViewItemClickListener;
 import com.mycompany.pizzanow.viewmodel.POS.PosListViewModel;
-import com.mycompany.pizzanow.viewmodel.pizza.CollaborateurViewModel;
-import com.mycompany.pizzanow.viewmodel.pizza.PizzaViewModel;
+import com.mycompany.pizzanow.viewmodel.Collaborateur.CollaborateurViewModel;
 
-import android.arch.persistence.room.*;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observer;
 
 public class MainActivity extends ToolbarActivity {
 
@@ -94,7 +84,6 @@ public class MainActivity extends ToolbarActivity {
         });
 
         recyclerView.setAdapter(mAdapter);
-
         /*affichage des succursales : fin*/
 
         String nomCollaborateur = "Bocelli";

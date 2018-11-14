@@ -37,10 +37,9 @@ import java.util.List;
 
 public class SuccInfoFragment extends Fragment {
 
-    private static final String TAG = "PizzasFragment";
+    private static final String TAG = "PosInfoPizzasFragment";
 
     //data pos
-    private PosViewModel posViewModel;
     private PosEntity posEntity ;
 
     //Data pizza
@@ -69,7 +68,7 @@ public class SuccInfoFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
-                LinearLayoutManager.VERTICAL);
+                LinearLayoutManager.HORIZONTAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
 
         mPizzas = new ArrayList<>();

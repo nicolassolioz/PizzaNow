@@ -32,9 +32,9 @@
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="48dp"
-        android:layout_height="wrap_content"
+        android:id="@+id/buttonPhone"
+        android:layout_width="45dp"
+        android:layout_height="46dp"
         android:layout_marginStart="87dp"
         android:layout_marginTop="16dp"
         android:contentDescription="@android:string/emptyPhoneNumber"
@@ -42,7 +42,7 @@
         app:layout_constraintBottom_toTopOf="@+id/imageView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6"
-        tools:src="@android:drawable/stat_sys_vp_phone_call_on_hold" />
+        tools:src="@android:drawable/stat_sys_phone_call" />
 
     <ImageButton
         android:id="@+id/imageButton2"
@@ -51,12 +51,12 @@
         android:layout_marginStart="100dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="87dp"
-        android:backgroundTint="@android:color/black"
+        android:backgroundTint="@android:color/darker_gray"
         android:contentDescription="@android:string/defaultVoiceMailAlphaTag"
         android:src="@drawable/ic_sync_black_24dp"
         app:layout_constraintBottom_toTopOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageButton"
+        app:layout_constraintStart_toEndOf="@+id/buttonPhone"
         app:layout_constraintTop_toBottomOf="@+id/textView6"
         tools:src="@android:drawable/ic_dialog_email" />
 
@@ -67,16 +67,15 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="236dp"
         android:contentDescription="@string/succ_orderNames"
-        android:src="@drawable/fr_icon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton"
-        tools:src="@tools:sample/backgrounds/scenic[11]" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonPhone"
+        tools:src="@tools:sample/avatars[11]" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/tvSuccDetailNames"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -94,10 +93,10 @@
         android:text="@string/succ_orderNamesMessage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        app:layout_constraintTop_toBottomOf="@+id/tvSuccDetailNames" />
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/tvSuccDetailsAdress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
