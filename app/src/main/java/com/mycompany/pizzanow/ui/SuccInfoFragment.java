@@ -56,6 +56,7 @@ public class SuccInfoFragment extends Fragment {
 
         posEntity = ((ShowSuccActivity)this.getActivity()).getPosEntity();
 
+        //Accueil
         TextView textView = (TextView) rootView.findViewById(R.id.tvWelcomeSuccInfo);
         textView.append(posEntity.getNom());
 
@@ -68,7 +69,7 @@ public class SuccInfoFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
-                LinearLayoutManager.HORIZONTAL);
+                LinearLayoutManager.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
 
         mPizzas = new ArrayList<>();

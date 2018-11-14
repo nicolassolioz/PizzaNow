@@ -67,7 +67,7 @@ public class PizzaListViewModel extends AndroidViewModel {
     }
 
     /**
-     * Expose the LiveData ClientAccounts query so the UI can observe it.
+     * Expose the LiveData Pizza query so the UI can observe it.
      */
     public LiveData<List<PizzaEntity>> getAllPizzas() {
         return mObservablePizzas;

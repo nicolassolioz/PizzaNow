@@ -21,24 +21,25 @@ public class CollaborateurListViewModel extends AndroidViewModel {
 
     private CollaborateurRepository collaborateurRepository;
 
-    private final MediatorLiveData<List<CollaborateurEntity>> mObservableCollaborateurs;
-    private final MediatorLiveData<List<CollaborateurEntity>> mObservableAllCollaborateurs;
+    private final MediatorLiveData<List<CollaborateurEntity>> mObservableCollaborateursOfPos;
+    //private final MediatorLiveData<List<CollaborateurEntity>> mObservableAllCollaborateurs;
 
-    public CollaborateurListViewModel(@NonNull Application application,final int posId, CollaborateurRepository repository) {
+    public CollaborateurListViewModel(@NonNull Application application,
+                                      final int posId, CollaborateurRepository repository) {
         super(application);
         collaborateurRepository = repository;
 
-        mObservableCollaborateurs = new MediatorLiveData<>();
-        mObservableAllCollaborateurs = new MediatorLiveData<>();
+        mObservableCollaborateursOfPos = new MediatorLiveData<>();
+        //mObservableAllCollaborateurs = new MediatorLiveData<>();
 
-        mObservableCollaborateurs.setValue(null);
-        mObservableAllCollaborateurs.setValue(null);
+        mObservableCollaborateursOfPos.setValue(null);
+        //mObservableAllCollaborateurs.setValue(null);
 
         LiveData<List<CollaborateurEntity>> collabs = collaborateurRepository.getCollabPos(posId);
-        LiveData<List<CollaborateurEntity>> allCollabs = collaborateurRepository.getAllCollaborateurs();
+        //LiveData<List<CollaborateurEntity>> allCollabs = collaborateurRepository.getAllCollaborateurs();
 
-        mObservableCollaborateurs.addSource(collabs, mObservableCollaborateurs::setValue);
-        mObservableAllCollaborateurs.addSource(allCollabs, mObservableCollaborateurs::setValue);
+        mObservableCollaborateursOfPos.addSource(collabs, mObservableCollaborateursOfPos::setValue);
+        //mObservableAllCollaborateurs.addSource(allCollabs, mObservableAllCollaborateurs::setValue);
     }
 
     public static class Factory extends ViewModelProvider.NewInstanceFactory {
@@ -65,11 +66,17 @@ public class CollaborateurListViewModel extends AndroidViewModel {
     }
 
     /**
-     * Expose the LiveData ClientAccounts query so the UI can observe it.
+     * Expose the LiveData Collaborateur query so the UI can observe it.
      */
     public LiveData<List<CollaborateurEntity>> getCollabPos() {
-        return mObservableCollaborateurs;
+        return mObservableCollaborateursOfPos;
     }
+
+    /*
+    public LiveData<List<CollaborateurEntity>> getAllCollabs() {
+        return mObservableAllCollaborateurs;
+    }
+    */
 }
 
 

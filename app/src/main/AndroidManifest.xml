@@ -3,7 +3,7 @@
     package="com.mycompany.pizzanow">
 
     <uses-sdk android:maxSdkVersion="11" />
-    <uses-permission android:name="android.permission.CALL_PHONE"></uses-permission>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
 
     <application
         android:name=".BaseApp"
@@ -20,7 +20,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.SuccDisplayActivity" />
+        <activity android:name=".ui.SuccDisplayActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.DIAL"/>
+            </intent-filter>
+        </activity>
         <activity android:name=".ui.ShowSuccActivity" />
         <activity android:name=".ui.ToolbarActivity" />
         <activity

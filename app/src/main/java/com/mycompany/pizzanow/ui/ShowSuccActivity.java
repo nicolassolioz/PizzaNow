@@ -36,7 +36,7 @@ public class ShowSuccActivity extends ToolbarActivity {
         posViewModel = ViewModelProviders.of(this, factoryPos).get(PosViewModel.class);
         posViewModel.getPos().observe(this,  posEntity1-> {
             if(posEntity1 != null){
-                posEntity = posEntity1;
+                setPosEntity(posEntity1);
             }
         });
 
@@ -60,6 +60,10 @@ public class ShowSuccActivity extends ToolbarActivity {
 
     public PosEntity getPosEntity(){
         return posEntity;
+    }
+
+    public void setPosEntity(PosEntity pos){
+        this.posEntity = pos;
     }
 
 

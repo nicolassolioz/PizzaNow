@@ -42,6 +42,7 @@ public class MainActivity extends ToolbarActivity {
 
         //initiate database on creation of app
 
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mEtPizzaName  = (TextView) findViewById(R.id.textTest);
@@ -57,6 +58,7 @@ public class MainActivity extends ToolbarActivity {
         recyclerView.addItemDecoration(dividerItemDecoration);
         //définition de la liste et des comportements
         mPosEntities = new ArrayList<>();
+
         mAdapter = new RecyclerAdapter<>(new RecyclerViewItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
@@ -73,6 +75,7 @@ public class MainActivity extends ToolbarActivity {
 
             }
         });
+
         // ouverture du factory
         PosListViewModel.Factory factoryPos = new PosListViewModel.Factory(getApplication());
         mListViewmodel = ViewModelProviders.of(this, factoryPos).get(PosListViewModel.class);
@@ -86,11 +89,8 @@ public class MainActivity extends ToolbarActivity {
         recyclerView.setAdapter(mAdapter);
         /*affichage des succursales : fin*/
 
-        String nomCollaborateur = "Bocelli";
 
-
-
-        CollaborateurViewModel.Factory factory = new CollaborateurViewModel.Factory(getApplication(), 2);
+        CollaborateurViewModel.Factory factory = new CollaborateurViewModel.Factory(getApplication(), 6);
         mViewModel = ViewModelProviders.of(this, factory).get(CollaborateurViewModel.class);
 
         mViewModel.getCollaborateur().observe(this, collaborateurEntity -> {

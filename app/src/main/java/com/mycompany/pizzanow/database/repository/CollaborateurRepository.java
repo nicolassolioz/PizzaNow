@@ -26,17 +26,17 @@ public class CollaborateurRepository {
         return sInstance;
     }
 
-    public LiveData<CollaborateurEntity> getCollaborateur(final int idCollaborateur) {
+    public LiveData<CollaborateurEntity> getById(int idCollaborateur) {
         return mDatabase.collaborateurDao().getById(idCollaborateur);
     }
 
     public LiveData<List<CollaborateurEntity>> getAllCollaborateurs(){return mDatabase.collaborateurDao().getAll();}
 
-    public LiveData<CollaborateurEntity> getCollaborateurNom(final String nomCollaborateur) {
+    public LiveData<CollaborateurEntity> getCollaborateurNom( String nomCollaborateur) {
         return mDatabase.collaborateurDao().getByName(nomCollaborateur);
     }
 
-    public LiveData<List<CollaborateurEntity>> getCollabPos(final int pos) {
+    public LiveData<List<CollaborateurEntity>> getCollabPos(int pos) {
         return mDatabase.collaborateurDao().getCollabPos(pos);
     }
 

@@ -1,5 +1,6 @@
 package com.mycompany.pizzanow.ui;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mycompany.pizzanow.R;
+import com.mycompany.pizzanow.adapter.ListAdapter;
 import com.mycompany.pizzanow.adapter.RecyclerAdapter;
 import com.mycompany.pizzanow.database.entity.CollaborateurEntity;
 import com.mycompany.pizzanow.database.entity.PosEntity;
@@ -23,6 +25,7 @@ import com.mycompany.pizzanow.model.Collaborateur;
 import com.mycompany.pizzanow.viewmodel.Collaborateur.CollaborateurListViewModel;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -48,24 +51,49 @@ public class SuccDetailsFragment extends Fragment {
 
         //Appel
         ImageButton buttonPhone = (ImageButton) rootView.findViewById(R.id.buttonPhone);
-        buttonPhone.setOnClickListener(view -> attemptCall());
+        buttonPhone.setOnClickListener(view -> attemptCall(posEntity.getPhone()));
 
+        //Mail
+
+        //Nom des collaborateurs
+
+        mCollabs = new ArrayList<>();
+        CollaborateurListViewModel.Factory factory = new CollaborateurListViewModel.Factory(getActivity().getApplication(),posEntity.getIdFiliale());
+        mViewModel = ViewModelProviders.of(this, factory).get(CollaborateurListViewModel.class);
+        mViewModel.getCollabPos().observe(this, collaborateurEntities -> {
+            //if(collaborateurEntities !=null){
+
+                mCollabs = collaborateurEntities;
+            //}
+
+        });
+
+        TextView textViewNames = (TextView) rootView.findViewById(R.id.tvSuccDetailNames);
+        String namesSeq = String.valueOf(mCollabs.size());
+        for (Collaborateur c : mCollabs
+             ) {
+            namesSeq = namesSeq + c.getPrenomCollab()+", ";
+
+        }
+
+        textViewNames.setText(namesSeq);
 
         //adresse
-        TextView textView = (TextView) rootView.findViewById(R.id.tvSuccDetailsAdress);
-        textView.setText(posEntity.getAdresse()+" | "+ posEntity.getNPA()+ " " +posEntity.getLocalite());
+        TextView textViewAdress = (TextView) rootView.findViewById(R.id.tvSuccDetailsAdress);
+        textViewAdress.setText(posEntity.getAdresse()+" | "+ posEntity.getNPA()+ " " +posEntity.getLocalite());
 
         return rootView;
     }
 
-    private void attemptCall() {
+    //test de l'appel
+    private void attemptCall(String phone) {
         Intent callIntent = new Intent(Intent.ACTION_DIAL);
-        callIntent.setData(Uri.parse(posEntity.getPhone()));
+        callIntent.setData(Uri.parse(phone));
         try {
             startActivity(callIntent);
             Log.i("Finished making a call", "");
         } catch (android.content.ActivityNotFoundException ex) {
-            Toast.makeText(getContext(), "Call faild, please try again later.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Call "+phone+" failed, please try again later.", Toast.LENGTH_SHORT).show();
         }
     }
 }

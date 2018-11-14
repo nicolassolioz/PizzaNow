@@ -35,7 +35,7 @@ public class CollaborateurViewModel extends AndroidViewModel {
         // set by default null, until we get data from the database.
         mObservableCollaborateur.setValue(null);
 
-        LiveData<CollaborateurEntity> collaborateur = mRepository.getCollaborateurNom("Bocelli");
+        LiveData<CollaborateurEntity> collaborateur = mRepository.getById(idCollaborateur);
 
         // observe the changes of the pizza entity from the database and forward them
         mObservableCollaborateur.addSource(collaborateur, mObservableCollaborateur::setValue);
