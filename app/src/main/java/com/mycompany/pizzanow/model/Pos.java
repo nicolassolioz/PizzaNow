@@ -1,7 +1,7 @@
 package com.mycompany.pizzanow.model;
 
 public interface Pos {
-    int getIdFiliale();
+    Integer getIdFiliale();
     String getNom();
     String getAdresse();
     int getNPA();

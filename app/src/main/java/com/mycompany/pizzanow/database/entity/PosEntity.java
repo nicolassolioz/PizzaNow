@@ -20,7 +20,7 @@ import com.mycompany.pizzanow.model.Pos;
 public class PosEntity implements Pos, Comparable{
 
     @PrimaryKey(autoGenerate = true)
-    private int IdFiliale;
+    private Integer IdFiliale;
 
     @ColumnInfo(name = "Nom")
     private String Nom;
@@ -76,11 +76,11 @@ public class PosEntity implements Pos, Comparable{
 
     @NonNull
     @Override
-    public int getIdFiliale() {
+    public Integer getIdFiliale() {
         return IdFiliale;
     }
 
-    public void setIdFiliale(@NonNull int idFiliale) {this.IdFiliale = idFiliale;}
+    public void setIdFiliale(@NonNull Integer idFiliale) {this.IdFiliale = idFiliale;}
 
     @Override
     public String getNom() {

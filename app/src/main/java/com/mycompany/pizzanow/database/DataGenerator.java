@@ -165,52 +165,52 @@ public class DataGenerator {
         CollaborateurEntity Luciana = new CollaborateurEntity();
         Luciana.setNomCollab("Giacomo");
         Luciana.setPrenomCollab("Luciana");
-        Luciana.setIdPosCollab(1);
+        Luciana.setIdPosCollab(4);
 
         CollaborateurEntity Franco = new CollaborateurEntity();
         Franco.setNomCollab("Ubbiali");
         Franco.setPrenomCollab("Franco");
-        Franco.setIdPosCollab(1);
+        Franco.setIdPosCollab(4);
 
         CollaborateurEntity Laura = new CollaborateurEntity();
         Laura.setNomCollab("Biaggi");
         Laura.setPrenomCollab("Laura");
-        Laura.setIdPosCollab(1);
+        Laura.setIdPosCollab(4);
 
         CollaborateurEntity Luigi = new CollaborateurEntity();
         Luigi.setNomCollab("Hendrix");
         Luigi.setPrenomCollab("Luigi");
-        Luigi.setIdPosCollab(1);
+        Luigi.setIdPosCollab(2);
 
         CollaborateurEntity Maria = new CollaborateurEntity();
         Maria.setNomCollab("Cobain");
         Maria.setPrenomCollab("Maria");
-        Maria.setIdPosCollab(1);
+        Maria.setIdPosCollab(2);
 
         CollaborateurEntity Rose = new CollaborateurEntity();
         Rose.setNomCollab("Winehouse");
         Rose.setPrenomCollab("Rose");
-        Rose.setIdPosCollab(1);
+        Rose.setIdPosCollab(2);
 
         CollaborateurEntity Steven = new CollaborateurEntity();
         Steven.setNomCollab("Joplin");
         Steven.setPrenomCollab("Steven");
-        Steven.setIdPosCollab(1);
+        Steven.setIdPosCollab(2);
 
         CollaborateurEntity Giovanni = new CollaborateurEntity();
         Giovanni.setNomCollab("Zuckerberg");
         Giovanni.setPrenomCollab("Giovanni");
-        Giovanni.setIdPosCollab(1);
+        Giovanni.setIdPosCollab(3);
 
         CollaborateurEntity HansJurg = new CollaborateurEntity();
         HansJurg.setNomCollab("Gates");
         HansJurg.setPrenomCollab("Hans-Jurg");
-        HansJurg.setIdPosCollab(1);
+        HansJurg.setIdPosCollab(3);
 
         CollaborateurEntity Bertha = new CollaborateurEntity();
         Bertha.setNomCollab("Wozniak");
         Bertha.setPrenomCollab("Bertha");
-        Bertha.setIdPosCollab(1);
+        Bertha.setIdPosCollab(3);
 
 
         collab.add(Diego);

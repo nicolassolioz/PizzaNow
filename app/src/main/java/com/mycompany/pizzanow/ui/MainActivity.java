@@ -1,5 +1,7 @@
 package com.mycompany.pizzanow.ui;
 
+import android.arch.lifecycle.ViewModel;
+import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,12 +11,15 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 
+import com.mycompany.pizzanow.BaseApp;
 import com.mycompany.pizzanow.R;
 import com.mycompany.pizzanow.adapter.RecyclerAdapter;
 import com.mycompany.pizzanow.database.AppDatabase;
 import com.mycompany.pizzanow.database.entity.CollaborateurEntity;
 import com.mycompany.pizzanow.database.entity.PosEntity;
+import com.mycompany.pizzanow.database.repository.CollaborateurRepository;
 import com.mycompany.pizzanow.util.RecyclerViewItemClickListener;
+import com.mycompany.pizzanow.viewmodel.Collaborateur.CollaborateurListViewModel;
 import com.mycompany.pizzanow.viewmodel.POS.PosListViewModel;
 import com.mycompany.pizzanow.viewmodel.Collaborateur.CollaborateurViewModel;
 
@@ -34,8 +39,11 @@ public class MainActivity extends ToolbarActivity {
     private TextView mEtPizzaName;
 
     private List<PosEntity> mPosEntities;
+    private List<CollaborateurEntity> mCollaborateurEntities;
     private RecyclerAdapter<PosEntity> mAdapter;
+    private RecyclerAdapter<CollaborateurEntity> mAdapterCollabo;
     private PosListViewModel mListViewmodel;
+    private CollaborateurListViewModel mListViewmodelCollabo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,18 +75,17 @@ public class MainActivity extends ToolbarActivity {
                 startActivity(intent);
             }
 
-
             @Override
             public void onItemLongClick(View v, int position) {
                 Log.d(TAG, "longClicked position:" + position);
                 Log.d(TAG, "longClicked on: " + mPosEntities.get(position).getNom());
-
             }
         });
 
         // ouverture du factory
         PosListViewModel.Factory factoryPos = new PosListViewModel.Factory(getApplication());
-        mListViewmodel = ViewModelProviders.of(this, factoryPos).get(PosListViewModel.class);
+
+        mListViewmodel = ViewModelProviders.of(this,factoryPos).get(PosListViewModel.class);
         mListViewmodel.getAllPos().observe(this,posEntities -> {
             if(posEntities!=null){
                 mPosEntities = posEntities;
@@ -88,8 +95,29 @@ public class MainActivity extends ToolbarActivity {
         recyclerView.setAdapter(mAdapter);
         /*affichage des succursales : fin*/
 
+        Integer posId = 1;
+        CollaborateurRepository rep = ((BaseApp) getApplication()).getCollaborateurRepository();
+        mListViewmodelCollabo = new CollaborateurListViewModel(getApplication(),posId,rep);
 
-        CollaborateurViewModel.Factory factory = new CollaborateurViewModel.Factory(getApplication(), 7);
+        mListViewmodelCollabo.getCollabPos().observe(this,collabEntities -> {
+            if(collabEntities!=null){
+
+                mCollaborateurEntities = collabEntities;
+
+                String collabo = "";
+
+                for(int i = 1; i<collabEntities.size();i++)
+                {
+                    collabo+=collabEntities.get(i).getNomCollab() + " " + collabEntities.get(i).getPrenomCollab();
+                    collabo+="\n";
+                }
+                mEtPizzaName.setText(collabo);
+                //mAdapterCollabo.setData(mCollaborateurEntities);
+            }
+        });
+
+        //recyclerView.setAdapter(mAdapterCollabo);
+        /*CollaborateurViewModel.Factory factory = new CollaborateurViewModel.Factory(getApplication(), 7);
         mViewModel = ViewModelProviders.of(this, factory).get(CollaborateurViewModel.class);
 
         mViewModel.getCollaborateur().observe(this, collaborateurEntity -> {
@@ -101,7 +129,9 @@ public class MainActivity extends ToolbarActivity {
             {
                 mEtPizzaName.setText("hey hey guess u suk");
             }
-        });
+        });*/
+
+        updateContent();
 
     }
 
@@ -111,7 +141,29 @@ public class MainActivity extends ToolbarActivity {
     }
 
     private void updateContent() {
-        if (mCollaborateur != null) {
+        Integer x = 0;
+        int y = 0;
+
+
+        /*if(mCollaborateurEntities.equals(null)) {
+            mEtPizzaName.setText("is null");
+        }
+        else
+        {
+            mEtPizzaName.setText("is not null");
+        }
+        /*
+        if(x.equals(y)) {
+            mEtPizzaName.setText("they are equal");
+        }
+        else
+        {
+            mEtPizzaName.setText("they are not equal");
+        }
+
+        mEtPizzaName.setText(mCollaborateurEntities.get(1).getNomCollab() + " " + mCollaborateurEntities.get(1).getPrenomCollab());
+
+        /*if (mCollaborateur != null) {
             mEtPizzaName.setText(mCollaborateur.getNomCollab() + " " + mCollaborateur.getPrenomCollab());
             //mEtPizzaDescription.setText(mPizza.getDescription());
             //mEtPizzaPrice.setText(Double.toString(mPizza.getPrix()));
@@ -119,7 +171,7 @@ public class MainActivity extends ToolbarActivity {
         else
         {
             mEtPizzaName.setText("value null sorry why");
-        }
+        }*/
     }
    /* public String helloValentin(String hello) {
         //dire coucou à Valentin hihi

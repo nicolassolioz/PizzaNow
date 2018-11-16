@@ -25,7 +25,7 @@ public class CollaborateurListViewModel extends AndroidViewModel {
     //private final MediatorLiveData<List<CollaborateurEntity>> mObservableAllCollaborateurs;
 
     public CollaborateurListViewModel(@NonNull Application application,
-                                      final int posId, CollaborateurRepository repository) {
+                                      final Integer posId, CollaborateurRepository repository) {
         super(application);
         collaborateurRepository = repository;
 
@@ -47,11 +47,11 @@ public class CollaborateurListViewModel extends AndroidViewModel {
         @NonNull
         private final Application mApplication;
 
-        private final int mPosId;
+        private final Integer mPosId;
 
         private final CollaborateurRepository mRepository;
 
-        public Factory(@NonNull Application application, int PosId) {
+        public Factory(@NonNull Application application, Integer PosId) {
             mApplication = application;
             mPosId=PosId;
             mRepository = ((BaseApp) application).getCollaborateurRepository();
