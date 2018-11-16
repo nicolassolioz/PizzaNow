@@ -56,7 +56,6 @@ public class SuccDetailsFragment extends Fragment {
         //Mail
 
         //Nom des collaborateurs
-
         mCollabs = new ArrayList<>();
         CollaborateurListViewModel.Factory factory = new CollaborateurListViewModel.Factory(getActivity().getApplication(),posEntity.getIdFiliale());
         mViewModel = ViewModelProviders.of(this, factory).get(CollaborateurListViewModel.class);

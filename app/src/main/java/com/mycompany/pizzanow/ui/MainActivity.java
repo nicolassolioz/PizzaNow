@@ -85,12 +85,11 @@ public class MainActivity extends ToolbarActivity {
                 mAdapter.setData(mPosEntities);
             }
         });
-
         recyclerView.setAdapter(mAdapter);
         /*affichage des succursales : fin*/
 
 
-        CollaborateurViewModel.Factory factory = new CollaborateurViewModel.Factory(getApplication(), 6);
+        CollaborateurViewModel.Factory factory = new CollaborateurViewModel.Factory(getApplication(), 7);
         mViewModel = ViewModelProviders.of(this, factory).get(CollaborateurViewModel.class);
 
         mViewModel.getCollaborateur().observe(this, collaborateurEntity -> {
