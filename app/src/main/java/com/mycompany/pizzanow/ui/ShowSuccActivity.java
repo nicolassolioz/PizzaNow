@@ -1,7 +1,9 @@
 package com.mycompany.pizzanow.ui;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -29,16 +31,19 @@ public class ShowSuccActivity extends ToolbarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_succ);
 
-        //gestion de l'affichage du nom du POS
-        int posID = getIntent().getIntExtra("posID", 1);
-
+        //Récupération du POS
+        //int posID = getIntent().getIntExtra("posID", 1);
+        posEntity = (PosEntity) getIntent().getSerializableExtra("serializable_extra");
+        /*
         PosViewModel.Factory factoryPos = new PosViewModel.Factory(getApplication(),posID);
         posViewModel = ViewModelProviders.of(this, factoryPos).get(PosViewModel.class);
         posViewModel.getPos().observe(this,  posEntity1-> {
             if(posEntity1 != null){
                 setPosEntity(posEntity1);
             }
+
         });
+        */
 
         // Instantiate a ViewPager and a PagerAdapter.
         mPager = findViewById(R.id.pager);

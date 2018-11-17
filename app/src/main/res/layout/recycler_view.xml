@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/tvRecyclerView"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="TextView"
-    android:textSize="25sp"/>
+    android:layout_width="match_parent"
+    android:layout_height="36dp"
+    android:layout_marginTop="20dp"
+    android:layout_marginBottom="20dp"
+    android:background="@color/lightGrey"
+    android:gravity="center_vertical"
+    android:lineSpacingExtra="8sp"
+    android:text="test"
+    android:textAlignment="center"
+    android:textColor="@color/lightYellow"
+    android:textSize="18sp" />

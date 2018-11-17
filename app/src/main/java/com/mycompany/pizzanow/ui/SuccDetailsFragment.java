@@ -55,12 +55,14 @@ public class SuccDetailsFragment extends Fragment {
         buttonPhone.setOnClickListener(view -> attemptCall(posEntity.getPhone()));
 
         //Mail
+        ImageButton buttonMailTo = (ImageButton) rootView.findViewById(R.id.buttonMailTo);
+        buttonMailTo.setOnClickListener(view -> attemptSendMail(posEntity.getEmail()));
 
         //Nom des collaborateurs
 
         mCollabs = new ArrayList<>();
         Integer posEntityId = posEntity.getIdFiliale();
-        CollaborateurListViewModel.Factory factory = new CollaborateurListViewModel.Factory(getActivity().getApplication(),1);
+        CollaborateurListViewModel.Factory factory = new CollaborateurListViewModel.Factory(getActivity().getApplication(),posEntityId);
         mViewModel = ViewModelProviders.of(this, factory).get(CollaborateurListViewModel.class);
         mViewModel.getCollabPos().observe(this, collaborateurEntities -> {
             if(collaborateurEntities !=null){
@@ -68,8 +70,8 @@ public class SuccDetailsFragment extends Fragment {
                  TextView textViewNames = (TextView) rootView.findViewById(R.id.tvSuccDetailNames);
                 String namesSeq ="";
                 for (Collaborateur c : mCollabs) {
-                    if(mCollabs.indexOf(c) == mCollabs.size()-1)
-                        namesSeq = namesSeq + c.getPrenomCollab()+"! ";
+                    if(mCollabs.indexOf(c) == mCollabs.size()-2)
+                        namesSeq = namesSeq + c.getPrenomCollab()+" et ";
                     else
                         namesSeq = namesSeq + c.getPrenomCollab()+", ";
                 }
@@ -117,14 +119,26 @@ public class SuccDetailsFragment extends Fragment {
 
     }
 
+    private void attemptSendMail(String email) {
+        Uri uri = Uri.parse("mailto:"+email) ;
+
+        Intent callIntent = new Intent(Intent.ACTION_SENDTO, uri);
+        try {
+            startActivity(callIntent);
+            Log.i("Sending a mail:"+email, "");
+        } catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(getContext(), "Mailt to "+email+" failed, please try again later.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 
     //test de l'appel
     private void attemptCall(String phone) {
-        Intent callIntent = new Intent(Intent.ACTION_DIAL);
-        callIntent.setData(Uri.parse(phone));
+        Uri uri = Uri.parse("tel:"+phone) ;
+        Intent callIntent = new Intent(Intent.ACTION_DIAL, uri);
         try {
             startActivity(callIntent);
-            Log.i("Finished making a call", "");
+            Log.i("Finished making a call:"+phone, "");
         } catch (android.content.ActivityNotFoundException ex) {
             Toast.makeText(getContext(), "Call "+phone+" failed, please try again later.", Toast.LENGTH_SHORT).show();
         }

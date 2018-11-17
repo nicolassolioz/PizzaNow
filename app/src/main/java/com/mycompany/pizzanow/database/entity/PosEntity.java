@@ -6,9 +6,13 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 
 import com.mycompany.pizzanow.model.Pos;
+
+import java.io.Serializable;
 
 @Entity(tableName = "pos",
 
@@ -17,7 +21,7 @@ import com.mycompany.pizzanow.model.Pos;
                         value = {"Responsable"}
                 )}
 )
-public class PosEntity implements Pos, Comparable{
+public class PosEntity implements Pos, Comparable, Serializable/*Parcelable*/ {
 
     @PrimaryKey(autoGenerate = true)
     private Integer IdFiliale;
@@ -73,6 +77,38 @@ public class PosEntity implements Pos, Comparable{
         this.Phone=phone;
         this.IdMenu=idMenu;
     }
+
+    /*
+    protected PosEntity(Parcel in) {
+        if (in.readByte() == 0) {
+            IdFiliale = null;
+        } else {
+            IdFiliale = in.readInt();
+        }
+        Nom = in.readString();
+        Adresse = in.readString();
+        NPA = in.readInt();
+        Localite = in.readString();
+        Responsable = in.readInt();
+        Email = in.readString();
+        Phone = in.readString();
+        IdMenu = in.readInt();
+    }
+
+
+    public static final Creator<PosEntity> CREATOR = new Creator<PosEntity>() {
+        @Override
+        public PosEntity createFromParcel(Parcel in) {
+            return new PosEntity(in);
+        }
+
+        @Override
+        public PosEntity[] newArray(int size) {
+            return new PosEntity[size];
+        }
+    };
+
+    */
 
     @NonNull
     @Override
@@ -148,4 +184,25 @@ public class PosEntity implements Pos, Comparable{
     public int compareTo(@NonNull Object o) {
         return toString().compareTo(o.toString());
     }
+
+    /*
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(getIdFiliale());
+        dest.writeString(Nom);
+        dest.writeString(getAdresse());
+        dest.writeInt(getNPA());
+        dest.writeString(getLocalite());
+        dest.writeInt(getResponsable());
+        dest.writeString(getEmail());
+        dest.writeString(getPhone());
+        dest.writeInt(getIdMenu());
+
+    }
+    */
 }

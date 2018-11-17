@@ -58,7 +58,11 @@ public class SuccInfoFragment extends Fragment {
 
         //Accueil
         TextView textView = (TextView) rootView.findViewById(R.id.tvWelcomeSuccInfo);
-        textView.append(posEntity.getNom());
+        try {
+            textView.append(posEntity.getNom());
+        }catch (Exception e){
+            Log.d(TAG , "Chargement trop vite");
+        }
 
 
         //gestion de la liste des pizzas

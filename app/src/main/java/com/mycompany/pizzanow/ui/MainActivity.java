@@ -5,6 +5,7 @@ import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -25,6 +26,7 @@ import com.mycompany.pizzanow.viewmodel.Collaborateur.CollaborateurViewModel;
 
 import android.widget.TextView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,7 +55,7 @@ public class MainActivity extends ToolbarActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mEtPizzaName  = (TextView) findViewById(R.id.textTest);
+
 
         /*affichage des succursales : init*/
         RecyclerView recyclerView = findViewById(R.id.CityRecyclerView);
@@ -64,6 +66,10 @@ public class MainActivity extends ToolbarActivity {
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
                 LinearLayoutManager.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
+
+
+
+
         //définition de la liste et des comportements
         mPosEntities = new ArrayList<>();
 
@@ -71,7 +77,8 @@ public class MainActivity extends ToolbarActivity {
             @Override
             public void onItemClick(View v, int position) {
                 Intent intent = new Intent(MainActivity.this, ShowSuccActivity.class);
-                intent.putExtra("posID", mPosEntities.get(position).getIdFiliale());
+                PosEntity posEntity = mPosEntities.get(position);
+                intent.putExtra("serializable_extra",(Serializable) posEntity);
                 startActivity(intent);
             }
 
@@ -93,15 +100,19 @@ public class MainActivity extends ToolbarActivity {
             }
         });
         recyclerView.setAdapter(mAdapter);
+
+
         /*affichage des succursales : fin*/
+
+
+
+
+        /*
+        //recyclerView.setAdapter(mAdapterCollabo);
 
         int posIdInt = 1;
         Integer posId = posIdInt;
-
-
-
-        //recyclerView.setAdapter(mAdapterCollabo);
-        /*CollaborateurViewModel.Factory factory = new CollaborateurViewModel.Factory(getApplication(), 7);
+        CollaborateurViewModel.Factory factory = new CollaborateurViewModel.Factory(getApplication(), 7);
         mViewModel = ViewModelProviders.of(this, factory).get(CollaborateurViewModel.class);
 
         mViewModel.getCollaborateur().observe(this, collaborateurEntity -> {
@@ -113,9 +124,11 @@ public class MainActivity extends ToolbarActivity {
             {
                 mEtPizzaName.setText("hey hey guess u suk");
             }
-        });*/
+        });
 
         updateContent();
+
+        */
 
     }
 
@@ -127,9 +140,11 @@ public class MainActivity extends ToolbarActivity {
     private void updateContent() {
         Integer x = 0;
         int y = 0;
+    }
 
+}
 
-        /*if(mCollaborateurEntities.equals(null)) {
+/*if(mCollaborateurEntities.equals(null)) {
             mEtPizzaName.setText("is null");
         }
         else
@@ -156,7 +171,7 @@ public class MainActivity extends ToolbarActivity {
         {
             mEtPizzaName.setText("value null sorry why");
         }*/
-    }
+
    /* public String helloValentin(String hello) {
         //dire coucou à Valentin hihi
         System.out.println(hello);
@@ -164,4 +179,3 @@ public class MainActivity extends ToolbarActivity {
         return "Hello nico";
         new commit
     }*/
-}
