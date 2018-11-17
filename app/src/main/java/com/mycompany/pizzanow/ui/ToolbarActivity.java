@@ -58,7 +58,14 @@ public class ToolbarActivity extends AppCompatActivity {
                 setLanguage("fr");
                 reload();
                 break;
+
+            case R.id.edit:
+                Intent intentEdit = new Intent(this, EditActivity.class);
+                startActivity(intentEdit);
+                break;
                 default:
+
+
         }
 
         return super.onOptionsItemSelected(item);
