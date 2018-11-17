@@ -16,11 +16,13 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mycompany.pizzanow.BaseApp;
 import com.mycompany.pizzanow.R;
 import com.mycompany.pizzanow.adapter.ListAdapter;
 import com.mycompany.pizzanow.adapter.RecyclerAdapter;
 import com.mycompany.pizzanow.database.entity.CollaborateurEntity;
 import com.mycompany.pizzanow.database.entity.PosEntity;
+import com.mycompany.pizzanow.database.repository.CollaborateurRepository;
 import com.mycompany.pizzanow.model.Collaborateur;
 import com.mycompany.pizzanow.viewmodel.Collaborateur.CollaborateurListViewModel;
 
@@ -38,7 +40,6 @@ public class SuccDetailsFragment extends Fragment {
 
     //data Collaborateurs
     private List<CollaborateurEntity> mCollabs;
-    private RecyclerAdapter<CollaborateurEntity> mAdapter;
     private CollaborateurListViewModel mViewModel;
 
     @Override
@@ -56,33 +57,66 @@ public class SuccDetailsFragment extends Fragment {
         //Mail
 
         //Nom des collaborateurs
+
         mCollabs = new ArrayList<>();
-        CollaborateurListViewModel.Factory factory = new CollaborateurListViewModel.Factory(getActivity().getApplication(),posEntity.getIdFiliale());
+        Integer posEntityId = posEntity.getIdFiliale();
+        CollaborateurListViewModel.Factory factory = new CollaborateurListViewModel.Factory(getActivity().getApplication(),1);
         mViewModel = ViewModelProviders.of(this, factory).get(CollaborateurListViewModel.class);
         mViewModel.getCollabPos().observe(this, collaborateurEntities -> {
-            //if(collaborateurEntities !=null){
-
+            if(collaborateurEntities !=null){
                 mCollabs = collaborateurEntities;
-            //}
+                 TextView textViewNames = (TextView) rootView.findViewById(R.id.tvSuccDetailNames);
+                String namesSeq ="";
+                for (Collaborateur c : mCollabs) {
+                    if(mCollabs.indexOf(c) == mCollabs.size()-1)
+                        namesSeq = namesSeq + c.getPrenomCollab()+"! ";
+                    else
+                        namesSeq = namesSeq + c.getPrenomCollab()+", ";
+                }
+
+                textViewNames.setText(namesSeq);
+            }
 
         });
 
-        TextView textViewNames = (TextView) rootView.findViewById(R.id.tvSuccDetailNames);
-        String namesSeq = String.valueOf(mCollabs.size());
-        for (Collaborateur c : mCollabs
-             ) {
-            namesSeq = namesSeq + c.getPrenomCollab()+", ";
 
-        }
 
-        textViewNames.setText(namesSeq);
+        /*
+        mCollabs = new ArrayList<>();
+        Integer posEntityId = posEntity.getIdFiliale();
 
+        CollaborateurRepository rep = ((BaseApp) getActivity().getApplication()).getCollaborateurRepository();
+        mViewModel = new CollaborateurListViewModel(getActivity().getApplication(),posEntityId,rep);
+
+        mViewModel.getCollabPos().observe(this,collabEntities -> {
+            if(collabEntities!=null){
+
+                mCollabs = collabEntities;
+
+                TextView textViewNames = (TextView) rootView.findViewById(R.id.tvSuccDetailNames);
+                String namesSeq = String.valueOf(mCollabs.size());
+                for (Collaborateur c : mCollabs
+                        ) {
+                    namesSeq = namesSeq + c.getPrenomCollab()+", ";
+
+                }
+
+                textViewNames.setText(namesSeq);
+
+
+            }
+        });
+
+        */
         //adresse
         TextView textViewAdress = (TextView) rootView.findViewById(R.id.tvSuccDetailsAdress);
         textViewAdress.setText(posEntity.getAdresse()+" | "+ posEntity.getNPA()+ " " +posEntity.getLocalite());
 
         return rootView;
+
+
     }
+
 
     //test de l'appel
     private void attemptCall(String phone) {

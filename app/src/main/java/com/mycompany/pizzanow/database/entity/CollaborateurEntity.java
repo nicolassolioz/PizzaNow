@@ -23,7 +23,6 @@ public class CollaborateurEntity implements Collaborateur, Comparable {
     private int idCollab;
     private String nomCollab;
     private String prenomCollab;
-    @Nullable
     private Integer idPosCollab;
 
     public CollaborateurEntity(){}
@@ -61,7 +60,7 @@ public class CollaborateurEntity implements Collaborateur, Comparable {
         return idPosCollab;
     }
 
-    public void setIdPosCollab(int idPos){this.idPosCollab=idPos;}
+    public void setIdPosCollab(Integer idPos){this.idPosCollab=idPos;}
 
     @Override
     public boolean equals(Object obj){

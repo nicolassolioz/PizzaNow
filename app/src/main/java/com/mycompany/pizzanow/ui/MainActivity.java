@@ -95,26 +95,10 @@ public class MainActivity extends ToolbarActivity {
         recyclerView.setAdapter(mAdapter);
         /*affichage des succursales : fin*/
 
-        Integer posId = 1;
-        CollaborateurRepository rep = ((BaseApp) getApplication()).getCollaborateurRepository();
-        mListViewmodelCollabo = new CollaborateurListViewModel(getApplication(),posId,rep);
+        int posIdInt = 1;
+        Integer posId = posIdInt;
 
-        mListViewmodelCollabo.getCollabPos().observe(this,collabEntities -> {
-            if(collabEntities!=null){
 
-                mCollaborateurEntities = collabEntities;
-
-                String collabo = "";
-
-                for(int i = 1; i<collabEntities.size();i++)
-                {
-                    collabo+=collabEntities.get(i).getNomCollab() + " " + collabEntities.get(i).getPrenomCollab();
-                    collabo+="\n";
-                }
-                mEtPizzaName.setText(collabo);
-                //mAdapterCollabo.setData(mCollaborateurEntities);
-            }
-        });
 
         //recyclerView.setAdapter(mAdapterCollabo);
         /*CollaborateurViewModel.Factory factory = new CollaborateurViewModel.Factory(getApplication(), 7);
