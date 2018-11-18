@@ -10,16 +10,21 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.mycompany.pizzanow.BaseApp;
 import com.mycompany.pizzanow.R;
 import com.mycompany.pizzanow.database.entity.CollaborateurEntity;
 import com.mycompany.pizzanow.database.entity.MenuEntity;
 import com.mycompany.pizzanow.database.entity.PizzaEntity;
 import com.mycompany.pizzanow.database.entity.PosEntity;
+import com.mycompany.pizzanow.database.repository.PosRepository;
+import com.mycompany.pizzanow.util.OnAsyncEventListener;
 import com.mycompany.pizzanow.viewmodel.Collaborateur.AllCollaborateurListViewModel;
 import com.mycompany.pizzanow.viewmodel.Collaborateur.CollaborateurListViewModel;
 import com.mycompany.pizzanow.viewmodel.Collaborateur.CollaborateurViewModel;
 import com.mycompany.pizzanow.viewmodel.POS.PosListViewModel;
+import com.mycompany.pizzanow.viewmodel.POS.PosViewModel;
 import com.mycompany.pizzanow.viewmodel.menu.MenuListViewModel;
 import com.mycompany.pizzanow.viewmodel.pizza.PizzaListViewModel;
 
@@ -35,10 +40,14 @@ public class EditActivity extends ToolbarActivity {
     private List<CollaborateurEntity> mCollaborateurEntities;
     private List<PizzaEntity> mPizzaEntities;
 
+    private PosEntity mPosEntity;
+
     private PosListViewModel mPosListViewmodel;
     private MenuListViewModel mMenuListViewmodel;
     private AllCollaborateurListViewModel mCollaborateurViewModel;
     private PizzaListViewModel mPizzaListViewModel;
+
+    private PosViewModel mPosViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,7 +123,6 @@ public class EditActivity extends ToolbarActivity {
 
     }
 
-
     public void fillDDLPosNames() {
         Spinner dropdown = findViewById(R.id.listPos);
         String[] items = getNamesPos();
@@ -125,6 +133,7 @@ public class EditActivity extends ToolbarActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 PosEntity select = mPosEntities.get(position);
+                mPosEntity = select;
                 //name
                 EditText name = findViewById(R.id.editPosName);
                 name.setText(select.getNom());
@@ -160,6 +169,8 @@ public class EditActivity extends ToolbarActivity {
                     Log.d(TAG, "no menu !?"+e);
                 }
 
+                PosRepository posRepository = ((BaseApp) getApplication()).getPosRepository();
+                mPosViewModel = new PosViewModel(getApplication(),position,posRepository);
             }
 
             @Override
@@ -229,6 +240,12 @@ public class EditActivity extends ToolbarActivity {
         });
     }
 
+    public void fillPosSection() {
+        fillDDLPosNames();
+        fillDDLCollabPosNames();
+        fillDDLPosMenuNames();
+    }
+
     public void fillDDLPosMenuNames() {
         Spinner dropdown = findViewById(R.id.listPosMenu);
         String[] items = getNamesMenus();
@@ -296,13 +313,75 @@ public class EditActivity extends ToolbarActivity {
 
     public void posUpdate(View view) {
 
+        EditText editPosName = findViewById(R.id.editPosName);
+        EditText editPosLocalite = findViewById(R.id.editPosLocalite);
+        EditText editPosNPA = findViewById(R.id.editPosNPA);
+        EditText editPosAddress = findViewById(R.id.editPosAddress);
+        EditText editPosEmail = findViewById(R.id.editPosEmail);
+        EditText editPosPhone = findViewById(R.id.editPosPhone);
+
+
+        mPosEntity.setNom(editPosName.getText().toString());
+        mPosEntity.setLocalite(editPosLocalite.getText().toString());
+        mPosEntity.setNPA(Integer.parseInt(editPosNPA.getText().toString()));
+        mPosEntity.setAdresse(editPosAddress.getText().toString());
+        mPosEntity.setEmail(editPosEmail.getText().toString());
+        mPosEntity.setPhone(editPosPhone.getText().toString());
+        mPosEntity.setIdMenu(2);
+        mPosEntity.setResponsable(1);
+
+        mPosViewModel.updatePos(mPosEntity);
+
+        fillPosSection();
+
+        Toast.makeText(this, "Point of sales changes saved",
+                Toast.LENGTH_SHORT).show();
+
     }
 
     public void posInsert(View view) {
 
+        PosEntity newPos = new PosEntity();
+
+        EditText editPosName = findViewById(R.id.editPosName);
+        EditText editPosLocalite = findViewById(R.id.editPosLocalite);
+        EditText editPosNPA = findViewById(R.id.editPosNPA);
+        EditText editPosAddress = findViewById(R.id.editPosAddress);
+        EditText editPosEmail = findViewById(R.id.editPosEmail);
+        EditText editPosPhone = findViewById(R.id.editPosPhone);
+
+
+        newPos.setNom(editPosName.getText().toString());
+        newPos.setLocalite(editPosLocalite.getText().toString());
+        newPos.setNPA(Integer.parseInt(editPosNPA.getText().toString()));
+        newPos.setAdresse(editPosAddress.getText().toString());
+        newPos.setEmail(editPosEmail.getText().toString());
+        newPos.setPhone(editPosPhone.getText().toString());
+        newPos.setIdMenu(2);
+        newPos.setResponsable(1);
+
+        mPosViewModel.createPos(newPos);
+
+        fillPosSection();
+
+        Toast.makeText(this, "New point of sales added",
+                Toast.LENGTH_SHORT).show();
     }
 
     public void posDelete(View view) {
+
+        mPosViewModel.deletePos(mPosEntity, new OnAsyncEventListener() {
+            @Override
+            public void onSuccess() {
+                fillPosSection();
+            }
+
+            @Override
+            public void onFailure(Exception e) {}
+        });
+
+        Toast.makeText(this, "Point of sales deleted",
+                Toast.LENGTH_SHORT).show();
 
     }
 
