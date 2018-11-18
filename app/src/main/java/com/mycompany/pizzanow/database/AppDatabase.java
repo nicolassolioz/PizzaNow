@@ -30,6 +30,8 @@ import java.util.concurrent.Executors;
 
 public abstract class AppDatabase extends RoomDatabase{
 
+    //Application Database
+
     private static final String TAG = "Database";
 
     private static AppDatabase sInstance;

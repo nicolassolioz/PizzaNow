@@ -85,7 +85,7 @@ public class EditActivity extends ToolbarActivity {
 
 
 
-        // (3) Fill list of employees with data
+        // (2) Fill list of employees with data
         AllCollaborateurListViewModel.Factory factoryCollab= new AllCollaborateurListViewModel.Factory(getApplication());
 
         mCollaborateurListViewModel = ViewModelProviders.of(this,factoryCollab).get(AllCollaborateurListViewModel.class);
@@ -96,7 +96,7 @@ public class EditActivity extends ToolbarActivity {
             }
         });
 
-        // (5) Fill list of Pizzas with data
+        // (3) Fill list of Pizzas with data
         PizzaListViewModel.Factory factoryPizza= new PizzaListViewModel.Factory(getApplication());
 
         mPizzaListViewModel = ViewModelProviders.of(this,factoryPizza).get(PizzaListViewModel.class);
@@ -121,6 +121,7 @@ public class EditActivity extends ToolbarActivity {
 
     }
 
+    //retrieve all points of sales from Database
     public void getAllPos() {
 
         PosListViewModel.Factory factoryPos = new PosListViewModel.Factory(getApplication());
@@ -135,6 +136,7 @@ public class EditActivity extends ToolbarActivity {
     }
 
 
+    //put Pos Names in the dropdownlist
     public void fillDDLPosNames() {
         Spinner dropdown = findViewById(R.id.listPos);
         String[] items = getNamesPos();
@@ -188,6 +190,7 @@ public class EditActivity extends ToolbarActivity {
         });
     }
 
+    //put names of employees in the dropdownlist of the pos section
     public void fillDDLPosCollabNames() {
         Spinner dropdown = findViewById(R.id.listPosCollaborateur);
         String[] items = getNamesCollaborateurs();
@@ -195,9 +198,7 @@ public class EditActivity extends ToolbarActivity {
         dropdown.setAdapter(adapter);
     }
 
-
-
-
+    // get all names of pos in database and put in a string array
     public String[] getNamesPos() {
 
         if(mPosEntities.equals(null)) {
@@ -212,12 +213,15 @@ public class EditActivity extends ToolbarActivity {
         return posNames;
     }
 
+    //update pos section
     public void fillPosSection() {
         fillDDLPosNames();
         fillDDLCollabPosNames();
+
         //fillDDLPosMenuNames();
     }
 
+    //fill dropdownlist with names of employees
     public void fillDDLCollabNames() {
         Spinner dropdown = findViewById(R.id.listCollabo);
         String[] items = getNamesCollaborateurs();
@@ -256,6 +260,7 @@ public class EditActivity extends ToolbarActivity {
         });
     }
 
+    //fill dropdownlist with name of companies
     public void fillDDLCollabPosNames() {
         Spinner dropdown = findViewById(R.id.listCollaboPos);
         String[] items = getNamesPos();
@@ -263,6 +268,7 @@ public class EditActivity extends ToolbarActivity {
         dropdown.setAdapter(adapter);
     }
 
+    //get all names of employees and put in string array
     public String[] getNamesCollaborateurs() {
 
         if(mCollaborateurEntities.equals(null)) {
@@ -278,6 +284,7 @@ public class EditActivity extends ToolbarActivity {
         return collaborateurNames;
     }
 
+    //fill dropdownlist with names of all pizzas
     public void fillDDLPizzaNames() {
         Spinner dropdown = findViewById(R.id.listPizza);
         String[] items = getNamesPizzas();
@@ -311,6 +318,7 @@ public class EditActivity extends ToolbarActivity {
         });
     }
 
+    //put all names of pizzas in a string array
     public String[] getNamesPizzas() {
 
         if(mPizzaEntities.equals(null)) {
@@ -325,6 +333,7 @@ public class EditActivity extends ToolbarActivity {
         return pizzaNames;
     }
 
+    //update the pos
     public void posUpdate(View view) {
 
         boolean numeric = true;
@@ -374,6 +383,7 @@ public class EditActivity extends ToolbarActivity {
 
     }
 
+    //insert new pos
     public void posInsert(View view) {
 
         boolean numeric = true;
@@ -422,6 +432,7 @@ public class EditActivity extends ToolbarActivity {
 
     }
 
+    //delete the pos
     public void posDelete(View view) {
 
         mPosViewModel.deletePos(mPosEntity, new OnAsyncEventListener() {
@@ -440,6 +451,7 @@ public class EditActivity extends ToolbarActivity {
     }
 
 
+    //update the employee
     public void collaboUpdate(View view) {
 
 
@@ -462,6 +474,7 @@ public class EditActivity extends ToolbarActivity {
 
     }
 
+    //insert new employee
     public void collaboInsert(View view) {
         CollaborateurEntity newCollab = new CollaborateurEntity();
 
@@ -484,11 +497,14 @@ public class EditActivity extends ToolbarActivity {
 
     }
 
+    //update the employee section
     private void fillCollabSection() {
         fillDDLCollabNames();
         fillDDLCollabPosNames();
+        fillDDLPosCollabNames();
     }
 
+    //delete employee
     public void collaboDelete(View view) {
 
         mCollaborateurViewModel.deleteCollaborateur(mCollaborateurEntity, new OnAsyncEventListener() {
@@ -508,6 +524,7 @@ public class EditActivity extends ToolbarActivity {
 
     }
 
+    //update selected pizza
     public void pizzaUpdate(View view) {
 
         boolean numeric = true;
@@ -542,10 +559,12 @@ public class EditActivity extends ToolbarActivity {
 
     }
 
+    //update content of pizza section
     public void fillPizzaSection(){
         fillDDLPizzaNames();
     }
 
+    //insert new pizza
     public void pizzaInsert(View view) {
 
         PizzaEntity newPizza = new PizzaEntity();
@@ -584,6 +603,7 @@ public class EditActivity extends ToolbarActivity {
 
     }
 
+    //delete selected pizza
     public void pizzaDelete(View view) {
         mPizzaViewModel.deletePizza(mPizzaEntity, new OnAsyncEventListener() {
             @Override
