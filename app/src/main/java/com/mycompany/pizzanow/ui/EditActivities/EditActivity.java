@@ -19,6 +19,7 @@ import com.mycompany.pizzanow.database.entity.CollaborateurEntity;
 import com.mycompany.pizzanow.database.entity.MenuEntity;
 import com.mycompany.pizzanow.database.entity.PizzaEntity;
 import com.mycompany.pizzanow.database.entity.PosEntity;
+import com.mycompany.pizzanow.database.repository.PizzaRepository;
 import com.mycompany.pizzanow.database.repository.PosRepository;
 import com.mycompany.pizzanow.ui.Toolbar.ToolbarActivity;
 import com.mycompany.pizzanow.util.OnAsyncEventListener;
@@ -173,6 +174,7 @@ public class EditActivity extends ToolbarActivity {
                 phone.setText(select.getPhone());
 
 
+                //position should be the ID
                 PosRepository posRepository = ((BaseApp) getApplication()).getPosRepository();
                 mPosViewModel = new PosViewModel(getApplication(),position,posRepository);
             }
@@ -224,6 +226,7 @@ public class EditActivity extends ToolbarActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 CollaborateurEntity select = mCollaborateurEntities.get(position);
+                mCollaborateurEntity = select;
                 //Nom
                 EditText name = findViewById(R.id.editCollaboName);
                 name.setText(select.getNomCollab());
@@ -238,6 +241,10 @@ public class EditActivity extends ToolbarActivity {
                 }catch(Exception e){
                     Log.d(TAG, "no resp !?"+e);
                 }
+
+                //position should be the ID
+                CollaborateurRepository collaboRepository = ((BaseApp) getApplication()).getCollaborateurRepository();
+                mCollaborateurViewModel = new CollaborateurViewModel(getApplication(),position,collaboRepository);
             }
 
             @Override
@@ -279,6 +286,7 @@ public class EditActivity extends ToolbarActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 PizzaEntity select = mPizzaEntities.get(position);
+                mPizzaEntity = select;
                 //name
                 EditText name = findViewById(R.id.editPizzaName);
                 name.setText(select.getNom());
@@ -288,6 +296,10 @@ public class EditActivity extends ToolbarActivity {
                 //prix
                 EditText prix = findViewById(R.id.editPizzaPrice);
                 prix.setText(Double.toString(select.getPrix()));
+
+                //position should be the ID
+                PizzaRepository pizzaRepository = ((BaseApp) getApplication()).getPizzaRepository();
+                mPizzaViewModel = new PizzaViewModel(getApplication(),position,pizzaRepository);
             }
 
             @Override
@@ -467,16 +479,8 @@ public class EditActivity extends ToolbarActivity {
         mPizzaEntity.setDescription(editPizzaDesc.getText().toString());
         mPizzaEntity.setPrix(Double.parseDouble(editPizzaPrice.getText().toString()));
 
-        mPizzaViewModel.updatePizza(mPizzaEntity, new OnAsyncEventListener() {
-            @Override
-            public void onSuccess() {
-                fillPizzaSection();
-            }
+        mPizzaViewModel.updatePizza(mPizzaEntity);
 
-            @Override
-            public void onFailure(Exception e) {
-            }
-        });
         Toast.makeText(this, "Pizza updated",
                 Toast.LENGTH_SHORT).show();
 
