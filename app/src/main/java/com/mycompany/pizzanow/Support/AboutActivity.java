@@ -3,7 +3,7 @@ package com.mycompany.pizzanow.Support;
 import android.os.Bundle;
 
 import com.mycompany.pizzanow.R;
-import com.mycompany.pizzanow.ui.ToolbarActivity;
+import com.mycompany.pizzanow.ui.Toolbar.ToolbarActivity;
 
 public class AboutActivity extends ToolbarActivity {
 

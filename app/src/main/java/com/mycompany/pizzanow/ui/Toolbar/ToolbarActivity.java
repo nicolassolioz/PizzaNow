@@ -1,4 +1,4 @@
-package com.mycompany.pizzanow.ui;
+package com.mycompany.pizzanow.ui.Toolbar;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -16,6 +16,8 @@ import android.widget.TextView;
 
 import com.mycompany.pizzanow.R;
 import com.mycompany.pizzanow.Support.AboutActivity;
+import com.mycompany.pizzanow.ui.EditActivities.EditActivity;
+import com.mycompany.pizzanow.ui.DisplayActivities.MainActivity;
 
 import java.util.Locale;
 

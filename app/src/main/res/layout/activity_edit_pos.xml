@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.EditActivities.EditActivity">
+
+        <TextView
+            android:id="@+id/txtTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:text="Welcome to the edit mode"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtPosTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:text="Point of sales : "
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
+
+        <TextView
+            android:id="@+id/txtListOfPos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:text="Select your point of sale : "
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtPosTitle" />
+
+        <Spinner
+            android:id="@+id/listPos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dropdown"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtListOfPos" />
+
+        <TextView
+            android:id="@+id/txtPosName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Name : "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/listPos" />
+
+        <EditText
+            android:id="@+id/editPosName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtPosName" />
+
+        <TextView
+            android:id="@+id/txtPosAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Address : "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editPosName" />
+
+        <EditText
+            android:id="@+id/editPosAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtPosAddress" />
+
+        <TextView
+            android:id="@+id/txtPosNPA"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="NPA : "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editPosAddress" />
+
+        <EditText
+            android:id="@+id/editPosNPA"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtPosNPA" />
+
+        <TextView
+            android:id="@+id/txtPosLocalite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Localité : "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editPosNPA" />
+
+        <EditText
+            android:id="@+id/editPosLocalite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtPosLocalite" />
+
+        <TextView
+            android:id="@+id/txtPosResponsable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Responsable : "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editPosLocalite" />
+
+        <Spinner
+            android:id="@+id/listPosCollaborateur"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dropdown"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtPosResponsable" />
+
+        <TextView
+            android:id="@+id/txtPosEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Email : "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/listPosCollaborateur" />
+
+        <EditText
+            android:id="@+id/editPosEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtPosEmail" />
+
+        <TextView
+            android:id="@+id/txtPosPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Phone : "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editPosEmail" />
+
+        <EditText
+            android:id="@+id/editPosPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtPosPhone" />
+
+        <TextView
+            android:id="@+id/txtPosMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Menu : "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editPosPhone" />
+
+        <Spinner
+            android:id="@+id/listPosMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dropdown"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtPosMenu" />
+
+        <Button
+            android:id="@+id/btnPosSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="posUpdate"
+            android:text="Save"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/listPosMenu" />
+        <Button
+            android:id="@+id/btnPosAdd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="posInsert"
+            android:text="New"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnPosSave" />
+        <Button
+            android:id="@+id/btnPosDelete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="posDelete"
+            android:text="Delete"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnPosAdd" />
+    </android.support.constraint.ConstraintLayout>
+
+</ScrollView>

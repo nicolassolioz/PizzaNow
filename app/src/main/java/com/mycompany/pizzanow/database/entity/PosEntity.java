@@ -46,10 +46,10 @@ public class PosEntity implements Pos, Comparable, Serializable/*Parcelable*/ {
 
     @ColumnInfo(name = "Phone")
     private String Phone;
-
+/*
     @ColumnInfo(name = "Menu")
     private int IdMenu;
-
+*/
     public PosEntity(){}
 
     public PosEntity(Pos pos){
@@ -61,12 +61,11 @@ public class PosEntity implements Pos, Comparable, Serializable/*Parcelable*/ {
         Responsable=getResponsable();
         Email=getEmail();
         Phone=getPhone();
-        IdMenu=getIdMenu();
+       // IdMenu=getIdMenu();
     }
 
     public PosEntity(@NonNull int idFiliale, String nom, String adress, int npa,
-                     String localite, int responsable, String email, String phone,
-                     int idMenu){
+                     String localite, int responsable, String email, String phone){
         this.IdFiliale=idFiliale;
         this.Nom=nom;
         this.Adresse=adress;
@@ -75,7 +74,8 @@ public class PosEntity implements Pos, Comparable, Serializable/*Parcelable*/ {
         this.Responsable=responsable;
         this.Email=email;
         this.Phone=phone;
-        this.IdMenu=idMenu;
+       // this.IdMenu=idMenu; ,
+        //                     int idMenu
     }
 
     /*
@@ -163,11 +163,12 @@ public class PosEntity implements Pos, Comparable, Serializable/*Parcelable*/ {
 
     public void setPhone(String phone){this.Phone=phone;}
 
+    /*
     @Override
     public int getIdMenu() { return IdMenu; }
 
     public void setIdMenu(int idMenu){ this.IdMenu=idMenu;}
-
+    */
     @Override
     public boolean equals(Object obj){
         if(obj == null) return false;

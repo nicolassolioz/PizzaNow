@@ -10,6 +10,7 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.mycompany.pizzanow.BaseApp;
+import com.mycompany.pizzanow.database.async.pizza.CreatePizza;
 import com.mycompany.pizzanow.database.async.pizza.DeletePizza;
 import com.mycompany.pizzanow.database.async.pizza.UpdatePizza;
 import com.mycompany.pizzanow.database.entity.PizzaEntity;
@@ -39,6 +40,20 @@ public class PizzaViewModel extends AndroidViewModel {
 
         // observe the changes of the pizza entity from the database and forward them
         mObservablePizza.addSource(pizza, mObservablePizza::setValue);
+    }
+
+    public void createPizza(PizzaEntity newPizza) {
+        new CreatePizza(getApplication(), new OnAsyncEventListener() {
+            @Override
+            public void onSuccess() {
+                Log.d(TAG, "create pizza : success");
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+                Log.d(TAG, "create pizza : fail");
+            }
+        }).execute(newPizza);
     }
 
     /**

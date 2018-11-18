@@ -1,7 +1,6 @@
-package com.mycompany.pizzanow.ui;
+package com.mycompany.pizzanow.ui.DisplayActivities;
 
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,22 +10,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.mycompany.pizzanow.BaseApp;
 import com.mycompany.pizzanow.R;
-import com.mycompany.pizzanow.adapter.ListAdapter;
-import com.mycompany.pizzanow.adapter.RecyclerAdapter;
 import com.mycompany.pizzanow.database.entity.CollaborateurEntity;
 import com.mycompany.pizzanow.database.entity.PosEntity;
-import com.mycompany.pizzanow.database.repository.CollaborateurRepository;
 import com.mycompany.pizzanow.model.Collaborateur;
+import com.mycompany.pizzanow.ui.DisplayActivities.ShowSuccActivity;
 import com.mycompany.pizzanow.viewmodel.Collaborateur.CollaborateurListViewModel;
 
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 

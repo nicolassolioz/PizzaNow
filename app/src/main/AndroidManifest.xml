@@ -3,7 +3,8 @@
     package="com.mycompany.pizzanow">
 
     <uses-sdk android:maxSdkVersion="11" />
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
+
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:name=".BaseApp"
@@ -13,26 +14,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
-        <activity android:name=".ui.MainActivity">
+        <activity android:name=".ui.DisplayActivities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.SuccDisplayActivity" >
+        <activity android:name=".ui.SuccDisplayActivity">
             <intent-filter>
-                <action android:name="android.intent.action.DIAL"/>
+                <action android:name="android.intent.action.DIAL" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.EditActivity">
-        </activity>
-        <activity android:name=".ui.ShowSuccActivity" />
-        <activity android:name=".ui.ToolbarActivity" />
+        <activity android:name=".ui.EditActivities.EditActivity"></activity>
+        <activity android:name=".ui.DisplayActivities.ShowSuccActivity" />
+        <activity android:name=".ui.Toolbar.ToolbarActivity" />
         <activity
             android:name=".Support.SettingsActivity"
             android:label="@string/title_activity_settings" />
-        <activity android:name=".Support.AboutActivity"/>
+        <activity android:name=".Support.AboutActivity" />
+        <activity android:name=".ui.EditActivities.EditPosActivity"></activity>
     </application>
 
 </manifest>

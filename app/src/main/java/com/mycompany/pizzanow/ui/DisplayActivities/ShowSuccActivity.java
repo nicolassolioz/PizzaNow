@@ -1,9 +1,6 @@
-package com.mycompany.pizzanow.ui;
+package com.mycompany.pizzanow.ui.DisplayActivities;
 
-import android.arch.lifecycle.ViewModelProviders;
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -12,6 +9,7 @@ import android.support.v4.view.ViewPager;
 
 import com.mycompany.pizzanow.R;
 import com.mycompany.pizzanow.database.entity.PosEntity;
+import com.mycompany.pizzanow.ui.Toolbar.ToolbarActivity;
 import com.mycompany.pizzanow.viewmodel.POS.PosViewModel;
 
 

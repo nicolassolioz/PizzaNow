@@ -10,6 +10,7 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.mycompany.pizzanow.BaseApp;
+import com.mycompany.pizzanow.database.async.collaborateur.CreateCollaborateur;
 import com.mycompany.pizzanow.database.async.collaborateur.DeleteCollaborateur;
 import com.mycompany.pizzanow.database.async.collaborateur.UpdateCollaborateur;
 import com.mycompany.pizzanow.database.entity.CollaborateurEntity;
@@ -39,6 +40,21 @@ public class CollaborateurViewModel extends AndroidViewModel {
 
         // observe the changes of the pizza entity from the database and forward them
         mObservableCollaborateur.addSource(collaborateur, mObservableCollaborateur::setValue);
+    }
+
+    public void createCollab(CollaborateurEntity newCollab) {
+        new CreateCollaborateur(getApplication(), new OnAsyncEventListener() {
+            @Override
+            public void onSuccess() {
+                Log.d(TAG, "create collab : success");
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+                Log.d(TAG, "create collab : fail", e);
+
+            }
+        }).execute(newCollab);
     }
 
     /**
@@ -80,17 +96,17 @@ public class CollaborateurViewModel extends AndroidViewModel {
         return mObservableCollaborateur;
     }
 
-    public void updateCollaborateur(CollaborateurEntity collab, OnAsyncEventListener callback) {
+    public void updateCollaborateur(CollaborateurEntity collab) {
         new UpdateCollaborateur(getApplication(), new OnAsyncEventListener() {
             @Override
             public void onSuccess() {
-                callback.onSuccess();
+
                 Log.d(TAG, "updateCollaborateur: success");
             }
 
             @Override
             public void onFailure(Exception e) {
-                callback.onFailure(e);
+
                 Log.d(TAG, "updateCollaborateur: failure", e);
             }
         });

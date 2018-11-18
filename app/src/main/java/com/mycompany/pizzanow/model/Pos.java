@@ -9,6 +9,6 @@ public interface Pos {
     int getResponsable();
     String getEmail();
     String getPhone();
-    int getIdMenu();
+    //int getIdMenu();
 
 }

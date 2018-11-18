@@ -1,24 +1,20 @@
-package com.mycompany.pizzanow.ui;
+package com.mycompany.pizzanow.ui.DisplayActivities;
 
-import android.arch.lifecycle.ViewModel;
-import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 
-import com.mycompany.pizzanow.BaseApp;
 import com.mycompany.pizzanow.R;
 import com.mycompany.pizzanow.adapter.RecyclerAdapter;
 import com.mycompany.pizzanow.database.AppDatabase;
 import com.mycompany.pizzanow.database.entity.CollaborateurEntity;
 import com.mycompany.pizzanow.database.entity.PosEntity;
-import com.mycompany.pizzanow.database.repository.CollaborateurRepository;
+import com.mycompany.pizzanow.ui.Toolbar.ToolbarActivity;
 import com.mycompany.pizzanow.util.RecyclerViewItemClickListener;
 import com.mycompany.pizzanow.viewmodel.Collaborateur.CollaborateurListViewModel;
 import com.mycompany.pizzanow.viewmodel.POS.PosListViewModel;

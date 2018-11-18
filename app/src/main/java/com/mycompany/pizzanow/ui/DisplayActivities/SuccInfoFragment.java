@@ -1,15 +1,8 @@
-package com.mycompany.pizzanow.ui;
+package com.mycompany.pizzanow.ui.DisplayActivities;
 
-import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,20 +13,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.mycompany.pizzanow.BaseApp;
 import com.mycompany.pizzanow.R;
 import com.mycompany.pizzanow.adapter.PizzaRecyclerAdapter;
-import com.mycompany.pizzanow.adapter.RecyclerAdapter;
-import com.mycompany.pizzanow.database.AppDatabase;
 import com.mycompany.pizzanow.database.entity.PizzaEntity;
 import com.mycompany.pizzanow.database.entity.PosEntity;
-import com.mycompany.pizzanow.database.repository.PosRepository;
+import com.mycompany.pizzanow.ui.DisplayActivities.ShowSuccActivity;
 import com.mycompany.pizzanow.util.RecyclerViewItemClickListener;
-import com.mycompany.pizzanow.viewmodel.POS.PosListViewModel;
-import com.mycompany.pizzanow.viewmodel.POS.PosViewModel;
 import com.mycompany.pizzanow.viewmodel.pizza.PizzaListViewModel;
-import com.mycompany.pizzanow.viewmodel.pizza.PizzaOnMenuViewModel;
-import com.mycompany.pizzanow.viewmodel.pizza.PizzaViewModel;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -93,9 +93,9 @@ public abstract class AppDatabase extends RoomDatabase{
                 // Generate the data for pre-population
                 List<PizzaEntity> pizzas = DataGenerator.generatePizzas();
                 List<PosEntity> pos = DataGenerator.generatePos();
-                List<MenuEntity> menus = DataGenerator.generateMenus();
+                //List<MenuEntity> menus = DataGenerator.generateMenus();
                 List<CollaborateurEntity> collabs = DataGenerator.generateCollaborateurs();
-                List<MenuPizzaEntity> menuPizzas = DataGenerator.generateMenuPizzas();
+                //List<MenuPizzaEntity> menuPizzas = DataGenerator.generateMenuPizzas();
 
                 database.collaborateurDao().insertAll(collabs);
                 database.posDao().insertAll(pos);
@@ -104,8 +104,8 @@ public abstract class AppDatabase extends RoomDatabase{
 
                 //database.collaborateurDao().insertAll(collabs);
                 database.pizzaDao().insertAll(pizzas);
-                database.menuDao().insertAll(menus);
-                database.menuPizzaDao().insertAll(menuPizzas);
+               // database.menuDao().insertAll(menus);
+                //database.menuPizzaDao().insertAll(menuPizzas);
 
                 Log.i(TAG, "Data inserted.");
 

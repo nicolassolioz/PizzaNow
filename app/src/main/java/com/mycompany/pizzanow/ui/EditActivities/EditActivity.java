@@ -1,4 +1,4 @@
-package com.mycompany.pizzanow.ui;
+package com.mycompany.pizzanow.ui.EditActivities;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
@@ -20,6 +20,7 @@ import com.mycompany.pizzanow.database.entity.MenuEntity;
 import com.mycompany.pizzanow.database.entity.PizzaEntity;
 import com.mycompany.pizzanow.database.entity.PosEntity;
 import com.mycompany.pizzanow.database.repository.PosRepository;
+import com.mycompany.pizzanow.ui.Toolbar.ToolbarActivity;
 import com.mycompany.pizzanow.util.OnAsyncEventListener;
 import com.mycompany.pizzanow.database.repository.CollaborateurRepository;
 import com.mycompany.pizzanow.viewmodel.Collaborateur.AllCollaborateurListViewModel;
@@ -29,6 +30,7 @@ import com.mycompany.pizzanow.viewmodel.POS.PosListViewModel;
 import com.mycompany.pizzanow.viewmodel.POS.PosViewModel;
 import com.mycompany.pizzanow.viewmodel.menu.MenuListViewModel;
 import com.mycompany.pizzanow.viewmodel.pizza.PizzaListViewModel;
+import com.mycompany.pizzanow.viewmodel.pizza.PizzaViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,24 +40,28 @@ public class EditActivity extends ToolbarActivity {
     private static final String TAG = "Edit Activity";
 
     private List<PosEntity> mPosEntities;
-    private List<MenuEntity> mMenuEntities;
+    //private List<MenuEntity> mMenuEntities;
     private List<CollaborateurEntity> mCollaborateurEntities;
     private List<PizzaEntity> mPizzaEntities;
 
     private PosEntity mPosEntity;
+    private CollaborateurEntity mCollaborateurEntity;
+    private PizzaEntity mPizzaEntity;
 
     private PosListViewModel mPosListViewmodel;
-    private MenuListViewModel mMenuListViewmodel;
-    private AllCollaborateurListViewModel mCollaborateurViewModel;
+    //private MenuListViewModel mMenuListViewmodel;
+    private AllCollaborateurListViewModel mCollaborateurListViewModel;
     private PizzaListViewModel mPizzaListViewModel;
 
     private PosViewModel mPosViewModel;
+    private CollaborateurViewModel mCollaborateurViewModel;
+    private PizzaViewModel mPizzaViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         mPosEntities = new ArrayList<>();
-        mMenuEntities = new ArrayList<>();
+        //mMenuEntities = new ArrayList<>();
         mPizzaEntities = new ArrayList<>();
         mCollaborateurEntities = new ArrayList<>();
 
@@ -73,22 +79,13 @@ public class EditActivity extends ToolbarActivity {
             }
         });
 
-        // (2) Fill list of menus with data
-        MenuListViewModel.Factory factoryMenu = new MenuListViewModel.Factory(getApplication());
 
-        mMenuListViewmodel = ViewModelProviders.of(this,factoryMenu).get(MenuListViewModel.class);
-        mMenuListViewmodel.getAllMenus().observe(this,menuEntities -> {
-            if(menuEntities!=null){
-                mMenuEntities = menuEntities;
-                fillDDLMenuNames();
-            }
-        });
 
         // (3) Fill list of employees with data
         AllCollaborateurListViewModel.Factory factoryCollab= new AllCollaborateurListViewModel.Factory(getApplication());
 
-        mCollaborateurViewModel = ViewModelProviders.of(this,factoryCollab).get(AllCollaborateurListViewModel.class);
-        mCollaborateurViewModel.getAllCollabs().observe(this,collaborateurEntities ->  {
+        mCollaborateurListViewModel = ViewModelProviders.of(this,factoryCollab).get(AllCollaborateurListViewModel.class);
+        mCollaborateurListViewModel.getAllCollabs().observe(this,collaborateurEntities ->  {
             if(collaborateurEntities!=null){
                 mCollaborateurEntities = collaborateurEntities;
                 fillDDLCollabNames();
@@ -109,13 +106,10 @@ public class EditActivity extends ToolbarActivity {
         /*
         ListView allPizzas = findViewById(R.id.listAllPizzas);
         ListView posPizzas = findViewById(R.id.listMenuPizzas);
-
         String[] items = new String[]{"Margarita", "Diavola"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
-
         allPizzas.setChoiceMode(2);
         posPizzas.setChoiceMode(2);
-
         allPizzas.setAdapter(adapter);
         posPizzas.setAdapter(adapter);
         */
@@ -174,14 +168,7 @@ public class EditActivity extends ToolbarActivity {
                 //phone
                 EditText phone = findViewById(R.id.editPosPhone);
                 phone.setText(select.getPhone());
-                //menu
-                try{
-                    fillDDLPosMenuNames();
-                    Spinner resp = findViewById(R.id.listPosMenu);
-                    resp.setSelection(select.getIdMenu()-1);
-                }catch(Exception e){
-                    Log.d(TAG, "no menu !?"+e);
-                }
+
 
                 PosRepository posRepository = ((BaseApp) getApplication()).getPosRepository();
                 mPosViewModel = new PosViewModel(getApplication(),position,posRepository);
@@ -201,12 +188,7 @@ public class EditActivity extends ToolbarActivity {
         dropdown.setAdapter(adapter);
     }
 
-    public void fillDDLPosMenuNames() {
-        Spinner dropdown = findViewById(R.id.listPosMenu);
-        String[] items = getNamesMenus();
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
-        dropdown.setAdapter(adapter);
-    }
+
 
 
     public String[] getNamesPos() {
@@ -217,66 +199,16 @@ public class EditActivity extends ToolbarActivity {
         }
         String[] posNames = new String[mPosEntities.size()];
         for(int i = 0; i<mPosEntities.size(); i++) {
-                posNames[i] = mPosEntities.get(i).getNom();
+            posNames[i] = mPosEntities.get(i).getNom();
         }
 
         return posNames;
     }
 
-    public void fillDDLMenuNames() {
-        Spinner dropdown = findViewById(R.id.listMenus);
-        String[] items = getNamesMenus();
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
-        dropdown.setAdapter(adapter);
-
-        dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                MenuEntity select = mMenuEntities.get(position);
-                //name
-                EditText name = findViewById(R.id.editMenuName);
-                name.setText(select.getNomMenu());
-                //resp
-                /*try{
-                    fillDDLCollabPosNames();
-                    ListView resp = findViewById(R.id.listAllPizzas);
-
-                    resp.setAdapter();
-                }catch(Exception e){
-                    Log.d(TAG, "no resp !?"+e);
-                }
-                */
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-    }
-
     public void fillPosSection() {
         fillDDLPosNames();
         fillDDLCollabPosNames();
-        fillDDLPosMenuNames();
-    }
-
-
-
-
-    public String[] getNamesMenus() {
-
-        if(mMenuEntities.equals(null)) {
-            String[] empty = new String[]{"no available data"};
-            return empty;
-        }
-        String[] menuNames = new String[mMenuEntities.size()];
-        for(int i = 0; i<mMenuEntities.size(); i++) {
-            menuNames[i] = mMenuEntities.get(i).getNomMenu();
-        }
-
-        return menuNames;
+        //fillDDLPosMenuNames();
     }
 
     public void fillDDLCollabNames() {
@@ -318,8 +250,6 @@ public class EditActivity extends ToolbarActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
         dropdown.setAdapter(adapter);
     }
-
-
 
     public String[] getNamesCollaborateurs() {
 
@@ -394,7 +324,7 @@ public class EditActivity extends ToolbarActivity {
         mPosEntity.setAdresse(editPosAddress.getText().toString());
         mPosEntity.setEmail(editPosEmail.getText().toString());
         mPosEntity.setPhone(editPosPhone.getText().toString());
-        mPosEntity.setIdMenu(2);
+        //mPosEntity.setIdMenu(2);
         mPosEntity.setResponsable(1);
 
         mPosViewModel.updatePos(mPosEntity);
@@ -424,7 +354,7 @@ public class EditActivity extends ToolbarActivity {
         newPos.setAdresse(editPosAddress.getText().toString());
         newPos.setEmail(editPosEmail.getText().toString());
         newPos.setPhone(editPosPhone.getText().toString());
-        newPos.setIdMenu(2);
+        //newPos.setIdMenu(2);
         newPos.setResponsable(1);
 
         mPosViewModel.createPos(newPos);
@@ -452,6 +382,220 @@ public class EditActivity extends ToolbarActivity {
 
     }
 
+
+    public void collaboUpdate(View view) {
+
+
+        EditText editCollabName = findViewById(R.id.editCollaboName);
+        EditText editCollabSurname = findViewById(R.id.editCollaboSurname);
+
+        //EditText editCollabPos = findViewById(R.id.listCollaboPos);
+
+
+        mCollaborateurEntity.setNomCollab(editCollabName.getText().toString());
+        mCollaborateurEntity.setPrenomCollab(editCollabSurname.getText().toString());
+
+
+        mCollaborateurViewModel.updateCollaborateur(mCollaborateurEntity);
+
+        fillCollabSection();
+
+        Toast.makeText(this, "Collaborator changes saved",
+                Toast.LENGTH_SHORT).show();
+
+    }
+
+    public void collaboInsert(View view) {
+        CollaborateurEntity newCollab = new CollaborateurEntity();
+
+        EditText editCollabName = findViewById(R.id.editCollaboName);
+        EditText editCollabSurname = findViewById(R.id.editCollaboSurname);
+
+        //EditText editCollabPos = findViewById(R.id.listCollaboPos);
+
+
+        newCollab.setNomCollab(editCollabName.getText().toString());
+        newCollab.setPrenomCollab(editCollabSurname.getText().toString());
+
+
+        mCollaborateurViewModel.createCollab(newCollab);
+
+        fillCollabSection();
+
+        Toast.makeText(this, "New collaborator added",
+                Toast.LENGTH_SHORT).show();
+
+    }
+
+    private void fillCollabSection() {
+        fillDDLCollabNames();
+        fillDDLCollabPosNames();
+    }
+
+    public void collaboDelete(View view) {
+
+        mCollaborateurViewModel.deleteCollaborateur(mCollaborateurEntity, new OnAsyncEventListener() {
+            @Override
+            public void onSuccess() {
+                fillCollabSection();
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+
+            }
+        });
+
+        Toast.makeText(this, "Collaborator deleted",
+                Toast.LENGTH_SHORT).show();
+
+    }
+
+    public void pizzaUpdate(View view) {
+
+        EditText editPizzaName = findViewById(R.id.editPizzaName);
+        EditText editPizzaDesc = findViewById(R.id.editPizzaDescription);
+        EditText editPizzaPrice = findViewById(R.id.editPizzaPrice);
+
+        mPizzaEntity.setNom(editPizzaName.getText().toString());
+        mPizzaEntity.setDescription(editPizzaDesc.getText().toString());
+        mPizzaEntity.setPrix(Double.parseDouble(editPizzaPrice.getText().toString()));
+
+        mPizzaViewModel.updatePizza(mPizzaEntity, new OnAsyncEventListener() {
+            @Override
+            public void onSuccess() {
+                fillPizzaSection();
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+            }
+        });
+        Toast.makeText(this, "Pizza updated",
+                Toast.LENGTH_SHORT).show();
+
+    }
+
+    public void fillPizzaSection(){
+        fillDDLPizzaNames();
+    }
+
+    public void pizzaInsert(View view) {
+        PizzaEntity newPizza = new PizzaEntity();
+
+        EditText editPizzaName = findViewById(R.id.editPizzaName);
+        EditText editPizzaDesc = findViewById(R.id.editPizzaDescription);
+        EditText editPizzaPrice = findViewById(R.id.editPizzaPrice);
+
+        newPizza.setNom(editPizzaName.getText().toString());
+        newPizza.setDescription(editPizzaDesc.getText().toString());
+        newPizza.setPrix(Double.parseDouble(editPizzaPrice.getText().toString()));
+
+        mPizzaViewModel.createPizza(newPizza);
+
+        fillPizzaSection();
+
+        Toast.makeText(this, "Pizza created",
+                Toast.LENGTH_SHORT).show();
+
+
+    }
+
+    public void pizzaDelete(View view) {
+        mPizzaViewModel.deletePizza(mPizzaEntity, new OnAsyncEventListener() {
+            @Override
+            public void onSuccess() {
+                fillPizzaSection();
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+
+            }
+        });
+        Toast.makeText(this, "Pizza deleted",
+                Toast.LENGTH_SHORT).show();
+
+
+    }
+
+}
+
+/*
+// (2) Fill list of menus with data
+        MenuListViewModel.Factory factoryMenu = new MenuListViewModel.Factory(getApplication());
+
+        mMenuListViewmodel = ViewModelProviders.of(this,factoryMenu).get(MenuListViewModel.class);
+        mMenuListViewmodel.getAllMenus().observe(this,menuEntities -> {
+            if(menuEntities!=null){
+                mMenuEntities = menuEntities;
+                fillDDLMenuNames();
+            }
+        });
+
+      public String[] getNamesMenus() {
+
+        if(mMenuEntities.equals(null)) {
+            String[] empty = new String[]{"no available data"};
+            return empty;
+        }
+        String[] menuNames = new String[mMenuEntities.size()];
+        for(int i = 0; i<mMenuEntities.size(); i++) {
+            menuNames[i] = mMenuEntities.get(i).getNomMenu();
+        }
+
+        return menuNames;
+    }
+
+    public void fillDDLPosMenuNames() {
+        Spinner dropdown = findViewById(R.id.listPosMenu);
+        String[] items = getNamesMenus();
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
+        dropdown.setAdapter(adapter);
+    }
+
+
+    //menu
+                try{
+                    fillDDLPosMenuNames();
+                    Spinner resp = findViewById(R.id.listPosMenu);
+                    resp.setSelection(select.getIdMenu()-1);
+                }catch(Exception e){
+                    Log.d(TAG, "no menu !?"+e);
+                }
+
+                    public void fillDDLMenuNames() {
+        Spinner dropdown = findViewById(R.id.listMenus);
+        String[] items = getNamesMenus();
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
+        dropdown.setAdapter(adapter);
+
+        dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                MenuEntity select = mMenuEntities.get(position);
+                //name
+                EditText name = findViewById(R.id.editMenuName);
+                name.setText(select.getNomMenu());
+                //resp
+                try{
+                    fillDDLCollabPosNames();
+                    ListView resp = findViewById(R.id.listAllPizzas);
+                    resp.setAdapter();
+                }catch(Exception e){
+                    Log.d(TAG, "no resp !?"+e);
+                }
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+    }
+
     public void menuUpdate(View view) {
 
     }
@@ -464,19 +608,4 @@ public class EditActivity extends ToolbarActivity {
 
     }
 
-    public void collaboUpdate(View view) {
-
-    }
-
-    public void collaboInsert(View view) {
-
-    }
-
-    public void collaboDelete(View view) {
-
-    }
-
-
-
-
-}
+ */
