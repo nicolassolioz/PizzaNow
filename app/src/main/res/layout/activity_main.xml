@@ -35,11 +35,17 @@
             android:orientation="vertical"
             android:gravity="center_vertical">
 
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                app:srcCompat="@drawable/pizza_now_logo" />
+
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="90dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="32dp"
                 android:text="@string/welcome_fr"
                 android:textAlignment="center"
@@ -55,7 +61,6 @@
                 android:clipChildren="true"
                 android:clipToPadding="true"
                 android:textAlignment="center" />
-
 
 
         </LinearLayout>
