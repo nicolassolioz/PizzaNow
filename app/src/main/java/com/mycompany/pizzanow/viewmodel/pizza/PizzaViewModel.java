@@ -95,20 +95,18 @@ public class PizzaViewModel extends AndroidViewModel {
         return mObservablePizza;
     }
 
-    public void updatePizza(PizzaEntity pizza, OnAsyncEventListener callback) {
+    public void updatePizza(PizzaEntity pizza) {
         new UpdatePizza(getApplication(), new OnAsyncEventListener() {
             @Override
             public void onSuccess() {
-                callback.onSuccess();
                 Log.d(TAG, "updatePizza: success");
             }
 
             @Override
             public void onFailure(Exception e) {
-                callback.onFailure(e);
                 Log.d(TAG, "updatePizza: failure", e);
             }
-        });
+        }).execute(pizza);
     }
 
     public void deletePizza(PizzaEntity pizza, OnAsyncEventListener callback) {

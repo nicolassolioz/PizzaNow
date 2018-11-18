@@ -48,7 +48,6 @@ public class MainActivity extends ToolbarActivity {
 
         //initiate database on creation of app
 
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -62,9 +61,6 @@ public class MainActivity extends ToolbarActivity {
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
                 LinearLayoutManager.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
-
-
-
 
         //définition de la liste et des comportements
         mPosEntities = new ArrayList<>();

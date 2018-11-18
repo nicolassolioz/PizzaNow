@@ -19,6 +19,7 @@ import com.mycompany.pizzanow.database.entity.CollaborateurEntity;
 import com.mycompany.pizzanow.database.entity.MenuEntity;
 import com.mycompany.pizzanow.database.entity.PizzaEntity;
 import com.mycompany.pizzanow.database.entity.PosEntity;
+import com.mycompany.pizzanow.database.repository.PizzaRepository;
 import com.mycompany.pizzanow.database.repository.PosRepository;
 import com.mycompany.pizzanow.ui.Toolbar.ToolbarActivity;
 import com.mycompany.pizzanow.util.OnAsyncEventListener;
@@ -145,6 +146,7 @@ public class EditActivity extends ToolbarActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 PosEntity select = mPosEntities.get(position);
                 mPosEntity = select;
+
                 //name
                 EditText name = findViewById(R.id.editPosName);
                 name.setText(select.getNom());
@@ -157,6 +159,7 @@ public class EditActivity extends ToolbarActivity {
                 //localite
                 EditText localite = findViewById(R.id.editPosLocalite);
                 localite.setText(select.getLocalite());
+
                 //resp
                 try{
                     fillDDLPosCollabNames();
@@ -173,6 +176,7 @@ public class EditActivity extends ToolbarActivity {
                 phone.setText(select.getPhone());
 
 
+                //position should be the ID
                 PosRepository posRepository = ((BaseApp) getApplication()).getPosRepository();
                 mPosViewModel = new PosViewModel(getApplication(),position,posRepository);
             }
@@ -224,6 +228,7 @@ public class EditActivity extends ToolbarActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 CollaborateurEntity select = mCollaborateurEntities.get(position);
+                mCollaborateurEntity = select;
                 //Nom
                 EditText name = findViewById(R.id.editCollaboName);
                 name.setText(select.getNomCollab());
@@ -238,6 +243,10 @@ public class EditActivity extends ToolbarActivity {
                 }catch(Exception e){
                     Log.d(TAG, "no resp !?"+e);
                 }
+
+                //position should be the ID
+                CollaborateurRepository collaboRepository = ((BaseApp) getApplication()).getCollaborateurRepository();
+                mCollaborateurViewModel = new CollaborateurViewModel(getApplication(),position,collaboRepository);
             }
 
             @Override
@@ -279,6 +288,7 @@ public class EditActivity extends ToolbarActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 PizzaEntity select = mPizzaEntities.get(position);
+                mPizzaEntity = select;
                 //name
                 EditText name = findViewById(R.id.editPizzaName);
                 name.setText(select.getNom());
@@ -288,6 +298,10 @@ public class EditActivity extends ToolbarActivity {
                 //prix
                 EditText prix = findViewById(R.id.editPizzaPrice);
                 prix.setText(Double.toString(select.getPrix()));
+
+                //position should be the ID
+                PizzaRepository pizzaRepository = ((BaseApp) getApplication()).getPizzaRepository();
+                mPizzaViewModel = new PizzaViewModel(getApplication(),position,pizzaRepository);
             }
 
             @Override
@@ -313,6 +327,8 @@ public class EditActivity extends ToolbarActivity {
 
     public void posUpdate(View view) {
 
+        boolean numeric = true;
+
         EditText editPosName = findViewById(R.id.editPosName);
         EditText editPosLocalite = findViewById(R.id.editPosLocalite);
         EditText editPosNPA = findViewById(R.id.editPosNPA);
@@ -320,29 +336,47 @@ public class EditActivity extends ToolbarActivity {
         EditText editPosEmail = findViewById(R.id.editPosEmail);
         EditText editPosPhone = findViewById(R.id.editPosPhone);
 
-        int indice = resp.getSelectedItemPosition();
-        CollaborateurEntity respPos = mCollaborateurEntities.get(indice);
+
+        try {
+            Double num = Double.parseDouble(editPosNPA.getText().toString());
+        } catch (NumberFormatException e) {
+            numeric = false;
+        }
+
+        if(numeric)
+        {
+            int indice = resp.getSelectedItemPosition();
+            CollaborateurEntity respPos = mCollaborateurEntities.get(indice);
 
 
-        mPosEntity.setNom(editPosName.getText().toString());
-        mPosEntity.setLocalite(editPosLocalite.getText().toString());
-        mPosEntity.setNPA(Integer.parseInt(editPosNPA.getText().toString()));
-        mPosEntity.setAdresse(editPosAddress.getText().toString());
-        mPosEntity.setEmail(editPosEmail.getText().toString());
-        mPosEntity.setPhone(editPosPhone.getText().toString());
-        //mPosEntity.setIdMenu(2);
-        mPosEntity.setResponsable(respPos.getIdCollab());
+            mPosEntity.setNom(editPosName.getText().toString());
+            mPosEntity.setLocalite(editPosLocalite.getText().toString());
+            mPosEntity.setNPA(Integer.parseInt(editPosNPA.getText().toString()));
+            mPosEntity.setAdresse(editPosAddress.getText().toString());
+            mPosEntity.setEmail(editPosEmail.getText().toString());
+            mPosEntity.setPhone(editPosPhone.getText().toString());
+            //mPosEntity.setIdMenu(2);
+            mPosEntity.setResponsable(respPos.getIdCollab());
 
-        mPosViewModel.updatePos(mPosEntity);
+            mPosViewModel.updatePos(mPosEntity);
 
-        fillPosSection();
+            fillPosSection();
 
-        Toast.makeText(this, "Point of sales changes saved",
-                Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Point of sales changes saved",
+                    Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            Toast.makeText(this, "Point of sales changes NOT saved, check that NPA is a number",
+                    Toast.LENGTH_SHORT).show();
+        }
+
 
     }
 
     public void posInsert(View view) {
+
+        boolean numeric = true;
 
         PosEntity newPos = new PosEntity();
 
@@ -353,24 +387,39 @@ public class EditActivity extends ToolbarActivity {
         EditText editPosEmail = findViewById(R.id.editPosEmail);
         EditText editPosPhone = findViewById(R.id.editPosPhone);
 
-        int indice = resp.getSelectedItemPosition();
-        CollaborateurEntity respPos = mCollaborateurEntities.get(indice);
+        try {
+            Double num = Double.parseDouble(editPosNPA.getText().toString());
+        } catch (NumberFormatException e) {
+            numeric = false;
+        }
 
-        newPos.setNom(editPosName.getText().toString());
-        newPos.setLocalite(editPosLocalite.getText().toString());
-        newPos.setNPA(Integer.parseInt(editPosNPA.getText().toString()));
-        newPos.setAdresse(editPosAddress.getText().toString());
-        newPos.setEmail(editPosEmail.getText().toString());
-        newPos.setPhone(editPosPhone.getText().toString());
+        if(numeric)
+        {
+            int indice = resp.getSelectedItemPosition();
+            CollaborateurEntity respPos = mCollaborateurEntities.get(indice);
 
-        newPos.setResponsable(respPos.getIdCollab());
+            newPos.setNom(editPosName.getText().toString());
+            newPos.setLocalite(editPosLocalite.getText().toString());
+            newPos.setNPA(Integer.parseInt(editPosNPA.getText().toString()));
+            newPos.setAdresse(editPosAddress.getText().toString());
+            newPos.setEmail(editPosEmail.getText().toString());
+            newPos.setPhone(editPosPhone.getText().toString());
 
-        mPosViewModel.createPos(newPos);
+            newPos.setResponsable(respPos.getIdCollab());
 
-        fillPosSection();
+            mPosViewModel.createPos(newPos);
 
-        Toast.makeText(this, "New point of sales added",
-                Toast.LENGTH_SHORT).show();
+            fillPosSection();
+
+            Toast.makeText(this, "New point of sales added",
+                    Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            Toast.makeText(this, "New point of sales NOT added check that NPA field is numeric",
+                    Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     public void posDelete(View view) {
@@ -461,26 +510,35 @@ public class EditActivity extends ToolbarActivity {
 
     public void pizzaUpdate(View view) {
 
+        boolean numeric = true;
+
         EditText editPizzaName = findViewById(R.id.editPizzaName);
         EditText editPizzaDesc = findViewById(R.id.editPizzaDescription);
         EditText editPizzaPrice = findViewById(R.id.editPizzaPrice);
 
-        mPizzaEntity.setNom(editPizzaName.getText().toString());
-        mPizzaEntity.setDescription(editPizzaDesc.getText().toString());
-        mPizzaEntity.setPrix(Double.parseDouble(editPizzaPrice.getText().toString()));
+        try {
+            Double num = Double.parseDouble(editPizzaPrice.getText().toString());
+        } catch (NumberFormatException e) {
+            numeric = false;
+        }
 
-        mPizzaViewModel.updatePizza(mPizzaEntity, new OnAsyncEventListener() {
-            @Override
-            public void onSuccess() {
-                fillPizzaSection();
-            }
+        if(numeric)
+        {
+            mPizzaEntity.setNom(editPizzaName.getText().toString());
+            mPizzaEntity.setDescription(editPizzaDesc.getText().toString());
+            mPizzaEntity.setPrix(Double.parseDouble(editPizzaPrice.getText().toString()));
 
-            @Override
-            public void onFailure(Exception e) {
-            }
-        });
-        Toast.makeText(this, "Pizza updated",
-                Toast.LENGTH_SHORT).show();
+            mPizzaViewModel.updatePizza(mPizzaEntity);
+
+            Toast.makeText(this, "Pizza updated",
+                    Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            Toast.makeText(this, "Pizza NOT updated, check that price field is in the correct format",
+                    Toast.LENGTH_SHORT).show();
+        }
+
 
     }
 
@@ -489,22 +547,39 @@ public class EditActivity extends ToolbarActivity {
     }
 
     public void pizzaInsert(View view) {
+
         PizzaEntity newPizza = new PizzaEntity();
 
         EditText editPizzaName = findViewById(R.id.editPizzaName);
         EditText editPizzaDesc = findViewById(R.id.editPizzaDescription);
         EditText editPizzaPrice = findViewById(R.id.editPizzaPrice);
 
-        newPizza.setNom(editPizzaName.getText().toString());
-        newPizza.setDescription(editPizzaDesc.getText().toString());
-        newPizza.setPrix(Double.parseDouble(editPizzaPrice.getText().toString()));
+        boolean numeric = true;
 
-        mPizzaViewModel.createPizza(newPizza);
+        try {
+            Double num = Double.parseDouble(editPizzaPrice.getText().toString());
+        } catch (NumberFormatException e) {
+            numeric = false;
+        }
+        if(numeric)
+        {
+            newPizza.setNom(editPizzaName.getText().toString());
+            newPizza.setDescription(editPizzaDesc.getText().toString());
+            newPizza.setPrix(Double.parseDouble(editPizzaPrice.getText().toString()));
 
-        fillPizzaSection();
+            mPizzaViewModel.createPizza(newPizza);
 
-        Toast.makeText(this, "Pizza created",
-                Toast.LENGTH_SHORT).show();
+            fillPizzaSection();
+
+            Toast.makeText(this, "Pizza created",
+                    Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            Toast.makeText(this, "Pizza NOT created, check that the price is in number format (Example : 70.2)",
+                    Toast.LENGTH_SHORT).show();
+        }
+
 
 
     }
