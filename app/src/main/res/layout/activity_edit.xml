@@ -1,478 +1,483 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.EditActivity">
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="10dp"
-    android:fillViewport="false">
+    android:padding="10dp">
 
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".ui.EditActivity">
 
-    <TextView
-        android:id="@+id/txtTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:text="Welcome to the edit mode"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/txtTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:text="Welcome to the edit mode"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/txtPosTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:text="Point of sales : "
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
+        <TextView
+            android:id="@+id/txtPosTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:text="Point of sales : "
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
 
-    <TextView
-        android:id="@+id/txtListOfPos"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:text="Select your point of sale : "
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPosTitle" />
+        <TextView
+            android:id="@+id/txtListOfPos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:text="Select your point of sale : "
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtPosTitle" />
 
-    <Spinner
-        android:id="@+id/listPos"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:spinnerMode="dropdown"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtListOfPos" />
+        <Spinner
+            android:id="@+id/listPos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dropdown"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtListOfPos" />
 
-    <TextView
-        android:id="@+id/txtPosName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Name : "
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listPos" />
+        <TextView
+            android:id="@+id/txtPosName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Name : "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/listPos" />
 
-    <EditText
-        android:id="@+id/editPosName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPosName" />
+        <EditText
+            android:id="@+id/editPosName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtPosName" />
 
-    <TextView
-        android:id="@+id/txtPosAddress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Address : "
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editPosName" />
+        <TextView
+            android:id="@+id/txtPosAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Address : "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editPosName" />
 
-    <EditText
-        android:id="@+id/editPosAddress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPosAddress" />
+        <EditText
+            android:id="@+id/editPosAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtPosAddress" />
 
-    <TextView
-        android:id="@+id/txtPosNPA"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="NPA : "
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editPosAddress" />
+        <TextView
+            android:id="@+id/txtPosNPA"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="NPA : "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editPosAddress" />
 
-    <EditText
-        android:id="@+id/editPosNPA"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPosNPA" />
+        <EditText
+            android:id="@+id/editPosNPA"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtPosNPA" />
 
-    <TextView
-    android:id="@+id/txtPosLocalite"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="Localité : "
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/editPosNPA" />
+        <TextView
+            android:id="@+id/txtPosLocalite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Localité : "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editPosNPA" />
 
-    <EditText
-        android:id="@+id/editPosLocalite"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPosLocalite" />
+        <EditText
+            android:id="@+id/editPosLocalite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtPosLocalite" />
 
-    <TextView
-        android:id="@+id/txtPosResponsable"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Responsable : "
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editPosLocalite" />
+        <TextView
+            android:id="@+id/txtPosResponsable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Responsable : "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editPosLocalite" />
 
-    <Spinner
-        android:id="@+id/listPosCollaborateur"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:spinnerMode="dropdown"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPosResponsable" />
+        <Spinner
+            android:id="@+id/listPosCollaborateur"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dropdown"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtPosResponsable" />
 
-    <TextView
-        android:id="@+id/txtPosEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Email : "
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listPosCollaborateur" />
+        <TextView
+            android:id="@+id/txtPosEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Email : "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/listPosCollaborateur" />
 
-    <EditText
-        android:id="@+id/editPosEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPosEmail" />
+        <EditText
+            android:id="@+id/editPosEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtPosEmail" />
 
-    <TextView
-        android:id="@+id/txtPosPhone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Phone : "
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editPosEmail" />
+        <TextView
+            android:id="@+id/txtPosPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Phone : "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editPosEmail" />
 
-    <EditText
-        android:id="@+id/editPosPhone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPosPhone" />
+        <EditText
+            android:id="@+id/editPosPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtPosPhone" />
 
-    <TextView
-        android:id="@+id/txtPosMenu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Menu : "
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editPosPhone" />
+        <TextView
+            android:id="@+id/txtPosMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Menu : "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editPosPhone" />
 
-    <Spinner
-        android:id="@+id/listPosMenu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:spinnerMode="dropdown"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPosMenu" />
+        <Spinner
+            android:id="@+id/listPosMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dropdown"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtPosMenu" />
 
-    <Button
-        android:id="@+id/btnPosSave"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="posUpdate"
-        android:text="Save"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listPosMenu" />
-    <Button
-        android:id="@+id/btnPosAdd"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="posInsert"
-        android:text="New"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnPosSave" />
-    <Button
-        android:id="@+id/btnPosDelete"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="posDelete"
-        android:text="Delete"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnPosAdd" />
+        <Button
+            android:id="@+id/btnPosSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="posUpdate"
+            android:text="Save"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/listPosMenu" />
 
-    <TextView
-        android:id="@+id/txtMenuTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:text="Menus : "
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnPosDelete" />
+        <Button
+            android:id="@+id/btnPosAdd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="posInsert"
+            android:text="New"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnPosSave" />
 
-    <TextView
-        android:id="@+id/txtListMenus"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Menu : "
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtMenuTitle" />
+        <Button
+            android:id="@+id/btnPosDelete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="posDelete"
+            android:text="Delete"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnPosAdd" />
 
-    <Spinner
-        android:id="@+id/listMenus"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:spinnerMode="dropdown"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtListMenus" />
+        <TextView
+            android:id="@+id/txtMenuTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:text="Menus : "
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnPosDelete" />
 
-    <TextView
-        android:id="@+id/txtAllPizzas"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="All pizzas : "
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listMenus" />
+        <TextView
+            android:id="@+id/txtListMenus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Menu : "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtMenuTitle" />
 
-    <ListView
-        android:id="@+id/listAllPizzas"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtAllPizzas" />
+        <Spinner
+            android:id="@+id/listMenus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dropdown"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtListMenus" />
 
-    <TextView
-        android:id="@+id/txtMenuPizzas"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Pizzas in this pos : "
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listAllPizzas" />
+        <TextView
+            android:id="@+id/txtAllPizzas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="All pizzas : "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/listMenus" />
 
-    <ListView
-        android:id="@+id/listMenuPizzas"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtMenuPizzas"/>
+        <ListView
+            android:id="@+id/listAllPizzas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtAllPizzas" />
 
-    <Button
-        android:id="@+id/btnAddPizzasToList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="menuUpdate"
-        android:text="Add/remove selected pizza from menu"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listMenuPizzas" />
+        <TextView
+            android:id="@+id/txtMenuPizzas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pizzas in this pos : "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/listAllPizzas" />
 
-    <Button
-        android:id="@+id/btnMenuSave"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="menuUpdate"
-        android:text="Save"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnAddPizzasToList" />
-    <Button
-        android:id="@+id/btnMenuAdd"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="menuInsert"
-        android:text="New"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnMenuSave" />
-    <Button
-        android:id="@+id/btnMenuDelete"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="menuDelete"
-        android:text="Delete"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnMenuAdd" />
+        <ListView
+            android:id="@+id/listMenuPizzas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtMenuPizzas" />
 
-    <TextView
-        android:id="@+id/txtTitleCollabo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:text="Employees : "
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnMenuDelete" />
+        <Button
+            android:id="@+id/btnAddPizzasToList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="menuUpdate"
+            android:text="Add/remove selected pizza from menu"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/listMenuPizzas" />
 
-    <TextView
-        android:id="@+id/txtCollabo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:text="Employees : "
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtTitleCollabo" />
+        <Button
+            android:id="@+id/btnMenuSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="menuUpdate"
+            android:text="Save"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnAddPizzasToList" />
 
-    <Spinner
-        android:id="@+id/listCollabo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:spinnerMode="dropdown"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtCollabo" />
+        <Button
+            android:id="@+id/btnMenuAdd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="menuInsert"
+            android:text="New"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnMenuSave" />
 
-    <TextView
-        android:id="@+id/txtCollaboName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Name : "
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listCollabo" />
+        <Button
+            android:id="@+id/btnMenuDelete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="menuDelete"
+            android:text="Delete"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnMenuAdd" />
 
-    <EditText
-        android:id="@+id/editCollaboName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtCollaboName" />
+        <TextView
+            android:id="@+id/txtTitleCollabo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:text="Employees : "
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnMenuDelete" />
 
-    <TextView
-        android:id="@+id/txtCollaboSurname"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Surname : "
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editCollaboName" />
+        <TextView
+            android:id="@+id/txtCollabo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:text="Employees : "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtTitleCollabo" />
 
-    <EditText
-        android:id="@+id/editCollaboSurname"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtCollaboSurname" />
+        <Spinner
+            android:id="@+id/listCollabo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dropdown"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtCollabo" />
 
-    <TextView
-        android:id="@+id/txtCollaboPos"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:text="Where does he work ? : "
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editCollaboSurname" />
+        <TextView
+            android:id="@+id/txtCollaboName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Name : "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/listCollabo" />
 
-    <Spinner
-        android:id="@+id/listCollaboPos"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:spinnerMode="dropdown"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtCollaboPos" />
+        <EditText
+            android:id="@+id/editCollaboName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtCollaboName" />
 
-    <Button
-        android:id="@+id/btnCollaboSave"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="collaboUpdate"
-        android:text="Save"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listCollaboPos" />
-    <Button
-        android:id="@+id/btnCollaboAdd"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="collaboInsert"
-        android:text="New"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnCollaboSave" />
-    <Button
-        android:id="@+id/btnCollaboDelete"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="collaboDelete"
-        android:text="Delete"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnCollaboAdd" />
+        <TextView
+            android:id="@+id/txtCollaboSurname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Surname : "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editCollaboName" />
 
-    <TextView
-        android:id="@+id/txtTitlePizza"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:text="Pizzas : "
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnCollaboDelete" />
+        <EditText
+            android:id="@+id/editCollaboSurname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtCollaboSurname" />
 
-    <TextView
-        android:id="@+id/txtPizzaList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Pizza : "
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtTitlePizza" />
+        <TextView
+            android:id="@+id/txtCollaboPos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:text="Where does he work ? : "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editCollaboSurname" />
 
-    <Spinner
-        android:id="@+id/listPizza"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:spinnerMode="dropdown"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPizzaList" />
+        <Spinner
+            android:id="@+id/listCollaboPos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dropdown"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtCollaboPos" />
 
-    <TextView
-        android:id="@+id/txtPizzaName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Name : "
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listPizza" />
+        <Button
+            android:id="@+id/btnCollaboSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="collaboUpdate"
+            android:text="Save"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/listCollaboPos" />
 
-    <EditText
-        android:id="@+id/editPizzaName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPizzaName" />
+        <Button
+            android:id="@+id/btnCollaboAdd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="collaboInsert"
+            android:text="New"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnCollaboSave" />
 
-    <TextView
-        android:id="@+id/txtPizzaDescription"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Description : "
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editPizzaName" />
+        <Button
+            android:id="@+id/btnCollaboDelete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="collaboDelete"
+            android:text="Delete"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnCollaboAdd" />
 
-    <EditText
-        android:id="@+id/editPizzaDescription"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPizzaDescription" />
+        <TextView
+            android:id="@+id/txtTitlePizza"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:text="Pizzas : "
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnCollaboDelete" />
 
-    <TextView
-        android:id="@+id/txtPizzaPrice"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Price : "
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editPizzaDescription" />
+        <TextView
+            android:id="@+id/txtPizzaList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pizza : "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtTitlePizza" />
 
-    <EditText
-        android:id="@+id/editPizzaPrice"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPizzaPrice" />
+        <Spinner
+            android:id="@+id/listPizza"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dropdown"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtPizzaList" />
+
+        <TextView
+            android:id="@+id/txtPizzaName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Name : "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/listPizza" />
+
+        <EditText
+            android:id="@+id/editPizzaName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtPizzaName" />
+
+        <TextView
+            android:id="@+id/txtPizzaDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Description : "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editPizzaName" />
+
+        <EditText
+            android:id="@+id/editPizzaDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtPizzaDescription" />
+
+        <TextView
+            android:id="@+id/txtPizzaPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Price : "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editPizzaDescription" />
+
+        <EditText
+            android:id="@+id/editPizzaPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtPizzaPrice" />
+    </android.support.constraint.ConstraintLayout>
 
 </ScrollView>
 
-</android.support.constraint.ConstraintLayout>
+

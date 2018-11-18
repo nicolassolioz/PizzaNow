@@ -25,6 +25,8 @@
                 <action android:name="android.intent.action.DIAL"/>
             </intent-filter>
         </activity>
+        <activity android:name=".ui.EditActivity">
+        </activity>
         <activity android:name=".ui.ShowSuccActivity" />
         <activity android:name=".ui.ToolbarActivity" />
         <activity

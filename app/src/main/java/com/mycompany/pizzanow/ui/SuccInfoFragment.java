@@ -110,4 +110,6 @@ public class SuccInfoFragment extends Fragment {
         return rootView;
 
     }
+
+
 }
