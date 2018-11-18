@@ -6,6 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".ui.SuccDetailsFragment">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.75"
+        android:background="@drawable/background_pizza"
+        android:contentDescription="background" />
 
 
     <TextView
@@ -14,6 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/succ_order"
+        android:textColor="@color/darkTextColor"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -26,6 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/succ_orderMessage"
+        android:textColor="@color/darkTextColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,7 +44,8 @@
         android:layout_width="45dp"
         android:layout_height="46dp"
         android:layout_marginStart="87dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/darkTextColor"
         android:contentDescription="@android:string/emptyPhoneNumber"
         android:src="@drawable/ic_notifications_black_24dp"
         app:layout_constraintBottom_toTopOf="@+id/imageView"
@@ -49,9 +58,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="87dp"
-        android:backgroundTint="@android:color/darker_gray"
+        android:backgroundTint="@color/darkTextColor"
         android:contentDescription="@android:string/defaultVoiceMailAlphaTag"
         android:src="@drawable/ic_sync_black_24dp"
         app:layout_constraintBottom_toTopOf="@+id/imageView"
@@ -80,6 +89,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="@string/succ_orderNames"
+        android:textColor="@color/darkTextColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -91,6 +101,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="@string/succ_orderNamesMessage"
+        android:textColor="@color/darkTextColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvSuccDetailNames" />
@@ -101,6 +112,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/succ_orderAdress"
+        android:textColor="@color/darkTextColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider" />
@@ -116,12 +128,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rvCollabTes"
-        android:layout_width="368dp"
-        android:layout_height="98dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvSuccDetailsAdress" />
 </android.support.constraint.ConstraintLayout>

@@ -7,5 +7,7 @@
     <color name="lightYellow">#ead995</color>
     <color name="darkYellow">#e4c64c</color>
     <color name="lightGrey">#747472</color>
+    <color name="lightOrange">#ffbb33</color>
+    <color name="darkTextColor">#020101</color>
 
 </resources>
