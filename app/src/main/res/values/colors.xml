@@ -9,5 +9,6 @@
     <color name="lightGrey">#747472</color>
     <color name="lightOrange">#ffbb33</color>
     <color name="darkTextColor">#020101</color>
-
+    <color name="lightGreyBack">#7d747472</color>
+    <color name="lightWhiteBack">#afd7d7d4</color>
 </resources>
