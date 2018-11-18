@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import com.mycompany.pizzanow.BaseApp;
 import com.mycompany.pizzanow.R;
+import com.mycompany.pizzanow.adapter.PizzaRecyclerAdapter;
 import com.mycompany.pizzanow.adapter.RecyclerAdapter;
 import com.mycompany.pizzanow.database.AppDatabase;
 import com.mycompany.pizzanow.database.entity.PizzaEntity;
@@ -44,7 +45,7 @@ public class SuccInfoFragment extends Fragment {
 
     //Data pizza
     private List<PizzaEntity> mPizzas;
-    private RecyclerAdapter<PizzaEntity> mAdapter;
+    private PizzaRecyclerAdapter<PizzaEntity> mAdapter;
     private PizzaListViewModel mViewModel;
 
 
@@ -78,7 +79,7 @@ public class SuccInfoFragment extends Fragment {
 
         mPizzas = new ArrayList<>();
 
-        mAdapter = new RecyclerAdapter<>(new RecyclerViewItemClickListener() {
+        mAdapter = new PizzaRecyclerAdapter<>(new RecyclerViewItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
                 Log.d(TAG, "clicked position:" + position);

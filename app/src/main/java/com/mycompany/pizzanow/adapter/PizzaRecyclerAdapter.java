@@ -1,69 +1,81 @@
 package com.mycompany.pizzanow.adapter;
 
+import android.support.annotation.NonNull;
 import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.mycompany.pizzanow.R;
+import com.mycompany.pizzanow.database.entity.CollaborateurEntity;
+import com.mycompany.pizzanow.database.entity.PizzaEntity;
+import com.mycompany.pizzanow.database.entity.PosEntity;
+import com.mycompany.pizzanow.util.RecyclerViewItemClickListener;
 
 import java.util.List;
 import java.util.Objects;
 
-import com.mycompany.pizzanow.R;
-import com.mycompany.pizzanow.database.entity.PizzaEntity;
-import com.mycompany.pizzanow.database.entity.CollaborateurEntity;
-import com.mycompany.pizzanow.database.entity.PosEntity;
-
-import com.mycompany.pizzanow.model.Pizza;
-import com.mycompany.pizzanow.util.RecyclerViewItemClickListener;
-
-public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
+public class PizzaRecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<T> mData;
     private RecyclerViewItemClickListener mListener;
+    final int posView_type = 0;
+    final int pizzaView_type = 1;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
+    static class PizzaViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
-        TextView mTextView;
-        ViewHolder(TextView textView) {
-            super(textView);
-            mTextView = textView;
+        TextView mTextView1;
+        TextView mTextView2;
+        TextView mTextView3;
+
+        PizzaViewHolder(View itemView) {
+            super(itemView);
+            mTextView1 = itemView.findViewById(R.id.tvPizzaName);
+            mTextView2 = itemView.findViewById(R.id.tvPizzaPrice);
+            mTextView3 = itemView.findViewById(R.id.tvPizzaDescription);
         }
+
+
     }
 
-    public RecyclerAdapter(RecyclerViewItemClickListener listener) {
+
+    public PizzaRecyclerAdapter(RecyclerViewItemClickListener listener) {
         mListener = listener;
     }
 
     @Override
-    public RecyclerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        // create a new view
-        TextView v = (TextView) LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.recycler_view, parent, false);
-        final ViewHolder viewHolder = new ViewHolder(v);
-        v.setOnClickListener(view -> mListener.onItemClick(view, viewHolder.getAdapterPosition()));
-        v.setOnLongClickListener(view -> {
-            mListener.onItemLongClick(view, viewHolder.getAdapterPosition());
-            return true;
-        });
-        return viewHolder;
+    public PizzaRecyclerAdapter.PizzaViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            // create a new view
+            View v = (View) LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.recycler_view_item_1, parent, false);
+            final PizzaViewHolder pizzaViewHolder = new PizzaViewHolder(v);
+            v.setOnClickListener(view -> mListener.onItemClick(view, pizzaViewHolder.getAdapterPosition()));
+            v.setOnLongClickListener(view -> {
+                mListener.onItemLongClick(view, pizzaViewHolder.getAdapterPosition());
+                return true;
+            });
+            return pizzaViewHolder;
+
+
     }
 
     @Override
-    public void onBindViewHolder(RecyclerAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
         T item = mData.get(position);
-        if (item.getClass().equals(PizzaEntity.class))
-            holder.mTextView.setText(((PizzaEntity) item).getNom()+"\t "+((PizzaEntity) item).getPrix()+"\n"+((PizzaEntity) item).getDescription());
-        if (item.getClass().equals(CollaborateurEntity.class))
-            holder.mTextView.setText(((CollaborateurEntity) item).getPrenomCollab() + " " + ((CollaborateurEntity) item).getNomCollab());
-        if (item.getClass().equals(PosEntity.class))
-            holder.mTextView.setText(((PosEntity) item).getNom());
-        holder.mTextView.setText(((PosEntity) item).getNom()+" à "+((PosEntity)item).getLocalite());
+        PizzaViewHolder holder = (PizzaViewHolder) viewHolder;
+        holder.mTextView1.setText(((PizzaEntity) item).getNom());
+        double prix = ((PizzaEntity) item).getPrix();
+        String prixS = Double.toString(prix);
+        holder.mTextView2.setText(prixS);
+        holder.mTextView3.setText(((PizzaEntity) item).getDescription());
     }
+
     @Override
     public int getItemCount() {
         if (mData != null) {

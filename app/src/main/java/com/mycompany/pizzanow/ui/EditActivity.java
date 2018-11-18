@@ -160,13 +160,12 @@ public class EditActivity extends ToolbarActivity {
             String[] empty = new String[]{"no available data"};
             return empty;
         }
-        String[] collaborateurNames = new String[mPizzaEntities.size()];
+        String[] pizzaNames = new String[mPizzaEntities.size()];
         for(int i = 0; i<mPizzaEntities.size(); i++) {
-            collaborateurNames[i] = mPizzaEntities.get(i).getNomCollab() + " " +
-                    mPizzaEntities.get(i).getPrenomCollab();
+            pizzaNames[i] = mPizzaEntities.get(i).getNom() ;
         }
 
-        return collaborateurNames;
+        return pizzaNames;
     }
 
     public void posUpdate(View view) {
