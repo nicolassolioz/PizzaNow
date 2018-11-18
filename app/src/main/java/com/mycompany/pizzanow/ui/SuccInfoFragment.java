@@ -32,6 +32,7 @@ import com.mycompany.pizzanow.util.RecyclerViewItemClickListener;
 import com.mycompany.pizzanow.viewmodel.POS.PosListViewModel;
 import com.mycompany.pizzanow.viewmodel.POS.PosViewModel;
 import com.mycompany.pizzanow.viewmodel.pizza.PizzaListViewModel;
+import com.mycompany.pizzanow.viewmodel.pizza.PizzaOnMenuViewModel;
 import com.mycompany.pizzanow.viewmodel.pizza.PizzaViewModel;
 
 import java.util.ArrayList;
@@ -64,7 +65,7 @@ public class SuccInfoFragment extends Fragment {
         try {
             textView.append(posEntity.getNom());
         }catch (Exception e){
-            Log.d(TAG , "Chargement trop vite");
+            Log.d(TAG , "Chargement trop rapide du fragment");
         }
 
 
@@ -87,7 +88,6 @@ public class SuccInfoFragment extends Fragment {
             public void onItemClick(View v, int position) {
                 Log.d(TAG, "clicked position:" + position);
                 Log.d(TAG, "clicked on: " + mPizzas.get(position).getNom());
-
             }
 
             @Override

@@ -10,7 +10,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         tools:context=".ui.EditActivity">
 
         <TextView
@@ -102,12 +102,12 @@
             app:layout_constraintTop_toBottomOf="@+id/txtPosNPA" />
 
         <TextView
-            android:id="@+id/txtPosLocalite"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Localité : "
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editPosNPA" />
+        android:id="@+id/txtPosLocalite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Localité : "
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editPosNPA" />
 
         <EditText
             android:id="@+id/editPosLocalite"
@@ -186,7 +186,6 @@
             android:text="Save"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/listPosMenu" />
-
         <Button
             android:id="@+id/btnPosAdd"
             android:layout_width="match_parent"
@@ -195,7 +194,6 @@
             android:text="New"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnPosSave" />
-
         <Button
             android:id="@+id/btnPosDelete"
             android:layout_width="match_parent"
@@ -234,12 +232,27 @@
             app:layout_constraintTop_toBottomOf="@+id/txtListMenus" />
 
         <TextView
+            android:id="@+id/txtMenuName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Name : "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/listMenus"  />
+
+        <EditText
+            android:id="@+id/editMenuName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtMenuName" />
+
+        <TextView
             android:id="@+id/txtAllPizzas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="All pizzas : "
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/listMenus" />
+            app:layout_constraintTop_toBottomOf="@+id/editMenuName" />
 
         <ListView
             android:id="@+id/listAllPizzas"
@@ -261,7 +274,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txtMenuPizzas" />
+            app:layout_constraintTop_toBottomOf="@id/txtMenuPizzas"/>
 
         <Button
             android:id="@+id/btnAddPizzasToList"
@@ -280,7 +293,6 @@
             android:text="Save"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnAddPizzasToList" />
-
         <Button
             android:id="@+id/btnMenuAdd"
             android:layout_width="match_parent"
@@ -289,7 +301,6 @@
             android:text="New"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnMenuSave" />
-
         <Button
             android:id="@+id/btnMenuDelete"
             android:layout_width="match_parent"
@@ -385,7 +396,6 @@
             android:text="Save"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/listCollaboPos" />
-
         <Button
             android:id="@+id/btnCollaboAdd"
             android:layout_width="match_parent"
@@ -394,7 +404,6 @@
             android:text="New"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnCollaboSave" />
-
         <Button
             android:id="@+id/btnCollaboDelete"
             android:layout_width="match_parent"
@@ -410,9 +419,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="32dp"
-            android:text="Pizzas : "
             android:textSize="24sp"
             android:textStyle="bold"
+            android:text="Pizzas : "
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnCollaboDelete" />
 

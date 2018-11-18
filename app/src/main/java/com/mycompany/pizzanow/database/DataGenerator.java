@@ -101,28 +101,52 @@ public class DataGenerator {
 
         PizzaEntity margarita = new PizzaEntity();
         //margarita.setIdPizza(1);
-        margarita.setNom("Margarita");
-        margarita.setDescription("tomate mozzarella");
+        margarita.setNom("Margherita");
+        margarita.setDescription("Tomate, mozzarella");
         margarita.setPrix(10.5);
         //margarita.setVegi(true);
 
         PizzaEntity diavola = new PizzaEntity();
         //diavola.setIdPizza(2);
         diavola.setNom("Diavola");
-        diavola.setDescription("tomate mozzarella salami piquant poivrons");
+        diavola.setDescription("Tomate, Mozzarella, Salami piquant, Poivrons");
         diavola.setPrix(12.5);
         //diavola.setVegi(false);
 
         PizzaEntity tambola = new PizzaEntity();
         //tambola.setIdPizza(3);
-        tambola.setNom("tambola");
-        tambola.setDescription("tomate mozzarella jambon");
+        tambola.setNom("Tambola");
+        tambola.setDescription("Tomate, Mozzarella, Jambon");
         tambola.setPrix(12.5);
+        //diavola.setVegi(false);
+
+        PizzaEntity Vesuvio = new PizzaEntity();
+        //tambola.setIdPizza(3);
+        Vesuvio.setNom("Vesuvio");
+        Vesuvio.setDescription("Tomate, Mozzarella, Ail, Grana Padano, Roquette, Tomates cerises");
+        Vesuvio.setPrix(20.0);
+        //diavola.setVegi(false);
+
+        PizzaEntity Krakatoa = new PizzaEntity();
+        //tambola.setIdPizza(3);
+        Krakatoa.setNom("Krakatoa");
+        Krakatoa.setDescription("Tomate, Mozzarella, Chorizo");
+        Krakatoa.setPrix(16.5);
+        //diavola.setVegi(false);
+
+        PizzaEntity Sakurajima = new PizzaEntity();
+        //tambola.setIdPizza(3);
+        Sakurajima.setNom("Sakurajima");
+        Sakurajima.setDescription("tomate mozzarella jambon");
+        Sakurajima.setPrix(24.0);
         //diavola.setVegi(false);
 
         pizzas.add(margarita);
         pizzas.add(diavola);
         pizzas.add(tambola);
+        pizzas.add(Vesuvio);
+        pizzas.add(Krakatoa);
+        pizzas.add(Sakurajima);
 
         return pizzas;
     }
@@ -140,7 +164,7 @@ public class DataGenerator {
         CollaborateurEntity  Antonio = new CollaborateurEntity();
         Antonio.setNomCollab("Bocelli");
         Antonio.setPrenomCollab("Antonio");
-        Antonio.setIdPosCollab(1);
+        Antonio.setIdPosCollab(2);
 
         CollaborateurEntity  Sara = new CollaborateurEntity();
         Sara.setNomCollab("Bartolli");

@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -16,6 +17,7 @@ import com.mycompany.pizzanow.database.entity.CollaborateurEntity;
 import com.mycompany.pizzanow.database.entity.MenuEntity;
 import com.mycompany.pizzanow.database.entity.PizzaEntity;
 import com.mycompany.pizzanow.database.entity.PosEntity;
+import com.mycompany.pizzanow.database.repository.CollaborateurRepository;
 import com.mycompany.pizzanow.viewmodel.Collaborateur.AllCollaborateurListViewModel;
 import com.mycompany.pizzanow.viewmodel.Collaborateur.CollaborateurListViewModel;
 import com.mycompany.pizzanow.viewmodel.Collaborateur.CollaborateurViewModel;
@@ -84,6 +86,17 @@ public class EditActivity extends ToolbarActivity {
             }
         });
 
+        // (5) Fill list of Pizzas with data
+        PizzaListViewModel.Factory factoryPizza= new PizzaListViewModel.Factory(getApplication());
+
+        mPizzaListViewModel = ViewModelProviders.of(this,factoryPizza).get(PizzaListViewModel.class);
+        mPizzaListViewModel.getAllPizzas().observe(this,pizzaEntities  ->  {
+            if(pizzaEntities!=null){
+                mPizzaEntities = pizzaEntities;
+                fillDDLPizzaNames();
+            }
+        });
+
         /*
         ListView allPizzas = findViewById(R.id.listAllPizzas);
         ListView posPizzas = findViewById(R.id.listMenuPizzas);
@@ -136,12 +149,12 @@ public class EditActivity extends ToolbarActivity {
                 npa.setText(Integer.toString(select.getNPA()));
                 //localite
                 EditText localite = findViewById(R.id.editPosLocalite);
-                localite.setText(select.getNom());
+                localite.setText(select.getLocalite());
                 //resp
                 try{
-                    fillDDLCollabPosNames();
+                    fillDDLPosCollabNames();
                     Spinner resp = findViewById(R.id.listPosCollaborateur);
-                    resp.getItemAtPosition(select.getResponsable());
+                    resp.setSelection(select.getResponsable()-1);
                 }catch(Exception e){
                     Log.d(TAG, "no resp !?"+e);
                 }
@@ -155,7 +168,7 @@ public class EditActivity extends ToolbarActivity {
                 try{
                     fillDDLPosMenuNames();
                     Spinner resp = findViewById(R.id.listPosMenu);
-                    resp.getItemAtPosition(select.getIdMenu());
+                    resp.setSelection(select.getIdMenu()-1);
                 }catch(Exception e){
                     Log.d(TAG, "no menu !?"+e);
                 }
@@ -169,6 +182,21 @@ public class EditActivity extends ToolbarActivity {
         });
     }
 
+    public void fillDDLPosCollabNames() {
+        Spinner dropdown = findViewById(R.id.listPosCollaborateur);
+        String[] items = getNamesCollaborateurs();
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
+        dropdown.setAdapter(adapter);
+    }
+
+    public void fillDDLPosMenuNames() {
+        Spinner dropdown = findViewById(R.id.listPosMenu);
+        String[] items = getNamesMenus();
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
+        dropdown.setAdapter(adapter);
+    }
+
+
     public String[] getNamesPos() {
 
         if(mPosEntities.equals(null)) {
@@ -177,7 +205,7 @@ public class EditActivity extends ToolbarActivity {
         }
         String[] posNames = new String[mPosEntities.size()];
         for(int i = 0; i<mPosEntities.size(); i++) {
-            posNames[i] = mPosEntities.get(i).getNom();
+                posNames[i] = mPosEntities.get(i).getNom();
         }
 
         return posNames;
@@ -194,32 +222,18 @@ public class EditActivity extends ToolbarActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 MenuEntity select = mMenuEntities.get(position);
                 //name
-                EditText name = findViewById(R.id.editPosName);
+                EditText name = findViewById(R.id.editMenuName);
                 name.setText(select.getNomMenu());
                 //resp
                 /*try{
                     fillDDLCollabPosNames();
-                    Spinner resp = findViewById(R.id.listPosCollaborateur);
-                    resp.getItemAtPosition(select.getResponsable());
+                    ListView resp = findViewById(R.id.listAllPizzas);
+
+                    resp.setAdapter();
                 }catch(Exception e){
                     Log.d(TAG, "no resp !?"+e);
                 }
-                //email
-                EditText email = findViewById(R.id.editPosEmail);
-                email.setText(select.getEmail());
-                //phone
-                EditText phone = findViewById(R.id.editPosPhone);
-                phone.setText(select.getPhone());
-                //menu
-                try{
-                    fillDDLPosMenuNames();
-                    Spinner resp = findViewById(R.id.listPosMenu);
-                    resp.getItemAtPosition(select.getIdMenu());
-                }catch(Exception e){
-                    Log.d(TAG, "no menu !?"+e);
-                }
                 */
-
             }
 
             @Override
@@ -229,12 +243,7 @@ public class EditActivity extends ToolbarActivity {
         });
     }
 
-    public void fillDDLPosMenuNames() {
-        Spinner dropdown = findViewById(R.id.listPosMenu);
-        String[] items = getNamesMenus();
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
-        dropdown.setAdapter(adapter);
-    }
+
 
     public String[] getNamesMenus() {
 
@@ -255,14 +264,42 @@ public class EditActivity extends ToolbarActivity {
         String[] items = getNamesCollaborateurs();
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
         dropdown.setAdapter(adapter);
+
+        dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                CollaborateurEntity select = mCollaborateurEntities.get(position);
+                //Nom
+                EditText name = findViewById(R.id.editCollaboName);
+                name.setText(select.getNomCollab());
+                //Prénom
+                EditText address = findViewById(R.id.editCollaboSurname);
+                address.setText(select.getPrenomCollab());
+                //resp
+                try{
+                    fillDDLCollabPosNames();
+                    Spinner resp = findViewById(R.id.listCollaboPos);
+                    resp.setSelection(select.getIdPosCollab()-1);
+                }catch(Exception e){
+                    Log.d(TAG, "no resp !?"+e);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     public void fillDDLCollabPosNames() {
-        Spinner dropdown = findViewById(R.id.listPosCollaborateur);
-        String[] items = getNamesCollaborateurs();
+        Spinner dropdown = findViewById(R.id.listCollaboPos);
+        String[] items = getNamesPos();
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
         dropdown.setAdapter(adapter);
     }
+
+
 
     public String[] getNamesCollaborateurs() {
 
@@ -279,6 +316,34 @@ public class EditActivity extends ToolbarActivity {
         return collaborateurNames;
     }
 
+    public void fillDDLPizzaNames() {
+        Spinner dropdown = findViewById(R.id.listPizza);
+        String[] items = getNamesPizzas();
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
+        dropdown.setAdapter(adapter);
+
+        dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                PizzaEntity select = mPizzaEntities.get(position);
+                //name
+                EditText name = findViewById(R.id.editPizzaName);
+                name.setText(select.getNom());
+                //description
+                EditText desc = findViewById(R.id.editPizzaDescription);
+                desc.setText(select.getDescription());
+                //prix
+                EditText prix = findViewById(R.id.editPizzaPrice);
+                prix.setText(Double.toString(select.getPrix()));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+    }
+
     public String[] getNamesPizzas() {
 
         if(mPizzaEntities.equals(null)) {
@@ -288,7 +353,6 @@ public class EditActivity extends ToolbarActivity {
         String[] pizzaNames = new String[mPizzaEntities.size()];
         for(int i = 0; i<mPizzaEntities.size(); i++) {
             pizzaNames[i] = mPizzaEntities.get(i).getNom();
-
         }
 
         return pizzaNames;

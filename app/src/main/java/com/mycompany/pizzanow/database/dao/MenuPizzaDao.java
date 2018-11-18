@@ -30,7 +30,10 @@ public interface MenuPizzaDao {
     void delete(MenuPizzaEntity menuPizza);
 
     @Query("SELECT * FROM MenuPizza WHERE idMenu = :id")
-    LiveData<MenuPizzaEntity> getByIdMenu(int id);
+    LiveData<List<MenuPizzaEntity>> getByIdMenu(int id);
+
+    @Query("SELECT idPizza FROM MenuPizza WHERE idMenu = :id")
+    LiveData<List<Integer>> getIdPizzasByIdMenu(int id);
 
 
 }

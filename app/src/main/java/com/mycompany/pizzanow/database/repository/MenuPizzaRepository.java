@@ -26,8 +26,8 @@ public class MenuPizzaRepository {
         return sInstance;
     }
 
-    public LiveData<MenuPizzaEntity> getPizzasBasedMenu(final int idMenu) {
-        return mDatabase.menuPizzaDao().getByIdMenu(idMenu);
+    public LiveData<List<Integer>> getPizzasBasedMenu(final int idMenu) {
+        return mDatabase.menuPizzaDao().getIdPizzasByIdMenu(idMenu);
     }
 
 

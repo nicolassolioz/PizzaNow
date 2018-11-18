@@ -9,6 +9,8 @@ import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Transaction;
 import android.arch.persistence.room.Update;
+import android.widget.ListAdapter;
+
 import com.mycompany.pizzanow.database.entity.PizzaEntity;
 import java.util.List;
 
@@ -34,4 +36,10 @@ public interface PizzaDao {
 
     @Query("SELECT * FROM Pizza WHERE idPizza = :id")
     LiveData<PizzaEntity> getById(int id);
+
+    @Query("SELECT P.idPizza, P.Nom, P.Description, P.Prix FROM Pizza AS P INNER JOIN MenuPizza AS MP ON P.idPizza = MP.idPizza INNER JOIN Menu AS M ON M.idMenu = :id")
+    LiveData<List<PizzaEntity>> getPizzasByIdMenu(int id);
+
+    @Query("SELECT * FROM Pizza WHERE idPizza IN (:ids) ")
+    LiveData<List<PizzaEntity>> getAllByIdMenu(List<Integer> ids);
 }

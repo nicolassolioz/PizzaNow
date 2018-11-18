@@ -35,6 +35,14 @@ public class PizzaRepository {
         return mDatabase.pizzaDao().getAll();
     }
 
+    public LiveData<List<PizzaEntity>> getPizzasByIdMenu(int id) {
+        return mDatabase.pizzaDao().getPizzasByIdMenu(1);
+    }
+
+    public LiveData<List<PizzaEntity>> getAllByIdMenu(List<Integer> ids) {
+        return mDatabase.pizzaDao().getAllByIdMenu(ids);
+    }
+
    /* public LiveData<List<ClientWithAccounts>> getOtherClientsWithAccounts(final String owner) {
         return mDatabase.pizzaDao().getOtherClientsWithAccounts(owner);
     }*/
