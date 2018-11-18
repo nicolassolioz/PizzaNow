@@ -57,6 +57,9 @@ public class EditActivity extends ToolbarActivity {
     private CollaborateurViewModel mCollaborateurViewModel;
     private PizzaViewModel mPizzaViewModel;
 
+    private Spinner resp;
+    private Spinner place;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -157,7 +160,7 @@ public class EditActivity extends ToolbarActivity {
                 //resp
                 try{
                     fillDDLPosCollabNames();
-                    Spinner resp = findViewById(R.id.listPosCollaborateur);
+                    resp = findViewById(R.id.listPosCollaborateur);
                     resp.setSelection(select.getResponsable()-1);
                 }catch(Exception e){
                     Log.d(TAG, "no resp !?"+e);
@@ -230,8 +233,8 @@ public class EditActivity extends ToolbarActivity {
                 //resp
                 try{
                     fillDDLCollabPosNames();
-                    Spinner resp = findViewById(R.id.listCollaboPos);
-                    resp.setSelection(select.getIdPosCollab()-1);
+                    place = findViewById(R.id.listCollaboPos);
+                    place.setSelection(select.getIdPosCollab()-1);
                 }catch(Exception e){
                     Log.d(TAG, "no resp !?"+e);
                 }
@@ -317,6 +320,9 @@ public class EditActivity extends ToolbarActivity {
         EditText editPosEmail = findViewById(R.id.editPosEmail);
         EditText editPosPhone = findViewById(R.id.editPosPhone);
 
+        int indice = resp.getSelectedItemPosition();
+        CollaborateurEntity respPos = mCollaborateurEntities.get(indice);
+
 
         mPosEntity.setNom(editPosName.getText().toString());
         mPosEntity.setLocalite(editPosLocalite.getText().toString());
@@ -325,7 +331,7 @@ public class EditActivity extends ToolbarActivity {
         mPosEntity.setEmail(editPosEmail.getText().toString());
         mPosEntity.setPhone(editPosPhone.getText().toString());
         //mPosEntity.setIdMenu(2);
-        mPosEntity.setResponsable(1);
+        mPosEntity.setResponsable(respPos.getIdCollab());
 
         mPosViewModel.updatePos(mPosEntity);
 
@@ -355,7 +361,7 @@ public class EditActivity extends ToolbarActivity {
         newPos.setEmail(editPosEmail.getText().toString());
         newPos.setPhone(editPosPhone.getText().toString());
         //newPos.setIdMenu(2);
-        newPos.setResponsable(1);
+        newPos.setResponsable(Integer.parseInt(resp.getSelectedItem().toString()));
 
         mPosViewModel.createPos(newPos);
 
