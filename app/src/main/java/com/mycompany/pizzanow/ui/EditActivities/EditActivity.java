@@ -353,6 +353,8 @@ public class EditActivity extends ToolbarActivity {
         EditText editPosEmail = findViewById(R.id.editPosEmail);
         EditText editPosPhone = findViewById(R.id.editPosPhone);
 
+        int indice = resp.getSelectedItemPosition();
+        CollaborateurEntity respPos = mCollaborateurEntities.get(indice);
 
         newPos.setNom(editPosName.getText().toString());
         newPos.setLocalite(editPosLocalite.getText().toString());
@@ -360,8 +362,8 @@ public class EditActivity extends ToolbarActivity {
         newPos.setAdresse(editPosAddress.getText().toString());
         newPos.setEmail(editPosEmail.getText().toString());
         newPos.setPhone(editPosPhone.getText().toString());
-        //newPos.setIdMenu(2);
-        newPos.setResponsable(Integer.parseInt(resp.getSelectedItem().toString()));
+
+        newPos.setResponsable(respPos.getIdCollab());
 
         mPosViewModel.createPos(newPos);
 
@@ -395,12 +397,12 @@ public class EditActivity extends ToolbarActivity {
         EditText editCollabName = findViewById(R.id.editCollaboName);
         EditText editCollabSurname = findViewById(R.id.editCollaboSurname);
 
-        //EditText editCollabPos = findViewById(R.id.listCollaboPos);
-
+        int indice = place.getSelectedItemPosition();
+        PosEntity workPlace = mPosEntities.get(indice);
 
         mCollaborateurEntity.setNomCollab(editCollabName.getText().toString());
         mCollaborateurEntity.setPrenomCollab(editCollabSurname.getText().toString());
-
+        mCollaborateurEntity.setIdPosCollab(workPlace.getIdFiliale());
 
         mCollaborateurViewModel.updateCollaborateur(mCollaborateurEntity);
 
@@ -417,12 +419,12 @@ public class EditActivity extends ToolbarActivity {
         EditText editCollabName = findViewById(R.id.editCollaboName);
         EditText editCollabSurname = findViewById(R.id.editCollaboSurname);
 
-        //EditText editCollabPos = findViewById(R.id.listCollaboPos);
-
+        int indice = place.getSelectedItemPosition();
+        PosEntity workPlace = mPosEntities.get(indice);
 
         newCollab.setNomCollab(editCollabName.getText().toString());
         newCollab.setPrenomCollab(editCollabSurname.getText().toString());
-
+        newCollab.setIdPosCollab(workPlace.getIdFiliale());
 
         mCollaborateurViewModel.createCollab(newCollab);
 
