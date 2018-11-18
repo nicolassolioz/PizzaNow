@@ -12,6 +12,9 @@ import android.util.Log;
 import com.mycompany.pizzanow.BaseApp;
 import com.mycompany.pizzanow.database.async.pizza.UpdatePizza;
 
+import com.mycompany.pizzanow.database.async.pos.CreatePos;
+import com.mycompany.pizzanow.database.async.pos.DeletePos;
+import com.mycompany.pizzanow.database.async.pos.UpdatePos;
 import com.mycompany.pizzanow.database.entity.PizzaEntity;
 import com.mycompany.pizzanow.database.entity.PosEntity;
 import com.mycompany.pizzanow.database.repository.PizzaRepository;
@@ -25,9 +28,9 @@ public class PosViewModel extends AndroidViewModel {
 
     private PosRepository posRepository;
 
-    private  final MediatorLiveData<PosEntity> mObservablePos;
+    private final MediatorLiveData<PosEntity> mObservablePos;
 
-    public PosViewModel(@NonNull Application application, final int posId, PosRepository repository){
+    public PosViewModel(@NonNull Application application, final int posId, PosRepository repository) {
         super(application);
 
         posRepository = repository;
@@ -62,7 +65,52 @@ public class PosViewModel extends AndroidViewModel {
         }
     }
 
-    public LiveData<PosEntity> getPos() {return mObservablePos;}
+    public LiveData<PosEntity> getPos() {
+        return mObservablePos;
+    }
 
+    public void createPos(PosEntity pos) {
+        new CreatePos(getApplication(), new OnAsyncEventListener() {
+            @Override
+            public void onSuccess() {
+                Log.d(TAG, "createPos: success");
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+                Log.d(TAG, "createPos: failure", e);
+            }
+        }).execute(pos);
+    }
+
+    public void deletePos(PosEntity pos, OnAsyncEventListener callback) {
+        new DeletePos(getApplication(), new OnAsyncEventListener() {
+            @Override
+            public void onSuccess() {
+                callback.onSuccess();
+                Log.d(TAG, "DeletePos: success");
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+                callback.onFailure(e);
+                Log.d(TAG, "DeletePos: failure", e);
+            }
+        }).execute(pos);
+    }
+
+    public void updatePos(PosEntity pos) {
+        new UpdatePos(getApplication(), new OnAsyncEventListener() {
+            @Override
+            public void onSuccess() {
+                Log.d(TAG, "UpdatePos: success");
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+                Log.d(TAG, "UpdatePos: failure", e);
+            }
+        }).execute(pos);
+    }
 
 }

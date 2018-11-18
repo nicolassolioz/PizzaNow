@@ -9,7 +9,7 @@ import com.mycompany.pizzanow.util.OnAsyncEventListener;
 
 public class CreatePos extends AsyncTask<PosEntity, Void, Void> {
 
-    private static final String TAG = "CreatePizza";
+    private static final String TAG = "CreatePos";
 
     private Application mApplication;
     private OnAsyncEventListener mCallBack;
