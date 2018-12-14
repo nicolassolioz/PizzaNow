@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.support.v4.view.GravityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
@@ -81,7 +82,10 @@ public class ToolbarActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    //changement de la langue selon le choix de l'utilisateur
+
+
+
+        //changement de la langue selon le choix de l'utilisateur
     private void setLanguage(String language) {
         Locale myLocale = new Locale(language);
         Locale.setDefault(myLocale);
