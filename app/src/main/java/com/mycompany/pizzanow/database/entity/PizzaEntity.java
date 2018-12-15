@@ -1,12 +1,14 @@
 package com.mycompany.pizzanow.database.entity;
 
-import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.PrimaryKey;
-import android.support.annotation.NonNull;
+
+import com.google.firebase.database.Exclude;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import com.mycompany.pizzanow.model.Pizza;
 
+/*
 @Entity(tableName = "Pizza")
 public class PizzaEntity implements Pizza, Comparable{
 
@@ -24,6 +26,13 @@ public class PizzaEntity implements Pizza, Comparable{
 
     //@ColumnInfo(name = "Vegi")
     //private Boolean vegi;
+*/
+public class PizzaEntity implements Pizza {
+
+    private int idPizza;
+    private String nom;
+    private String description;
+    private double prix;
 
     public PizzaEntity(){}
 
@@ -36,6 +45,8 @@ public class PizzaEntity implements Pizza, Comparable{
 
     }
 
+    /*
+
     public PizzaEntity(@NonNull int idPizza, String nom, String description, double prix,
                      boolean vegi) {
         this.idPizza = idPizza;
@@ -47,15 +58,27 @@ public class PizzaEntity implements Pizza, Comparable{
 
 
     @NonNull
+    */
+    @Exclude
     @Override
-    public int getIdPizza() {        return idPizza;    }
+    public int getIdPizza() {return idPizza;    }
 
-    public void setIdPizza(@NonNull int id) {
+    public void setIdPizza(int id) {
         this.idPizza = id;
+    }
+
+    @Override
+    public String getNom() {
+        return nom;
     }
 
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    @Override
+    public String getDescription() {
+        return description;
     }
 
     public void setDescription(String description) {
@@ -66,24 +89,15 @@ public class PizzaEntity implements Pizza, Comparable{
         this.prix = prix;
     }
 
-    /*public void setVegi(boolean vegi) {
-        this.vegi = vegi;
-    }*/
-
-    @Override
-    public String getNom() {
-        return nom;
-    }
-
-    @Override
-    public String getDescription() {
-        return description;
-    }
-
     @Override
     public double getPrix() {
         return prix;
     }
+
+    /*public void setVegi(boolean vegi) {
+        this.vegi = vegi;
+    }*/
+
 
     /*@Override
     public boolean getVegi() {
@@ -96,7 +110,7 @@ public class PizzaEntity implements Pizza, Comparable{
     public boolean equals(Object obj){
         if(obj == null) return false;
         if(obj == this) return true;
-        if(!(obj instanceof PosEntity)) return false;
+        if(!(obj instanceof PizzaEntity)) return false;
         PizzaEntity o = (PizzaEntity) obj;
         return o.getIdPizza() == this.getIdPizza();
     }
@@ -104,9 +118,20 @@ public class PizzaEntity implements Pizza, Comparable{
     @Override
     public String toString(){return nom + " : " + description;}
 
+    @Exclude
+    public Map<String, Object> toMap(){
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("nom", nom);
+        result.put("description", description);
+
+        return result;
+    }
+
+    /*
     @Override
     public int compareTo(@NonNull Object o) {
         return toString().compareTo(o.toString());
     }
+    */
 }
 

@@ -26,6 +26,7 @@ public class MenuPizzaRepository {
         return sInstance;
     }
 
+    /*
     public LiveData<List<Integer>> getPizzasBasedMenu(final int idMenu) {
         return mDatabase.menuPizzaDao().getIdPizzasByIdMenu(idMenu);
     }
@@ -42,4 +43,5 @@ public class MenuPizzaRepository {
     public void delete(final MenuPizzaEntity menuPizza) {
         mDatabase.menuPizzaDao().delete(menuPizza);
     }
+    */
 }

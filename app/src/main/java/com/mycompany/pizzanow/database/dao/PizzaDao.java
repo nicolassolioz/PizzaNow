@@ -15,7 +15,7 @@ import com.mycompany.pizzanow.database.entity.PizzaEntity;
 import java.util.List;
 
 @Dao
-public interface PizzaDao {
+public interface PizzaDao {/*
     @Query("SELECT * FROM Pizza")
     LiveData<List<PizzaEntity>> getAll();
 
@@ -42,4 +42,5 @@ public interface PizzaDao {
 
     @Query("SELECT * FROM Pizza WHERE idPizza IN (:ids) ")
     LiveData<List<PizzaEntity>> getAllByIdMenu(List<Integer> ids);
+    */
 }

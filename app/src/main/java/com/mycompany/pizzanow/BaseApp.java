@@ -22,7 +22,7 @@ public class BaseApp extends Application {
     }
 
     public PizzaRepository getPizzaRepository() {
-        return PizzaRepository.getInstance(getDatabase());
+        return PizzaRepository.getInstance();
     }
 
     public CollaborateurRepository getCollaborateurRepository() {
@@ -37,8 +37,8 @@ public class BaseApp extends Application {
         return MenuRepository.getInstance(getDatabase());
     }
 
-    public MenuPizzaRepository getMenuPizzaRepository() {
+   /* public MenuPizzaRepository getMenuPizzaRepository() {
         return MenuPizzaRepository.getInstance(getDatabase());
     }
-
+*/
 }

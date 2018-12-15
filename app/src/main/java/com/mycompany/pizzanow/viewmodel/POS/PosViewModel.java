@@ -10,7 +10,6 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.mycompany.pizzanow.BaseApp;
-import com.mycompany.pizzanow.database.async.pizza.UpdatePizza;
 
 import com.mycompany.pizzanow.database.async.pos.CreatePos;
 import com.mycompany.pizzanow.database.async.pos.DeletePos;

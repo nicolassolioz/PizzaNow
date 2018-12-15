@@ -16,7 +16,9 @@ import com.mycompany.pizzanow.database.repository.PizzaRepository;
 
 import java.util.List;
 
-public class PizzaOnMenuViewModel extends AndroidViewModel {
+public class PizzaOnMenuViewModel {
+    /*extends
+} AndroidViewModel {
 
     private static final String TAG = "PizzaOnMenuViewModel";
 
@@ -45,7 +47,7 @@ public class PizzaOnMenuViewModel extends AndroidViewModel {
 
     /**
      * A creator is used to inject the account id into the ViewModel
-     */
+
     public static class Factory extends ViewModelProvider.NewInstanceFactory {
 
         @NonNull
@@ -72,8 +74,9 @@ public class PizzaOnMenuViewModel extends AndroidViewModel {
 
     /**
      * Expose the LiveData Pizza query so the UI can observe it.
-     */
+
     public LiveData<List<PizzaEntity>> getPizzasOnmenu() {
         return mObservablePizzas;
     }
+    */
 }

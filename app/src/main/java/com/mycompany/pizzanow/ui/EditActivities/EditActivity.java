@@ -605,17 +605,7 @@ public class EditActivity extends ToolbarActivity {
 
     //delete selected pizza
     public void pizzaDelete(View view) {
-        mPizzaViewModel.deletePizza(mPizzaEntity, new OnAsyncEventListener() {
-            @Override
-            public void onSuccess() {
-                fillPizzaSection();
-            }
-
-            @Override
-            public void onFailure(Exception e) {
-
-            }
-        });
+        mPizzaViewModel.deletePizza(mPizzaEntity);
         Toast.makeText(this, "Pizza deleted",
                 Toast.LENGTH_SHORT).show();
 

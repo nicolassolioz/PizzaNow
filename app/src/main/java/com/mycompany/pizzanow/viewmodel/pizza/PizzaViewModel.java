@@ -10,9 +10,6 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.mycompany.pizzanow.BaseApp;
-import com.mycompany.pizzanow.database.async.pizza.CreatePizza;
-import com.mycompany.pizzanow.database.async.pizza.DeletePizza;
-import com.mycompany.pizzanow.database.async.pizza.UpdatePizza;
 import com.mycompany.pizzanow.database.entity.PizzaEntity;
 import com.mycompany.pizzanow.database.repository.PizzaRepository;
 import com.mycompany.pizzanow.util.OnAsyncEventListener;
@@ -36,24 +33,18 @@ public class PizzaViewModel extends AndroidViewModel {
         // set by default null, until we get data from the database.
         mObservablePizza.setValue(null);
 
-        LiveData<PizzaEntity> pizza = mRepository.getPizza(pizzaId);
+        if(Integer.toString(pizzaId) != null){
+            LiveData<PizzaEntity> pizza = mRepository.getPizza(pizzaId);
 
-        // observe the changes of the pizza entity from the database and forward them
-        mObservablePizza.addSource(pizza, mObservablePizza::setValue);
+            // observe the changes of the pizza entity from the database and forward them
+            mObservablePizza.addSource(pizza, mObservablePizza::setValue);
+        }
+
+
     }
 
     public void createPizza(PizzaEntity newPizza) {
-        new CreatePizza(getApplication(), new OnAsyncEventListener() {
-            @Override
-            public void onSuccess() {
-                Log.d(TAG, "create pizza : success");
-            }
-
-            @Override
-            public void onFailure(Exception e) {
-                Log.d(TAG, "create pizza : fail");
-            }
-        }).execute(newPizza);
+        ((BaseApp) getApplication()).getPizzaRepository().insert(newPizza);
     }
 
     /**
@@ -69,12 +60,11 @@ public class PizzaViewModel extends AndroidViewModel {
         private final PizzaRepository mRepository;
 
         public Factory(@NonNull Application application, int pizzaId) {
-            Log.d(TAG,"PizzaViewModel enter factory");
+
             mApplication = application;
             Log.d(TAG,"PizzaViewModel enter factory, app set");
             mPizzaId = pizzaId;
             Log.d(TAG,"PizzaViewModel enter factory, pizza id set");
-
 
             mRepository = ((BaseApp) application).getPizzaRepository();
             Log.d(TAG,"PizzaViewModel enter factory, Repository set");
@@ -96,33 +86,12 @@ public class PizzaViewModel extends AndroidViewModel {
     }
 
     public void updatePizza(PizzaEntity pizza) {
-        new UpdatePizza(getApplication(), new OnAsyncEventListener() {
-            @Override
-            public void onSuccess() {
-                Log.d(TAG, "updatePizza: success");
-            }
-
-            @Override
-            public void onFailure(Exception e) {
-                Log.d(TAG, "updatePizza: failure", e);
-            }
-        }).execute(pizza);
+        ((BaseApp) getApplication()).getPizzaRepository().update(pizza);
     }
 
-    public void deletePizza(PizzaEntity pizza, OnAsyncEventListener callback) {
-        new DeletePizza(getApplication(), new OnAsyncEventListener() {
-            @Override
-            public void onSuccess() {
-                callback.onSuccess();
-                Log.d(TAG, "deletePizza: success");
-            }
+    public void deletePizza(PizzaEntity pizza) {
 
-            @Override
-            public void onFailure(Exception e) {
-                callback.onFailure(e);
-                Log.d(TAG, "deletePizza: failure", e);
-            }
-        }).execute(pizza);
+        ((BaseApp) getApplication()).getPizzaRepository().delete(pizza);
 
     }
 }

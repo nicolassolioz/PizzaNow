@@ -14,6 +14,7 @@ public class DataGenerator {
 
     // Code that fills the database with initial data
 
+    /*
     public static List<PizzaEntity> generatePizzas() {
         List<PizzaEntity> pizzas = new ArrayList<>();
 
@@ -68,6 +69,7 @@ public class DataGenerator {
 
         return pizzas;
     }
+    */
 
     // Collaborators
 

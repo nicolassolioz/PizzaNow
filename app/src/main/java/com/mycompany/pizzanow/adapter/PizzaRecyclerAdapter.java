@@ -46,11 +46,11 @@ public class PizzaRecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerView.V
 
 
     public PizzaRecyclerAdapter(RecyclerViewItemClickListener listener) {
-        mListener = listener;
-    }
+            mListener = listener;
+        }
 
-    @Override
-    public PizzaRecyclerAdapter.PizzaViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        @Override
+        public PizzaRecyclerAdapter.PizzaViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             // create a new view
             View v = (View) LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.recycler_view_item_1, parent, false);
@@ -63,7 +63,7 @@ public class PizzaRecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerView.V
             return pizzaViewHolder;
 
 
-    }
+        }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
