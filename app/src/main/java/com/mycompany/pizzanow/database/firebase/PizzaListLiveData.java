@@ -51,7 +51,7 @@ public class PizzaListLiveData extends LiveData<List<PizzaEntity>> {
         List<PizzaEntity> accounts = new ArrayList<>();
         for (DataSnapshot childSnapshot : snapshot.getChildren()) {
             PizzaEntity entity = childSnapshot.getValue(PizzaEntity.class);
-            entity.setIdPizza(Integer.parseInt(childSnapshot.getKey()));
+            entity.setIdPizza(childSnapshot.getKey());
             accounts.add(entity);
         }
         return accounts;

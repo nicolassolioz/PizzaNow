@@ -81,7 +81,7 @@ public class PizzaRepository {
     }
 
     public void update(final PizzaEntity pizza) {
-        String id = Integer.toString(pizza.getIdPizza());
+        String id = pizza.getIdPizza();
         FirebaseDatabase.getInstance()
                 .getReference("pizzas")
                 .child(id)
@@ -95,7 +95,7 @@ public class PizzaRepository {
     }
 
     public void delete(final PizzaEntity pizza) {
-        String id = Integer.toString(pizza.getIdPizza());
+        String id = pizza.getIdPizza();
         FirebaseDatabase.getInstance()
                 .getReference("pizzas")
                 .child(id)
@@ -109,8 +109,8 @@ public class PizzaRepository {
     }
 
     public void transaction(final PizzaEntity sender, final PizzaEntity recipient){
-        String senderId = Integer.toString(sender.getIdPizza());
-        String recipientId = Integer.toString(recipient.getIdPizza());
+        String senderId = sender.getIdPizza();
+        String recipientId = recipient.getIdPizza();
         final DatabaseReference rootReference = FirebaseDatabase.getInstance().getReference();
         rootReference.runTransaction(new Transaction.Handler() {
             @NonNull

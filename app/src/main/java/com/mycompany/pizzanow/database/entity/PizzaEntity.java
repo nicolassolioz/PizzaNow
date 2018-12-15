@@ -29,7 +29,7 @@ public class PizzaEntity implements Pizza, Comparable{
 */
 public class PizzaEntity implements Pizza {
 
-    private int idPizza;
+    private String idPizza;
     private String nom;
     private String description;
     private double prix;
@@ -61,9 +61,9 @@ public class PizzaEntity implements Pizza {
     */
     @Exclude
     @Override
-    public int getIdPizza() {return idPizza;    }
+    public String getIdPizza() {return idPizza;    }
 
-    public void setIdPizza(int id) {
+    public void setIdPizza(String id) {
         this.idPizza = id;
     }
 
