@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.mycompany.pizzanow.BaseApp;
 import com.mycompany.pizzanow.R;
+import com.mycompany.pizzanow.database.AppDatabase;
 import com.mycompany.pizzanow.database.entity.CollaborateurEntity;
 import com.mycompany.pizzanow.database.entity.MenuEntity;
 import com.mycompany.pizzanow.database.entity.PizzaEntity;
@@ -588,16 +589,20 @@ public class EditActivity extends ToolbarActivity {
 
             PizzaEntity newPizza = new PizzaEntity();
 
-//            newPizza.setNom(editPizzaName.getText().toString());
-  //          newPizza.setDescription(editPizzaDesc.getText().toString());
-    //        newPizza.setPrix(Double.parseDouble(editPizzaPrice.getText().toString()));
+            newPizza.setNom(editPizzaName.getText().toString());
+            newPizza.setDescription(editPizzaDesc.getText().toString());
+            newPizza.setPrix(Double.parseDouble(editPizzaPrice.getText().toString()));
 
-            newPizza.setNom("test");
+
+            /*newPizza.setNom("test");
             newPizza.setDescription("estdesc");
-            newPizza.setPrix(12.5);
+            newPizza.setPrix(12.5);*/
 
             System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"+newPizza.getNom());
 
+            if (mPizzaViewModel == null) {
+                mPizzaViewModel = new PizzaViewModel(getApplication(),"1",PizzaRepository.getInstance());
+            }
 
             mPizzaViewModel.createPizza(newPizza);
 
