@@ -21,6 +21,7 @@ import com.mycompany.pizzanow.database.entity.PizzaEntity;
 import com.mycompany.pizzanow.database.entity.PosEntity;
 import com.mycompany.pizzanow.database.repository.PizzaRepository;
 import com.mycompany.pizzanow.database.repository.PosRepository;
+import com.mycompany.pizzanow.model.Pizza;
 import com.mycompany.pizzanow.ui.Toolbar.ToolbarActivity;
 import com.mycompany.pizzanow.util.OnAsyncEventListener;
 import com.mycompany.pizzanow.database.repository.CollaborateurRepository;
@@ -308,7 +309,7 @@ public class EditActivity extends ToolbarActivity {
 
                 //position should be the ID
                 PizzaRepository pizzaRepository = ((BaseApp) getApplication()).getPizzaRepository();
-                mPizzaViewModel = new PizzaViewModel(getApplication(),position,pizzaRepository);
+                mPizzaViewModel = new PizzaViewModel(getApplication(),select.getIdPizza(),pizzaRepository);
             }
 
             @Override
@@ -567,7 +568,7 @@ public class EditActivity extends ToolbarActivity {
     //insert new pizza
     public void pizzaInsert(View view) {
 
-        PizzaEntity newPizza = new PizzaEntity();
+        System.out.println("entrer insert");
 
         EditText editPizzaName = findViewById(R.id.editPizzaName);
         EditText editPizzaDesc = findViewById(R.id.editPizzaDescription);
@@ -575,16 +576,28 @@ public class EditActivity extends ToolbarActivity {
 
         boolean numeric = true;
 
+        Double num;
+
         try {
-            Double num = Double.parseDouble(editPizzaPrice.getText().toString());
+            num = Double.parseDouble(editPizzaPrice.getText().toString());
         } catch (NumberFormatException e) {
             numeric = false;
         }
         if(numeric)
         {
-            newPizza.setNom(editPizzaName.getText().toString());
-            newPizza.setDescription(editPizzaDesc.getText().toString());
-            newPizza.setPrix(Double.parseDouble(editPizzaPrice.getText().toString()));
+
+            PizzaEntity newPizza = new PizzaEntity();
+
+//            newPizza.setNom(editPizzaName.getText().toString());
+  //          newPizza.setDescription(editPizzaDesc.getText().toString());
+    //        newPizza.setPrix(Double.parseDouble(editPizzaPrice.getText().toString()));
+
+            newPizza.setNom("test");
+            newPizza.setDescription("estdesc");
+            newPizza.setPrix(12.5);
+
+            System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"+newPizza.getNom());
+
 
             mPizzaViewModel.createPizza(newPizza);
 
@@ -598,8 +611,6 @@ public class EditActivity extends ToolbarActivity {
             Toast.makeText(this, "Pizza NOT created, check that the price is in number format (Example : 70.2)",
                     Toast.LENGTH_SHORT).show();
         }
-
-
 
     }
 

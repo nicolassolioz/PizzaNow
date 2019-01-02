@@ -36,17 +36,16 @@ public class PizzaRepository {
         return sInstance;
     }
 
-    public LiveData<PizzaEntity> getPizza(final int pizzaId) {
-        String id = Integer.toString(pizzaId);
+    public LiveData<PizzaEntity> getPizza(final String pizzaId) {
         DatabaseReference reference = FirebaseDatabase.getInstance()
-                .getReference("Pizza")
-                .child(id);
+                .getReference("pizzas")
+                .child(pizzaId);
         return new PizzaLiveData(reference);
     }
 
     public LiveData<List<PizzaEntity>> getAllPizza() {
         DatabaseReference reference = FirebaseDatabase.getInstance()
-                .getReference("All Pizzas");
+                .getReference("pizzas");
         return new PizzaListLiveData(reference);
     }
 
@@ -64,8 +63,9 @@ public class PizzaRepository {
     }*/
 
     public void insert(final PizzaEntity pizza) {
+
         DatabaseReference reference = FirebaseDatabase.getInstance()
-                .getReference("Pizzas");
+                .getReference("pizzas");
         String key = reference.push().getKey();
         FirebaseDatabase.getInstance()
                 .getReference("pizzas")

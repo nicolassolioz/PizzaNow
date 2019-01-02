@@ -37,7 +37,6 @@ public class PizzaLiveData extends LiveData<PizzaEntity> {
         @Override
         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
             PizzaEntity entity = dataSnapshot.getValue(PizzaEntity.class);
-            // doute sur la methodeParseInt
             entity.setIdPizza(dataSnapshot.getKey());
             setValue(entity);
         }

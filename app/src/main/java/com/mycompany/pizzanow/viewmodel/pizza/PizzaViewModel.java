@@ -24,7 +24,7 @@ public class PizzaViewModel extends AndroidViewModel {
     private final MediatorLiveData<PizzaEntity> mObservablePizza;
 
     public PizzaViewModel(@NonNull Application application,
-                           final int pizzaId, PizzaRepository pizzaRepository) {
+                           final String pizzaId, PizzaRepository pizzaRepository) {
         super(application);
 
         mRepository = pizzaRepository;
@@ -33,39 +33,36 @@ public class PizzaViewModel extends AndroidViewModel {
         // set by default null, until we get data from the database.
         mObservablePizza.setValue(null);
 
-        if(Integer.toString(pizzaId) != null){
             LiveData<PizzaEntity> pizza = mRepository.getPizza(pizzaId);
 
             // observe the changes of the pizza entity from the database and forward them
             mObservablePizza.addSource(pizza, mObservablePizza::setValue);
-        }
-
 
     }
 
     public void createPizza(PizzaEntity newPizza) {
+        System.out.println("##########################################################################################Enter ViewModel");
         ((BaseApp) getApplication()).getPizzaRepository().insert(newPizza);
     }
 
     /**
-     * A creator is used to inject the account id into the ViewModel
+     * A creator is used to inject the pizza id into the ViewModel
      */
     public static class Factory extends ViewModelProvider.NewInstanceFactory {
 
         @NonNull
         private final Application mApplication;
 
-        private final int mPizzaId;
+        private final String mPizzaId;
 
         private final PizzaRepository mRepository;
 
-        public Factory(@NonNull Application application, int pizzaId) {
+        public Factory(@NonNull Application application, String pizzaId) {
 
             mApplication = application;
             Log.d(TAG,"PizzaViewModel enter factory, app set");
             mPizzaId = pizzaId;
             Log.d(TAG,"PizzaViewModel enter factory, pizza id set");
-
             mRepository = ((BaseApp) application).getPizzaRepository();
             Log.d(TAG,"PizzaViewModel enter factory, Repository set");
 

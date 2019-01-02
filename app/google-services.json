@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "201281569248",
+    "firebase_url": "https://pizzanowenfin.firebaseio.com",
+    "project_id": "pizzanowenfin",
+    "storage_bucket": "pizzanowenfin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:201281569248:android:e3ab47a0568cf6ed",
+        "android_client_info": {
+          "package_name": "com.mycompany.pizzanow"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "201281569248-s7lncnd3c17069lffuu3mejg7u2eflpv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mycompany.pizzanow",
+            "certificate_hash": "0bd79cfd1137faae701ea0c856116f339747aecc"
+          }
+        },
+        {
+          "client_id": "201281569248-fu29qf57k2phfhbtc92m749un71mni3s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDR3-Pt2TsnZ1qRM0K_il0B8L8kmwQvcg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "201281569248-fu29qf57k2phfhbtc92m749un71mni3s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
