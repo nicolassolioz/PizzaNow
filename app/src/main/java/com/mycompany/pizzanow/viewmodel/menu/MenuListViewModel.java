@@ -36,10 +36,10 @@ public class MenuListViewModel extends AndroidViewModel {
         mObservableMenus.setValue(null);
         //mObservableAllCollaborateurs.setValue(null);
 
-        LiveData<List<MenuEntity>> menus = menuRepository.getAllMenu();
+        //LiveData<List<MenuEntity>> menus = menuRepository.getAllMenu();
         //LiveData<List<CollaborateurEntity>> allCollabs = collaborateurRepository.getAllCollaborateurs();
 
-        mObservableMenus.addSource(menus, mObservableMenus::setValue);
+        //mObservableMenus.addSource(menus, mObservableMenus::setValue);
         //mObservableAllCollaborateurs.addSource(allCollabs, mObservableAllCollaborateurs::setValue);
     }
 

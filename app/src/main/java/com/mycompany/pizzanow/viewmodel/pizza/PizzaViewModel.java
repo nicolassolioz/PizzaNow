@@ -41,7 +41,6 @@ public class PizzaViewModel extends AndroidViewModel {
     }
 
     public void createPizza(PizzaEntity newPizza) {
-        System.out.println("##########################################################################################Enter ViewModel");
         ((BaseApp) getApplication()).getPizzaRepository().insert(newPizza);
     }
 

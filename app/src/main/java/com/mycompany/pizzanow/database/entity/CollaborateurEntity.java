@@ -1,29 +1,19 @@
 package com.mycompany.pizzanow.database.entity;
 
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.ForeignKey;
-import android.arch.persistence.room.Index;
-import android.arch.persistence.room.PrimaryKey;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+
+import com.google.firebase.database.Exclude;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import com.mycompany.pizzanow.model.Collaborateur;
 
-@Entity(tableName = "Collaborateur",
+public class CollaborateurEntity implements Collaborateur {
 
-    indices ={
-        @Index(
-                value = {"idCollab"}
-        )
-    })
-
-public class CollaborateurEntity implements Collaborateur, Comparable {
-
-    @PrimaryKey(autoGenerate = true)
-    private int idCollab;
+    private String idCollab;
     private String nomCollab;
     private String prenomCollab;
-    private Integer idPosCollab;
+    private String idPosCollab;
 
     public CollaborateurEntity(){}
 
@@ -35,11 +25,11 @@ public class CollaborateurEntity implements Collaborateur, Comparable {
     }
 
     @Override
-    public int getIdCollab() {
+    public String getIdCollab() {
         return idCollab;
     }
 
-    public void setIdCollab(int id){this.idCollab=id;}
+    public void setIdCollab(String id){this.idCollab=id;}
 
     @Override
     public String getNomCollab() {
@@ -56,11 +46,11 @@ public class CollaborateurEntity implements Collaborateur, Comparable {
     public void setPrenomCollab(String prenom){this.prenomCollab=prenom;}
 
     @Override
-    public Integer getIdPosCollab() {
+    public String getIdPosCollab() {
         return idPosCollab;
     }
 
-    public void setIdPosCollab(Integer idPos){this.idPosCollab=idPos;}
+    public void setIdPosCollab(String idPos){this.idPosCollab=idPos;}
 
     @Override
     public boolean equals(Object obj){
@@ -71,8 +61,7 @@ public class CollaborateurEntity implements Collaborateur, Comparable {
         return o.getIdCollab() == this.getIdCollab();
     }
 
-    @Override
-    public int compareTo(@NonNull Object o) {
+    public int compareTo(Object o) {
         return 0;
     }
 }

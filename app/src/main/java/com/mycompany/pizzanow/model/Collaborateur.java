@@ -1,8 +1,8 @@
 package com.mycompany.pizzanow.model;
 
 public interface Collaborateur {
-    int getIdCollab();
+    String getIdCollab();
     String getNomCollab();
     String getPrenomCollab();
-    Integer getIdPosCollab();
+    String getIdPosCollab();
 }

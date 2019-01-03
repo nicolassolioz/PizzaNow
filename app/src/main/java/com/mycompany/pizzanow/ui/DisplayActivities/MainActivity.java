@@ -69,6 +69,7 @@ public class MainActivity extends ToolbarActivity {
             @Override
             public void onItemClick(View v, int position) {
                 Intent intent = new Intent(MainActivity.this, ShowSuccActivity.class);
+
                 PosEntity posEntity = mPosEntities.get(position);
                 intent.putExtra("serializable_extra",(Serializable) posEntity);
                 startActivity(intent);

@@ -26,19 +26,19 @@ public class MenuRepository {
         return sInstance;
     }
 
-    public LiveData<MenuEntity> getMenu(final int idMenu) {
+    /*public LiveData<MenuEntity> getMenu(final int idMenu) {
         return mDatabase.menuDao().getById(idMenu);
     }
 
     public LiveData<List<MenuEntity>> getAllMenu() {
         return mDatabase.menuDao().getAll();
-    }
+    }*/
 
    /* public LiveData<List<ClientWithAccounts>> getOtherClientsWithAccounts(final String owner) {
         return mDatabase.pizzaDao().getOtherClientsWithAccounts(owner);
     }*/
 
-    public void insert(final MenuEntity menu) {
+    /*public void insert(final MenuEntity menu) {
         mDatabase.menuDao().insert(menu);
     }
 
@@ -48,5 +48,5 @@ public class MenuRepository {
 
     public void delete(final MenuEntity menu) {
         mDatabase.menuDao().delete(menu);
-    }
+    }*/
 }

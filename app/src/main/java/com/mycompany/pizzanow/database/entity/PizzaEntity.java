@@ -8,25 +8,6 @@ import java.util.Map;
 
 import com.mycompany.pizzanow.model.Pizza;
 
-/*
-@Entity(tableName = "Pizza")
-public class PizzaEntity implements Pizza, Comparable{
-
-    @PrimaryKey(autoGenerate = true)
-    private int idPizza;
-
-    @ColumnInfo(name = "Nom")
-    private String nom;
-
-    @ColumnInfo(name = "Description")
-    private String description;
-
-    @ColumnInfo(name = "Prix")
-    private double prix;
-
-    //@ColumnInfo(name = "Vegi")
-    //private Boolean vegi;
-*/
 public class PizzaEntity implements Pizza {
 
     private String idPizza;
@@ -45,20 +26,6 @@ public class PizzaEntity implements Pizza {
 
     }
 
-    /*
-
-    public PizzaEntity(@NonNull int idPizza, String nom, String description, double prix,
-                     boolean vegi) {
-        this.idPizza = idPizza;
-        this.nom = nom;
-        this.description = description;
-        this.prix = prix;
-        //this.vegi = vegi;
-    }
-
-
-    @NonNull
-    */
     @Exclude
     @Override
     public String getIdPizza() {return idPizza;    }
@@ -126,12 +93,5 @@ public class PizzaEntity implements Pizza {
 
         return result;
     }
-
-    /*
-    @Override
-    public int compareTo(@NonNull Object o) {
-        return toString().compareTo(o.toString());
-    }
-    */
 }
 

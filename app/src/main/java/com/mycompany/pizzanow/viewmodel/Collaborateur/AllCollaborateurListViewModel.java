@@ -34,10 +34,10 @@ public class AllCollaborateurListViewModel extends AndroidViewModel {
         mObservableAllCollaborateurs.setValue(null);
 
         //LiveData<List<CollaborateurEntity>> collabs = collaborateurRepository.getCollabPos(posId);
-        LiveData<List<CollaborateurEntity>> allCollabs = collaborateurRepository.getAllCollaborateurs();
+        //LiveData<List<CollaborateurEntity>> allCollabs = collaborateurRepository.getAllCollaborateurs();
 
         //mObservableCollaborateursOfPos.addSource(collabs, mObservableCollaborateursOfPos::setValue);
-        mObservableAllCollaborateurs.addSource(allCollabs, mObservableAllCollaborateurs::setValue);
+        //mObservableAllCollaborateurs.addSource(allCollabs, mObservableAllCollaborateurs::setValue);
     }
 
     public static class Factory extends ViewModelProvider.NewInstanceFactory {

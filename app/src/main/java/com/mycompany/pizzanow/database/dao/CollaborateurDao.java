@@ -15,6 +15,7 @@ import java.util.List;
 
 @Dao
 public interface CollaborateurDao {
+    /*
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertAll(List<CollaborateurEntity> collaborateurs);
@@ -39,4 +40,5 @@ public interface CollaborateurDao {
 
     @Query("SELECT * FROM Collaborateur")
     LiveData<List<CollaborateurEntity>> getAll();
+    */
 }

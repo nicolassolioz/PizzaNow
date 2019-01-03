@@ -87,9 +87,9 @@ public class PizzaRepository {
                 .child(id)
                 .updateChildren(pizza.toMap(), (databaseError, databaseReference) -> {
                     if (databaseError != null) {
-                        Log.d(TAG, "Insert failure!", databaseError.toException());
+                        Log.d(TAG, "Update failure!", databaseError.toException());
                     } else {
-                        Log.i(TAG, "Insert successful!");
+                        Log.i(TAG, "Update successful!");
                     }
                 });
     }

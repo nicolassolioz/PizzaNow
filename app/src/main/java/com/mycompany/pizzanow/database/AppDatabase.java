@@ -26,7 +26,7 @@ import com.mycompany.pizzanow.database.entity.PosEntity;
 import java.util.List;
 import java.util.concurrent.Executors;
 
-@Database(entities = {PosEntity.class, MenuEntity.class, MenuPizzaEntity.class, CollaborateurEntity.class}, version = 1, exportSchema = false)
+@Database(entities = {MenuEntity.class, MenuPizzaEntity.class}, version = 1, exportSchema = false)
 
 public abstract class AppDatabase extends RoomDatabase{
 
@@ -37,9 +37,9 @@ public abstract class AppDatabase extends RoomDatabase{
     private static AppDatabase sInstance;
 
     //public abstract PizzaDao pizzaDao();
-    public abstract PosDao posDao();
-    public abstract CollaborateurDao collaborateurDao();
-    public abstract MenuDao menuDao();
+    //public abstract PosDao posDao();
+    //public abstract CollaborateurDao collaborateurDao();
+    //public abstract MenuDao menuDao();
     //public abstract MenuPizzaDao menuPizzaDao();
 
     private final MutableLiveData<Boolean> mIsDatabaseCreated = new MutableLiveData<>();
@@ -94,13 +94,13 @@ public abstract class AppDatabase extends RoomDatabase{
             database.runInTransaction(() -> {
                 // Generate the data for pre-population
                 //List<PizzaEntity> pizzas = DataGenerator.generatePizzas();
-                List<PosEntity> pos = DataGenerator.generatePos();
+                //List<PosEntity> pos = DataGenerator.generatePos();
                 //List<MenuEntity> menus = DataGenerator.generateMenus();
-                List<CollaborateurEntity> collabs = DataGenerator.generateCollaborateurs();
+                //List<CollaborateurEntity> collabs = DataGenerator.generateCollaborateurs();
                 //List<MenuPizzaEntity> menuPizzas = DataGenerator.generateMenuPizzas();
 
-                database.collaborateurDao().insertAll(collabs);
-                database.posDao().insertAll(pos);
+                //database.collaborateurDao().insertAll(collabs);
+                //database.posDao().insertAll(pos);
 
                 //collabs = DataGenerator.addPosToCollab(collabs);
 

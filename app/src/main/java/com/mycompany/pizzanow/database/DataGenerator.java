@@ -73,6 +73,7 @@ public class DataGenerator {
 
     // Collaborators
 
+    /*
     public static List<CollaborateurEntity> generateCollaborateurs(){
         List<CollaborateurEntity> collab = new ArrayList<>();
 
@@ -177,9 +178,11 @@ public class DataGenerator {
         return collab;
 
     }
+    */
 
     //Point of Sales
 
+    /*
     public static List<CollaborateurEntity> addPosToCollab(List<CollaborateurEntity> collab) {
         collab.get(0).setIdCollab(1);
         collab.get(1).setIdCollab(1);
@@ -251,6 +254,7 @@ public class DataGenerator {
 
         return pos;
     }
+    */
 }
 
 /*    public static List<MenuEntity> generateMenus() {

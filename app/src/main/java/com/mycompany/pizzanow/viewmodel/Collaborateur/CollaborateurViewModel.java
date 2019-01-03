@@ -10,9 +10,6 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.mycompany.pizzanow.BaseApp;
-import com.mycompany.pizzanow.database.async.collaborateur.CreateCollaborateur;
-import com.mycompany.pizzanow.database.async.collaborateur.DeleteCollaborateur;
-import com.mycompany.pizzanow.database.async.collaborateur.UpdateCollaborateur;
 import com.mycompany.pizzanow.database.entity.CollaborateurEntity;
 import com.mycompany.pizzanow.database.repository.CollaborateurRepository;
 import com.mycompany.pizzanow.util.OnAsyncEventListener;
@@ -36,25 +33,14 @@ public class CollaborateurViewModel extends AndroidViewModel {
         // set by default null, until we get data from the database.
         mObservableCollaborateur.setValue(null);
 
-        LiveData<CollaborateurEntity> collaborateur = mRepository.getById(idCollaborateur);
+        //LiveData<CollaborateurEntity> collaborateur = mRepository.getById(idCollaborateur);
 
         // observe the changes of the pizza entity from the database and forward them
-        mObservableCollaborateur.addSource(collaborateur, mObservableCollaborateur::setValue);
+        //mObservableCollaborateur.addSource(collaborateur, mObservableCollaborateur::setValue);
     }
 
     public void createCollab(CollaborateurEntity newCollab) {
-        new CreateCollaborateur(getApplication(), new OnAsyncEventListener() {
-            @Override
-            public void onSuccess() {
-                Log.d(TAG, "create collab : success");
-            }
-
-            @Override
-            public void onFailure(Exception e) {
-                Log.d(TAG, "create collab : fail", e);
-
-            }
-        }).execute(newCollab);
+        //((BaseApp) getApplication()).getCollaborateurRepository().insert(newCollab);
     }
 
     /**
@@ -97,35 +83,13 @@ public class CollaborateurViewModel extends AndroidViewModel {
     }
 
     public void updateCollaborateur(CollaborateurEntity collab) {
-        new UpdateCollaborateur(getApplication(), new OnAsyncEventListener() {
-            @Override
-            public void onSuccess() {
 
-                Log.d(TAG, "updateCollaborateur: success");
-            }
-
-            @Override
-            public void onFailure(Exception e) {
-
-                Log.d(TAG, "updateCollaborateur: failure", e);
-            }
-        });
+        //((BaseApp) getApplication()).getCollaborateurRepository().update(collab);
     }
 
-    public void deleteCollaborateur(CollaborateurEntity collab, OnAsyncEventListener callback) {
-        new DeleteCollaborateur(getApplication(), new OnAsyncEventListener() {
-            @Override
-            public void onSuccess() {
-                callback.onSuccess();
-                Log.d(TAG, "deleteCollaborateur: success");
-            }
+    public void deleteCollaborateur(CollaborateurEntity collab) {
 
-            @Override
-            public void onFailure(Exception e) {
-                callback.onFailure(e);
-                Log.d(TAG, "deleteCollaborateur: failure", e);
-            }
-        }).execute(collab);
+        //((BaseApp) getApplication()).getCollaborateurRepository().delete(collab);
 
     }
 }

@@ -17,6 +17,7 @@ import android.arch.lifecycle.LiveData;
 
 @Dao
 public interface PosDao {
+    /*
     @Query("SELECT * FROM pos")
     LiveData<List<PosEntity>> getAll();
 
@@ -39,4 +40,5 @@ public interface PosDao {
     @Query("SELECT * FROM pos WHERE IdFiliale = :id")
     LiveData<PosEntity> getById(int id);
 
+*/
 }

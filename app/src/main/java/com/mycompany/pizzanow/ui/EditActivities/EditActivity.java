@@ -168,7 +168,7 @@ public class EditActivity extends ToolbarActivity {
                 try{
                     fillDDLPosCollabNames();
                     resp = findViewById(R.id.listPosCollaborateur);
-                    resp.setSelection(select.getResponsable()-1);
+                    resp.setSelection(1);
                 }catch(Exception e){
                     Log.d(TAG, "no resp !?"+e);
                 }
@@ -182,7 +182,8 @@ public class EditActivity extends ToolbarActivity {
 
                 //position should be the ID
                 PosRepository posRepository = ((BaseApp) getApplication()).getPosRepository();
-                mPosViewModel = new PosViewModel(getApplication(),position,posRepository);
+
+                mPosViewModel = new PosViewModel(getApplication(),select.getIdPos(),posRepository);
             }
 
             @Override
@@ -245,7 +246,7 @@ public class EditActivity extends ToolbarActivity {
                 try{
                     fillDDLCollabPosNames();
                     place = findViewById(R.id.listCollaboPos);
-                    place.setSelection(select.getIdPosCollab()-1);
+                    place.setSelection(1);
                 }catch(Exception e){
                     Log.d(TAG, "no resp !?"+e);
                 }
@@ -407,8 +408,10 @@ public class EditActivity extends ToolbarActivity {
 
         if(numeric)
         {
-            int indice = resp.getSelectedItemPosition();
-            CollaborateurEntity respPos = mCollaborateurEntities.get(indice);
+            /*int indice = resp.getSelectedItemPosition();
+            CollaborateurEntity respPos = mCollaborateurEntities.get(indice);*/
+
+
 
             newPos.setNom(editPosName.getText().toString());
             newPos.setLocalite(editPosLocalite.getText().toString());
@@ -417,7 +420,12 @@ public class EditActivity extends ToolbarActivity {
             newPos.setEmail(editPosEmail.getText().toString());
             newPos.setPhone(editPosPhone.getText().toString());
 
-            newPos.setResponsable(respPos.getIdCollab());
+            newPos.setResponsable("1001");
+
+            if (mPosViewModel == null) {
+                PosRepository repository = ((BaseApp) getApplication()).getPosRepository();
+                mPosViewModel = new PosViewModel(getApplication(),"1",repository);
+            }
 
             mPosViewModel.createPos(newPos);
 
@@ -437,15 +445,7 @@ public class EditActivity extends ToolbarActivity {
     //delete the pos
     public void posDelete(View view) {
 
-        mPosViewModel.deletePos(mPosEntity, new OnAsyncEventListener() {
-            @Override
-            public void onSuccess() {
-                fillPosSection();
-            }
-
-            @Override
-            public void onFailure(Exception e) {}
-        });
+        mPosViewModel.deletePos(mPosEntity);
 
         Toast.makeText(this, "Point of sales deleted",
                 Toast.LENGTH_SHORT).show();
@@ -508,18 +508,7 @@ public class EditActivity extends ToolbarActivity {
 
     //delete employee
     public void collaboDelete(View view) {
-
-        mCollaborateurViewModel.deleteCollaborateur(mCollaborateurEntity, new OnAsyncEventListener() {
-            @Override
-            public void onSuccess() {
-                fillCollabSection();
-            }
-
-            @Override
-            public void onFailure(Exception e) {
-
-            }
-        });
+        mCollaborateurViewModel.deleteCollaborateur(mCollaborateurEntity);
 
         Toast.makeText(this, "Collaborator deleted",
                 Toast.LENGTH_SHORT).show();
@@ -569,8 +558,6 @@ public class EditActivity extends ToolbarActivity {
     //insert new pizza
     public void pizzaInsert(View view) {
 
-        System.out.println("entrer insert");
-
         EditText editPizzaName = findViewById(R.id.editPizzaName);
         EditText editPizzaDesc = findViewById(R.id.editPizzaDescription);
         EditText editPizzaPrice = findViewById(R.id.editPizzaPrice);
@@ -592,13 +579,6 @@ public class EditActivity extends ToolbarActivity {
             newPizza.setNom(editPizzaName.getText().toString());
             newPizza.setDescription(editPizzaDesc.getText().toString());
             newPizza.setPrix(Double.parseDouble(editPizzaPrice.getText().toString()));
-
-
-            /*newPizza.setNom("test");
-            newPizza.setDescription("estdesc");
-            newPizza.setPrix(12.5);*/
-
-            System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"+newPizza.getNom());
 
             if (mPizzaViewModel == null) {
                 mPizzaViewModel = new PizzaViewModel(getApplication(),"1",PizzaRepository.getInstance());

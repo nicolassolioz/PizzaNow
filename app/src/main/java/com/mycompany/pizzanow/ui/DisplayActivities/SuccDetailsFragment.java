@@ -55,7 +55,7 @@ public class SuccDetailsFragment extends Fragment {
         //Nom des collaborateurs
 
         mCollabs = new ArrayList<>();
-        Integer posEntityId = posEntity.getIdFiliale();
+        String posEntityId = posEntity.getIdFiliale();
         CollaborateurListViewModel.Factory factory = new CollaborateurListViewModel.Factory(getActivity().getApplication(),posEntityId);
         mViewModel = ViewModelProviders.of(this, factory).get(CollaborateurListViewModel.class);
         mViewModel.getCollabPos().observe(this, collaborateurEntities -> {

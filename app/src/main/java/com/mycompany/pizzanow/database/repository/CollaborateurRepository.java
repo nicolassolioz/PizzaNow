@@ -2,8 +2,12 @@ package com.mycompany.pizzanow.database.repository;
 
 import android.arch.lifecycle.LiveData;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.mycompany.pizzanow.database.AppDatabase;
 import com.mycompany.pizzanow.database.entity.CollaborateurEntity;
+import com.mycompany.pizzanow.database.entity.PosEntity;
+import com.mycompany.pizzanow.database.firebase.PosLiveData;
 
 import java.util.List;
 
@@ -26,7 +30,7 @@ public class CollaborateurRepository {
         return sInstance;
     }
 
-    public LiveData<CollaborateurEntity> getById(int idCollaborateur) {
+    /*public LiveData<CollaborateurEntity> getById(int idCollaborateur) {
         return mDatabase.collaborateurDao().getById(idCollaborateur);
     }
 
@@ -35,14 +39,18 @@ public class CollaborateurRepository {
     public LiveData<CollaborateurEntity> getCollaborateurNom( String nomCollaborateur) {
         return mDatabase.collaborateurDao().getByName(nomCollaborateur);
     }
+    */
 
-    public LiveData<List<CollaborateurEntity>> getCollabPos(Integer pos) {
-        return mDatabase.collaborateurDao().getCollabPos(pos);
+    public LiveData<PosEntity> getCollabPos(String pos) {
+        DatabaseReference reference = FirebaseDatabase.getInstance()
+                .getReference("pos")
+                .child(pos);
+        return new PosLiveData(reference);
     }
 
    /* public LiveData<List<ClientWithAccounts>> getOtherClientsWithAccounts(final String owner) {
         return mDatabase.pizzaDao().getOtherClientsWithAccounts(owner);
-    }*/
+    }
 
     public void insert(final CollaborateurEntity collab) {
         mDatabase.collaborateurDao().insert(collab);
@@ -54,5 +62,5 @@ public class CollaborateurRepository {
 
     public void delete(final CollaborateurEntity collab) {
         mDatabase.collaborateurDao().delete(collab);
-    }
+    }*/
 }
