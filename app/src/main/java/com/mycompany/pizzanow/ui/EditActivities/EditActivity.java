@@ -168,7 +168,7 @@ public class EditActivity extends ToolbarActivity {
                 try{
                     fillDDLPosCollabNames();
                     resp = findViewById(R.id.listPosCollaborateur);
-                    resp.setSelection(0);
+                    //resp.setSelection(select.getResponsable());
                 }catch(Exception e){
                     Log.d(TAG, "no resp !?"+e);
                 }
