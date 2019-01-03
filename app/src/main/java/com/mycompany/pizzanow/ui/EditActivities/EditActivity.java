@@ -457,23 +457,22 @@ public class EditActivity extends ToolbarActivity {
     //update the employee
     public void collaboUpdate(View view) {
 
+        int indice = place.getSelectedItemPosition();
+        PosEntity workPlace = mPosEntities.get(indice);
 
         EditText editCollabName = findViewById(R.id.editCollaboName);
         EditText editCollabSurname = findViewById(R.id.editCollaboSurname);
 
-        int indice = place.getSelectedItemPosition();
-        PosEntity workPlace = mPosEntities.get(indice);
-
         mCollaborateurEntity.setNomCollab(editCollabName.getText().toString());
         mCollaborateurEntity.setPrenomCollab(editCollabSurname.getText().toString());
-        mCollaborateurEntity.setIdPosCollab(workPlace.getIdFiliale());
+        mCollaborateurEntity.setIdPosCollab(workPlace.getIdPos());
 
         mCollaborateurViewModel.updateCollaborateur(mCollaborateurEntity);
 
-        fillCollabSection();
-
         Toast.makeText(this, "Collaborator changes saved",
                 Toast.LENGTH_SHORT).show();
+
+        fillCollabSection();
 
     }
 
@@ -484,8 +483,7 @@ public class EditActivity extends ToolbarActivity {
         EditText editCollabName = findViewById(R.id.editCollaboName);
         EditText editCollabSurname = findViewById(R.id.editCollaboSurname);
 
-        //int indice = place.getSelectedItemPosition();
-        int indice = 0;
+        int indice = place.getSelectedItemPosition();
         PosEntity workPlace = mPosEntities.get(indice);
 
         newCollab.setNomCollab(editCollabName.getText().toString());

@@ -1,5 +1,6 @@
 package com.mycompany.pizzanow.ui.DisplayActivities;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -30,9 +31,11 @@ public class ShowSuccActivity extends ToolbarActivity {
         setContentView(R.layout.activity_show_succ);
 
         //Récupération du POS
-        //int posID = getIntent().getIntExtra("posID", 1);
+        String posID = "";
         posEntity = (PosEntity) getIntent().getSerializableExtra("serializable_extra");
-        /*
+
+        posID = posEntity.getIdPos();
+
         PosViewModel.Factory factoryPos = new PosViewModel.Factory(getApplication(),posID);
         posViewModel = ViewModelProviders.of(this, factoryPos).get(PosViewModel.class);
         posViewModel.getPos().observe(this,  posEntity1-> {
@@ -41,7 +44,6 @@ public class ShowSuccActivity extends ToolbarActivity {
             }
 
         });
-        */
 
         // Instantiate a ViewPager and a PagerAdapter.
         mPager = findViewById(R.id.pager);
