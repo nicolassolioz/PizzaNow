@@ -108,7 +108,7 @@ public class PosEntity implements Pos, Serializable {
         result.put("adresse", Adresse);
         result.put("npa", NPA);
         result.put("localite", Localite);
-        result.put("Responsable", Responsable);
+        result.put("responsable", Responsable);
         result.put("email", Email);
         result.put("phone", Phone);
 
