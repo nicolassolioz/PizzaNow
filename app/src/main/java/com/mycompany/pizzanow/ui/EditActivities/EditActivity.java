@@ -487,6 +487,7 @@ public class EditActivity extends ToolbarActivity {
                 Toast.LENGTH_SHORT).show();
 
         fillCollabSection();
+        fillPosSection();
 
     }
 
@@ -512,6 +513,7 @@ public class EditActivity extends ToolbarActivity {
         mCollaborateurViewModel.createCollab(newCollab);
 
         fillCollabSection();
+        fillPosSection();
 
         Toast.makeText(this, "New collaborator added",
                 Toast.LENGTH_SHORT).show();
