@@ -85,6 +85,7 @@ public class PizzaEntity implements Pizza {
     @Override
     public String toString(){return nom + " : " + description;}
 
+    // This code Maps Pizza
     @Exclude
     public Map<String, Object> toMap(){
         HashMap<String, Object> result = new HashMap<>();
