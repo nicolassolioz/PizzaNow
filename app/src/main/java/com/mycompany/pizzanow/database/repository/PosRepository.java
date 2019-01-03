@@ -45,6 +45,7 @@ public class PosRepository {
         DatabaseReference reference = FirebaseDatabase.getInstance()
                 .getReference("pos")
                 .child(posId);
+
         return new PosLiveData(reference);
     }
 
