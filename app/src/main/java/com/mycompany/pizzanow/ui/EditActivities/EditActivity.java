@@ -168,7 +168,7 @@ public class EditActivity extends ToolbarActivity {
                 try{
                     fillDDLPosCollabNames();
                     resp = findViewById(R.id.listPosCollaborateur);
-                    resp.setSelection(1);
+                    resp.setSelection(0);
                 }catch(Exception e){
                     Log.d(TAG, "no resp !?"+e);
                 }
@@ -246,7 +246,7 @@ public class EditActivity extends ToolbarActivity {
                 try{
                     fillDDLCollabPosNames();
                     place = findViewById(R.id.listCollaboPos);
-                    place.setSelection(1);
+                    place.setSelection(0);
                 }catch(Exception e){
                     Log.d(TAG, "no resp !?"+e);
                 }
