@@ -168,7 +168,14 @@ public class EditActivity extends ToolbarActivity {
                 try{
                     fillDDLPosCollabNames();
                     resp = findViewById(R.id.listPosCollaborateur);
-                    //resp.setSelection(select.getResponsable());
+                    int index = 0;
+                    for(int i = 0; i<mCollaborateurEntities.size(); i++) {
+                        if(mCollaborateurEntities.get(i).getIdCollab() == select.getResponsable()){
+                            index = i;
+                        }
+                    }
+                    resp.setSelection(index);
+
                 }catch(Exception e){
                     Log.d(TAG, "no resp !?"+e);
                 }
@@ -246,7 +253,13 @@ public class EditActivity extends ToolbarActivity {
                 try{
                     fillDDLCollabPosNames();
                     place = findViewById(R.id.listCollaboPos);
-                    place.setSelection(0);
+                    int index = 0;
+                    for(int i = 0; i<mPosEntities.size(); i++) {
+                        if(mPosEntities.get(i).getIdPos().equals(select.getIdPosCollab())){
+                            index = i;
+                        }
+                    }
+                    place.setSelection(index);
                 }catch(Exception e){
                     Log.d(TAG, "no resp !?"+e);
                 }

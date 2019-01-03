@@ -105,7 +105,7 @@ public class PosEntity implements Pos, Serializable {
     public Map<String, Object> toMap(){
         HashMap<String, Object> result = new HashMap<>();
         result.put("nom", Nom);
-        result.put("address", Adresse);
+        result.put("addresse", Adresse);
         result.put("email", Email);
         result.put("localite", Localite);
         result.put("npa", NPA);
