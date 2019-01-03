@@ -65,8 +65,9 @@ public class CollaborateurEntity implements Collaborateur {
     @Exclude
     public Map<String, Object> toMap(){
         HashMap<String, Object> result = new HashMap<>();
-        result.put("Nom", nomCollab);
-        result.put("Prenom", prenomCollab );
+        result.put("nomCollab", nomCollab);
+        result.put("prenomCollab", prenomCollab );
+        result.put("idPosCollab", idPosCollab);
 
         return result;
     }

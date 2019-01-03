@@ -90,6 +90,7 @@ public class PizzaEntity implements Pizza {
         HashMap<String, Object> result = new HashMap<>();
         result.put("nom", nom);
         result.put("description", description);
+        result.put("prix", prix);
 
         return result;
     }
