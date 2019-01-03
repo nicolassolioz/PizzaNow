@@ -11,8 +11,9 @@ Utilisation :
 - un deuxième fragment ainsi que les renseignements du point de vente ( possibilité d'appeler, envoyer un mail, collaborateurs, addressse)
 - un administrateur peut se connecter et il dispose alors des options d'édition des différentes tables présentes.
 
-#Edit 
+# Edit 
 Migration vers Firebase 
 Lien vers la base de données : https://console.firebase.google.com/u/0/project/pizzanowenfin/database/pizzanowenfin/data/
 
+- problème d'affichage des collaborateurs dans la class SuccDetailsFragment : tous les collaborateurs apparaissent...
 
