@@ -22,7 +22,7 @@ public class CollaborateurListViewModel extends AndroidViewModel {
     private CollaborateurRepository collaborateurRepository;
 
     private final MediatorLiveData<List<CollaborateurEntity>> mObservableCollaborateursOfPos;
-    private final MediatorLiveData<List<CollaborateurEntity>> mObservableAllCollaborateurs;
+   // private final MediatorLiveData<List<CollaborateurEntity>> mObservableAllCollaborateurs;
 
     public CollaborateurListViewModel(@NonNull Application application,
                                       final String posId, CollaborateurRepository repository) {
@@ -30,16 +30,16 @@ public class CollaborateurListViewModel extends AndroidViewModel {
         collaborateurRepository = repository;
 
         mObservableCollaborateursOfPos = new MediatorLiveData<>();
-        mObservableAllCollaborateurs = new MediatorLiveData<>();
+        //mObservableAllCollaborateurs = new MediatorLiveData<>();
 
         mObservableCollaborateursOfPos.setValue(null);
         //mObservableAllCollaborateurs.setValue(null);
 
         LiveData<List<CollaborateurEntity>> collabs = collaborateurRepository.getCollabPos(posId);
-        LiveData<List<CollaborateurEntity>> allCollabs = collaborateurRepository.getAllCollaborateurs();
+        //LiveData<List<CollaborateurEntity>> allCollabs = collaborateurRepository.getAllCollaborateurs();
 
         mObservableCollaborateursOfPos.addSource(collabs, mObservableCollaborateursOfPos::setValue);
-        mObservableAllCollaborateurs.addSource(allCollabs, mObservableAllCollaborateurs::setValue);
+        //mObservableAllCollaborateurs.addSource(allCollabs, mObservableAllCollaborateurs::setValue);
     }
 
     public static class Factory extends ViewModelProvider.NewInstanceFactory {
@@ -53,7 +53,7 @@ public class CollaborateurListViewModel extends AndroidViewModel {
 
         public Factory(@NonNull Application application, String PosId) {
             mApplication = application;
-            mPosId=PosId;
+            mPosId = PosId;
             mRepository = ((BaseApp) application).getCollaborateurRepository();
 
         }

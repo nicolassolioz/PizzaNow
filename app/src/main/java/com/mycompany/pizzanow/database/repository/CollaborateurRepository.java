@@ -69,7 +69,7 @@ public class CollaborateurRepository {
                 .startAt(pos)
                 .endAt(pos+"\uf8ff")
                 .getRef();
-        return new CollaboListLiveData(reference);
+        return new CollaboListLiveData(reference, pos);
     }
 
 

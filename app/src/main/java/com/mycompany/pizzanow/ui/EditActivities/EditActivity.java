@@ -455,6 +455,7 @@ public class EditActivity extends ToolbarActivity {
                     Toast.LENGTH_SHORT).show();
         }
 
+
     }
 
     //delete the pos

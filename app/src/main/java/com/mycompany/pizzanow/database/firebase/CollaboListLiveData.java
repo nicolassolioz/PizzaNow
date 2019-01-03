@@ -19,11 +19,19 @@ public class CollaboListLiveData extends LiveData<List<CollaborateurEntity>>  {
     private static final String TAG = "CollaboListLiveData";
 
     private final DatabaseReference mReference;
+    private String mPos;
     private final CollaboListLiveData.MyValueEventListener mListener = new CollaboListLiveData.MyValueEventListener();
 
     public CollaboListLiveData(DatabaseReference ref) {
         mReference = ref;
+
     }
+
+    public CollaboListLiveData(DatabaseReference ref, String pos) {
+        mReference = ref;
+        mPos = pos;
+    }
+
 
     @Override
     protected void onActive() {
@@ -49,6 +57,16 @@ public class CollaboListLiveData extends LiveData<List<CollaborateurEntity>>  {
     }
 
     private List<CollaborateurEntity> toCollabs(DataSnapshot snapshot) {
+        List<CollaborateurEntity> collabs = new ArrayList<>();
+        for (DataSnapshot childSnapshot : snapshot.getChildren()) {
+            CollaborateurEntity entity = childSnapshot.getValue(CollaborateurEntity.class);
+            entity.setIdCollab(childSnapshot.getKey());
+            collabs.add(entity);
+        }
+        return collabs;
+    }
+
+    private List<CollaborateurEntity> toCollabsOfPos(DataSnapshot snapshot) {
         List<CollaborateurEntity> collabs = new ArrayList<>();
         for (DataSnapshot childSnapshot : snapshot.getChildren()) {
             CollaborateurEntity entity = childSnapshot.getValue(CollaborateurEntity.class);

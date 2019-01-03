@@ -17,6 +17,8 @@ import android.widget.Toast;
 import com.mycompany.pizzanow.R;
 import com.mycompany.pizzanow.database.entity.CollaborateurEntity;
 import com.mycompany.pizzanow.database.entity.PosEntity;
+import com.mycompany.pizzanow.database.firebase.CollaboListLiveData;
+import com.mycompany.pizzanow.database.repository.CollaborateurRepository;
 import com.mycompany.pizzanow.model.Collaborateur;
 import com.mycompany.pizzanow.ui.DisplayActivities.ShowSuccActivity;
 import com.mycompany.pizzanow.viewmodel.Collaborateur.CollaborateurListViewModel;
@@ -57,12 +59,13 @@ public class SuccDetailsFragment extends Fragment {
 
         mCollabs = new ArrayList<>();
         String posEntityId = posEntity.getIdPos();
+
         CollaborateurListViewModel.Factory factory = new CollaborateurListViewModel.Factory(getActivity().getApplication(),posEntityId);
         mViewModel = ViewModelProviders.of(this, factory).get(CollaborateurListViewModel.class);
         mViewModel.getCollabPos().observe(this, collaborateurEntities -> {
             if(collaborateurEntities !=null){
                 mCollabs = collaborateurEntities;
-                 TextView textViewNames = (TextView) rootView.findViewById(R.id.tvSuccDetailNames);
+                TextView textViewNames = (TextView) rootView.findViewById(R.id.tvSuccDetailNames);
                 String namesSeq ="";
                 for (Collaborateur c : mCollabs) {
                     if(mCollabs.indexOf(c) == mCollabs.size()-2)
