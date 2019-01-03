@@ -357,10 +357,10 @@ public class EditActivity extends ToolbarActivity {
 
         if(numeric)
         {
-            /*
+
             int indice = resp.getSelectedItemPosition();
             CollaborateurEntity respPos = mCollaborateurEntities.get(indice);
-            */
+
 
             mPosEntity.setNom(editPosName.getText().toString());
             mPosEntity.setLocalite(editPosLocalite.getText().toString());
@@ -369,7 +369,7 @@ public class EditActivity extends ToolbarActivity {
             mPosEntity.setEmail(editPosEmail.getText().toString());
             mPosEntity.setPhone(editPosPhone.getText().toString());
             //mPosEntity.setIdMenu(2);
-            mPosEntity.setResponsable("1001");
+            mPosEntity.setResponsable(respPos.getIdCollab());
 
             mPosViewModel.updatePos(mPosEntity);
 
@@ -409,8 +409,8 @@ public class EditActivity extends ToolbarActivity {
 
         if(numeric)
         {
-            /*int indice = resp.getSelectedItemPosition();
-            CollaborateurEntity respPos = mCollaborateurEntities.get(indice);*/
+            int indice = resp.getSelectedItemPosition();
+            CollaborateurEntity respPos = mCollaborateurEntities.get(indice);
 
 
 
@@ -421,7 +421,7 @@ public class EditActivity extends ToolbarActivity {
             newPos.setEmail(editPosEmail.getText().toString());
             newPos.setPhone(editPosPhone.getText().toString());
 
-            newPos.setResponsable("1001");
+            newPos.setResponsable(respPos.getIdCollab());
 
             if (mPosViewModel == null) {
                 PosRepository repository = ((BaseApp) getApplication()).getPosRepository();
@@ -488,7 +488,7 @@ public class EditActivity extends ToolbarActivity {
 
         newCollab.setNomCollab(editCollabName.getText().toString());
         newCollab.setPrenomCollab(editCollabSurname.getText().toString());
-        newCollab.setIdPosCollab(workPlace.getIdFiliale());
+        newCollab.setIdPosCollab(workPlace.getIdPos());
 
         if (mCollaborateurViewModel == null) {
             CollaborateurRepository repository = ((BaseApp) getApplication()).getCollaborateurRepository();
