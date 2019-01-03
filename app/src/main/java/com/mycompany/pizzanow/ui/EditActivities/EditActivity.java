@@ -176,7 +176,6 @@ public class EditActivity extends ToolbarActivity {
                     }
                     resp.setSelection(index);
 
-                    resp.setSelection(0);
                 }catch(Exception e){
                     Log.d(TAG, "no resp !?"+e);
                 }
@@ -261,7 +260,7 @@ public class EditActivity extends ToolbarActivity {
                         }
                     }
                     place.setSelection(index);
-                    place.setSelection(0);
+
                 }catch(Exception e){
                     Log.d(TAG, "no resp !?"+e);
                 }
