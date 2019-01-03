@@ -48,6 +48,7 @@ public class PosRepository {
         return new PosLiveData(reference);
     }
 
+
     /*
     public LiveData<PosEntity> getPosBasedOnName(String namePos) {
 
@@ -57,6 +58,7 @@ public class PosRepository {
         */
         // START OF BORROWED CODE
         //create query
+
         /*
         Query query = FirebaseDatabase.getInstance()
                 .getReference("pos")
@@ -64,21 +66,23 @@ public class PosRepository {
                 .startAt(namePos)
                 .endAt(namePos+"\uf8ff");
 
-*/
+
         //
         // END OF BORROWED CODE
-        /*
+
         DatabaseReference reference = FirebaseDatabase.getInstance()
             .getReference("pos")
                 .child(reference.);
+
+
         // END OF BORROWED CODE
 
 
         return new PosLiveData(reference);
 
     }
-
     */
+
 
     public LiveData<List<PosEntity>> getAllPos() {
         DatabaseReference reference = FirebaseDatabase.getInstance()

@@ -24,6 +24,7 @@ public class CollaborateurEntity implements Collaborateur {
         idPosCollab=collab.getIdPosCollab();
     }
 
+    @Exclude
     @Override
     public String getIdCollab() {
         return idCollab;
@@ -59,6 +60,15 @@ public class CollaborateurEntity implements Collaborateur {
         if (!(obj instanceof CollaborateurEntity)) return false;
         CollaborateurEntity o = (CollaborateurEntity) obj;
         return o.getIdCollab() == this.getIdCollab();
+    }
+
+    @Exclude
+    public Map<String, Object> toMap(){
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("Nom", nomCollab);
+        result.put("Prenom", prenomCollab );
+
+        return result;
     }
 
     public int compareTo(Object o) {

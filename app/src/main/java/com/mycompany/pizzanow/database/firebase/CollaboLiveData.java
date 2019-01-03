@@ -9,21 +9,18 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
-import com.mycompany.pizzanow.database.entity.PizzaEntity;
-import com.mycompany.pizzanow.database.entity.PosEntity;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.mycompany.pizzanow.database.entity.CollaborateurEntity;
 
-public class PosListLiveData extends LiveData<List<PosEntity>>  {
+public class CollaboLiveData extends LiveData<CollaborateurEntity>  {
 
-    private static final String TAG = "AccountListLiveData";
+    private static final String TAG = "CollaboLiveData";
 
     private final DatabaseReference mReference;
-    private final PosListLiveData.MyValueEventListener mListener = new PosListLiveData.MyValueEventListener();
+    private final CollaboLiveData.MyValueEventListener mListener = new CollaboLiveData.MyValueEventListener();
 
-    public PosListLiveData(DatabaseReference ref) {
-        mReference = ref;
+    public CollaboLiveData(DatabaseReference ref) {
+        this.mReference = ref;
     }
 
     @Override
@@ -40,7 +37,9 @@ public class PosListLiveData extends LiveData<List<PosEntity>>  {
     private class MyValueEventListener implements ValueEventListener {
         @Override
         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-            setValue(toPoss(dataSnapshot));
+            CollaborateurEntity entity = dataSnapshot.getValue(CollaborateurEntity.class);
+            entity.setIdCollab(dataSnapshot.getKey());
+            setValue(entity);
         }
 
         @Override
@@ -48,15 +47,4 @@ public class PosListLiveData extends LiveData<List<PosEntity>>  {
             Log.e(TAG, "Can't listen to query " + mReference, databaseError.toException());
         }
     }
-
-    private List<PosEntity> toPoss(DataSnapshot snapshot) {
-        List<PosEntity> poss = new ArrayList<>();
-        for (DataSnapshot childSnapshot : snapshot.getChildren()) {
-            PosEntity entity = childSnapshot.getValue(PosEntity.class);
-            entity.setIdPos(childSnapshot.getKey());
-            poss.add(entity);
-        }
-        return poss;
-    }
-
 }

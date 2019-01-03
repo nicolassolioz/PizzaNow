@@ -3,12 +3,13 @@ package com.mycompany.pizzanow.database.entity;
 
 import com.google.firebase.database.Exclude;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
 import com.mycompany.pizzanow.model.Pos;
 
-public class PosEntity implements Pos {
+public class PosEntity implements Pos, Serializable {
 
     private String IdPos;
     private String Nom;

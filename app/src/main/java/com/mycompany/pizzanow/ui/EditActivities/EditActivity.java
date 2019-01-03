@@ -253,7 +253,7 @@ public class EditActivity extends ToolbarActivity {
 
                 //position should be the ID
                 CollaborateurRepository collaboRepository = ((BaseApp) getApplication()).getCollaborateurRepository();
-                mCollaborateurViewModel = new CollaborateurViewModel(getApplication(),position,collaboRepository);
+                mCollaborateurViewModel = new CollaborateurViewModel(getApplication(),select.getIdCollab(),collaboRepository);
             }
 
             @Override
@@ -357,9 +357,10 @@ public class EditActivity extends ToolbarActivity {
 
         if(numeric)
         {
+            /*
             int indice = resp.getSelectedItemPosition();
             CollaborateurEntity respPos = mCollaborateurEntities.get(indice);
-
+            */
 
             mPosEntity.setNom(editPosName.getText().toString());
             mPosEntity.setLocalite(editPosLocalite.getText().toString());
@@ -368,7 +369,7 @@ public class EditActivity extends ToolbarActivity {
             mPosEntity.setEmail(editPosEmail.getText().toString());
             mPosEntity.setPhone(editPosPhone.getText().toString());
             //mPosEntity.setIdMenu(2);
-            mPosEntity.setResponsable(respPos.getIdCollab());
+            mPosEntity.setResponsable("1001");
 
             mPosViewModel.updatePos(mPosEntity);
 
@@ -483,12 +484,18 @@ public class EditActivity extends ToolbarActivity {
         EditText editCollabName = findViewById(R.id.editCollaboName);
         EditText editCollabSurname = findViewById(R.id.editCollaboSurname);
 
-        int indice = place.getSelectedItemPosition();
+        //int indice = place.getSelectedItemPosition();
+        int indice = 0;
         PosEntity workPlace = mPosEntities.get(indice);
 
         newCollab.setNomCollab(editCollabName.getText().toString());
         newCollab.setPrenomCollab(editCollabSurname.getText().toString());
         newCollab.setIdPosCollab(workPlace.getIdFiliale());
+
+        if (mCollaborateurViewModel == null) {
+            CollaborateurRepository repository = ((BaseApp) getApplication()).getCollaborateurRepository();
+            mCollaborateurViewModel = new CollaborateurViewModel(getApplication(),"1",repository);
+        }
 
         mCollaborateurViewModel.createCollab(newCollab);
 

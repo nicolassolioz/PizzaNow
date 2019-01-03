@@ -24,7 +24,7 @@ public class CollaborateurViewModel extends AndroidViewModel {
     private final MediatorLiveData<CollaborateurEntity> mObservableCollaborateur;
 
     public CollaborateurViewModel(@NonNull Application application,
-                          final int idCollaborateur, CollaborateurRepository collaborateurRepository) {
+                          final String idCollaborateur, CollaborateurRepository collaborateurRepository) {
         super(application);
 
         mRepository = collaborateurRepository;
@@ -33,14 +33,14 @@ public class CollaborateurViewModel extends AndroidViewModel {
         // set by default null, until we get data from the database.
         mObservableCollaborateur.setValue(null);
 
-        //LiveData<CollaborateurEntity> collaborateur = mRepository.getById(idCollaborateur);
+        LiveData<CollaborateurEntity> collaborateur = mRepository.getById(idCollaborateur);
 
         // observe the changes of the pizza entity from the database and forward them
-        //mObservableCollaborateur.addSource(collaborateur, mObservableCollaborateur::setValue);
+        mObservableCollaborateur.addSource(collaborateur, mObservableCollaborateur::setValue);
     }
 
     public void createCollab(CollaborateurEntity newCollab) {
-        //((BaseApp) getApplication()).getCollaborateurRepository().insert(newCollab);
+        ((BaseApp) getApplication()).getCollaborateurRepository().insert(newCollab);
     }
 
     /**
@@ -51,11 +51,11 @@ public class CollaborateurViewModel extends AndroidViewModel {
         @NonNull
         private final Application mApplication;
 
-        private final int mIdCollaborateur;
+        private final String mIdCollaborateur;
 
         private final CollaborateurRepository mRepository;
 
-        public Factory(@NonNull Application application, int idCollaborateur) {
+        public Factory(@NonNull Application application, String idCollaborateur) {
             Log.d(TAG,"CollaborateurViewModel enter factory");
             mApplication = application;
             Log.d(TAG,"CollaborateurViewModel enter factory, app set");
@@ -84,12 +84,12 @@ public class CollaborateurViewModel extends AndroidViewModel {
 
     public void updateCollaborateur(CollaborateurEntity collab) {
 
-        //((BaseApp) getApplication()).getCollaborateurRepository().update(collab);
+        ((BaseApp) getApplication()).getCollaborateurRepository().update(collab);
     }
 
     public void deleteCollaborateur(CollaborateurEntity collab) {
 
-        //((BaseApp) getApplication()).getCollaborateurRepository().delete(collab);
+        ((BaseApp) getApplication()).getCollaborateurRepository().delete(collab);
 
     }
 }

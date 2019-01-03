@@ -20,24 +20,24 @@ public class AllCollaborateurListViewModel extends AndroidViewModel {
 
     private CollaborateurRepository collaborateurRepository;
 
-    //private final MediatorLiveData<List<CollaborateurEntity>> mObservableCollaborateursOfPos;
+    private final MediatorLiveData<List<CollaborateurEntity>> mObservableCollaborateursOfPos;
     private final MediatorLiveData<List<CollaborateurEntity>> mObservableAllCollaborateurs;
 
     public AllCollaborateurListViewModel(@NonNull Application application, CollaborateurRepository repository) {
         super(application);
         collaborateurRepository = repository;
 
-        //mObservableCollaborateursOfPos = new MediatorLiveData<>();
+        mObservableCollaborateursOfPos = new MediatorLiveData<>();
         mObservableAllCollaborateurs = new MediatorLiveData<>();
 
-        //mObservableCollaborateursOfPos.setValue(null);
+        mObservableCollaborateursOfPos.setValue(null);
         mObservableAllCollaborateurs.setValue(null);
 
         //LiveData<List<CollaborateurEntity>> collabs = collaborateurRepository.getCollabPos(posId);
-        //LiveData<List<CollaborateurEntity>> allCollabs = collaborateurRepository.getAllCollaborateurs();
+        LiveData<List<CollaborateurEntity>> allCollabs = collaborateurRepository.getAllCollaborateurs();
 
         //mObservableCollaborateursOfPos.addSource(collabs, mObservableCollaborateursOfPos::setValue);
-        //mObservableAllCollaborateurs.addSource(allCollabs, mObservableAllCollaborateurs::setValue);
+        mObservableAllCollaborateurs.addSource(allCollabs, mObservableAllCollaborateurs::setValue);
     }
 
     public static class Factory extends ViewModelProvider.NewInstanceFactory {
