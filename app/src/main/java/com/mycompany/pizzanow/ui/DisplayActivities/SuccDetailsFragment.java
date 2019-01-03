@@ -53,6 +53,7 @@ public class SuccDetailsFragment extends Fragment {
         buttonMailTo.setOnClickListener(view -> attemptSendMail(posEntity.getEmail()));
 
         //Nom des collaborateurs
+        //test git
 
         mCollabs = new ArrayList<>();
         String posEntityId = posEntity.getIdPos();
